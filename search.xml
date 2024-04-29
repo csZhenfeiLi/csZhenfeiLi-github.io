@@ -1,51 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2024/04/28/hello-world/</url>
-    <content><![CDATA[<hr>
-<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+    <title>从原子到数字电路元器件</title>
+    <url>/2024/04/29/page/</url>
+    <content><![CDATA[<h1 id="从原子出发"><a href="#从原子出发" class="headerlink" title="从原子出发"></a>从原子出发</h1><p>原子由中子、质子、电子构成，质子带正电、电子带负电。不同原子因最外层电子数量不同而容易失去或者得到电子，呈现出正电性或者负电性。<br><img src="/images/%E4%BB%8E%E5%8E%9F%E5%AD%90%E5%88%B0%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%85%83%E5%99%A8%E4%BB%B6/1.PNG" alt=" "></p>
 <span id="more"></span>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+<h1 id="半导体"><a href="#半导体" class="headerlink" title="半导体"></a>半导体</h1><p>硅的最外层有4个电子，处于导体和绝缘体之间，被称为半导体。一堆硅原子在一起会通过共用电子形成共价键得到稳定结构。<br><img src="/images/%E4%BB%8E%E5%8E%9F%E5%AD%90%E5%88%B0%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%85%83%E5%99%A8%E4%BB%B6/2.PNG" alt=" "></p>
+<h1 id="给半导体加点料"><a href="#给半导体加点料" class="headerlink" title="给半导体加点料"></a>给半导体加点料</h1><p>在纯净的硅中掺杂最外层带5个电子的磷元素和带3个电子的硼元素，由于原子最外层无法形成稳定的8电子结构，其导电性上升。<br><img src="/images/%E4%BB%8E%E5%8E%9F%E5%AD%90%E5%88%B0%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%85%83%E5%99%A8%E4%BB%B6/3.PNG" alt=" "></p>
+<h1 id="PN结"><a href="#PN结" class="headerlink" title="PN结"></a>PN结</h1><p>将上述两种半导体拼接，P型半导体倾向于得到电子，显负电性，N型半导体倾向于失去电子，显正电性。此时将会在中间形成一个电场，阻止电子继续移动。<br><img src="/images/%E4%BB%8E%E5%8E%9F%E5%AD%90%E5%88%B0%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%85%83%E5%99%A8%E4%BB%B6/4.PNG" alt=" "></p>
+<h1 id="二极管"><a href="#二极管" class="headerlink" title="二极管"></a>二极管</h1><p>当我们施加外部电场客服耗尽层中形成的电场时，电路会被导通，反之如果加强电场，则电路无法导通。可以分析N型半导体端应该接负极，P型半导体端接正极，方能克服电场，让电路导通。</p>
+<h1 id="MOS"><a href="#MOS" class="headerlink" title="MOS"></a>MOS</h1><p>继续利用半导体设计现代计算机需要的元器件。如图所示，一块大的半导体整体为P型，左右两边各有一小块N型，此时无论如何连接电路，都会存在方向相反的两个等效二极管存在，因此无法导通。但我们在中间位置加一个类似电容的结构，通电后形成电场，让电子集中到上方。此时其等效为一个N型半导体，也就是说中间一整块都成了N型半导体，此时电路导通。<br><img src="/images/%E4%BB%8E%E5%8E%9F%E5%AD%90%E5%88%B0%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%85%83%E5%99%A8%E4%BB%B6/5.PNG" alt=" "></p>
+<h1 id="PNOS-NMOS"><a href="#PNOS-NMOS" class="headerlink" title="PNOS&amp;NMOS"></a>PNOS&amp;NMOS</h1><p>NMOS的工作模式是栅极接入正向偏压才导通，而PMOS是栅极接入负向偏压才导通<br><img src="/images/%E4%BB%8E%E5%8E%9F%E5%AD%90%E5%88%B0%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%85%83%E5%99%A8%E4%BB%B6/6.PNG" alt=" "></p>
+<h1 id="符号化"><a href="#符号化" class="headerlink" title="符号化"></a>符号化</h1><p><img src="/images/%E4%BB%8E%E5%8E%9F%E5%AD%90%E5%88%B0%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%85%83%E5%99%A8%E4%BB%B6/7.PNG" alt=" "></p>
+<h1 id="用MOS管构造第一个元器件"><a href="#用MOS管构造第一个元器件" class="headerlink" title="用MOS管构造第一个元器件"></a>用MOS管构造第一个元器件</h1><p>将NMOS和PNOS如图所示连接，其中VDD表示相对高压、VSS表示相对低压，此时A端接高压NMOS导通，NMOS接VSS输出低电压；A端接低压PMOS导通，PMOS接VDD输出高电压。此时高电压用1表示、低电压用0表示，我们就得到了基本元器件，非门。<br><img src="/images/%E4%BB%8E%E5%8E%9F%E5%AD%90%E5%88%B0%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%85%83%E5%99%A8%E4%BB%B6/8.PNG" alt=" "></p>
+<h1 id="进入数字电路时代"><a href="#进入数字电路时代" class="headerlink" title="进入数字电路时代"></a>进入数字电路时代</h1><p><img src="/images/%E4%BB%8E%E5%8E%9F%E5%AD%90%E5%88%B0%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%85%83%E5%99%A8%E4%BB%B6/9.PNG" alt=" "><br>参考来源：B站硬件茶谈</p>
 ]]></content>
       <categories>
-        <category>Linux 教程</category>
+        <category>底层原理</category>
       </categories>
       <tags>
-        <tag>CentOS 8.2</tag>
+        <tag>半导体</tag>
+        <tag>门电路</tag>
+        <tag>数字电路</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Mathtest</title>
-    <url>/2024/04/28/MathTest/</url>
-    <content><![CDATA[<h1 id="测试-MathJax-显示数学公式"><a href="#测试-MathJax-显示数学公式" class="headerlink" title="测试 MathJax 显示数学公式"></a>测试 MathJax 显示数学公式</h1><p>在这篇文章中，我们将展示如何在 Hexo 博客文章中使用 MathJax 显示数学公式。</p>
-<h2 id="示例公式"><a href="#示例公式" class="headerlink" title="示例公式"></a>示例公式</h2><p>以下是一些基本的数学公式示例：</p>
-<span id="more"></span>
-<ol>
-<li><p><strong>二次方程式</strong>:</p>
-<script type="math/tex; mode=display">ax^2 + bx + c = 0</script></li>
-<li><p><strong>欧拉公式</strong>:</p>
-<script type="math/tex; mode=display">e^{i\pi} + 1 = 0</script></li>
-<li><p><strong>积分表示</strong>:</p>
-<script type="math/tex; mode=display">\int_{a}^{b} x^2 dx</script></li>
-<li><p><strong>矩阵</strong>:</p>
-<script type="math/tex; mode=display">
-\begin{bmatrix}
-a & b \\
-c & d
-\end{bmatrix}</script></li>
-</ol>
-<p>希望这些示例可以帮助你理解如何在博客中插入数学公式。</p>
-]]></content>
-      <categories>
-        <category>学术知识积累</category>
-      </categories>
   </entry>
 </search>
