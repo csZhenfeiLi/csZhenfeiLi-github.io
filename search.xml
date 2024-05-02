@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>从原子到数字电路元器件</title>
-    <url>/2024/04/29/page/</url>
+    <url>/2024/04/29/%E4%BB%8E%E5%8E%9F%E5%AD%90%E5%88%B0%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%85%83%E5%99%A8%E4%BB%B6/</url>
     <content><![CDATA[<h1 id="从原子出发"><a href="#从原子出发" class="headerlink" title="从原子出发"></a>从原子出发</h1><p>原子由中子、质子、电子构成，质子带正电、电子带负电。不同原子因最外层电子数量不同而容易失去或者得到电子，呈现出正电性或者负电性。<br><img src="/images/%E4%BB%8E%E5%8E%9F%E5%AD%90%E5%88%B0%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%85%83%E5%99%A8%E4%BB%B6/1.PNG" alt=" "></p>
 <span id="more"></span>
 
@@ -23,6 +23,26 @@
         <tag>半导体</tag>
         <tag>门电路</tag>
         <tag>数字电路</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>从锁存器到RAM</title>
+    <url>/2024/05/02/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/</url>
+    <content><![CDATA[<p>当电路中输出和输入相关时，我们就有机会得到带有存储功能的电路了，最简单的例子是SR锁存器。</p>
+<h1 id="SR锁存器"><a href="#SR锁存器" class="headerlink" title="SR锁存器"></a>SR锁存器</h1><p><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/1.png" alt=" "></p>
+<span id="more"></span>
+
+<p>分析该电路时，我们从确定性的角度出发，对于与非门，任何一端输入0，结果一定是1。那么我们很容易知道，(S, R) &#x3D; (0, 1), (1, 0), (1, 1)的情况。但当其为(0, 0)时，其保持上一阶段的状态，这就起到了保存一位数据的作用。<br><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/2.png" alt=" "></p>
+<h1 id="D触发器"><a href="#D触发器" class="headerlink" title="D触发器"></a>D触发器</h1><p>为了解决多个SR触发器无法同时动作以及SR触发器(1, 1)为非法状态的问题，我们引入D触发器，其电路示意图如下。<br><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/3.png" alt=" "></p>
+<h1 id="SRAM"><a href="#SRAM" class="headerlink" title="SRAM"></a>SRAM</h1><p>由此，我们就可以构建RAM了，也就是我们所说的内存或者Cache。其基本结构是MOS管，通过行选和列选信号确定一bit的数据，并通过读写控制信号控制读或者写。<br><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/4.png" alt=" "><br>一共用了8个MOS管，速度非常快，但是集成度做不上去，因此只用在Cache上。</p>
+<h1 id="DRAM"><a href="#DRAM" class="headerlink" title="DRAM"></a>DRAM</h1><p>为了提高集成度，我们使用电容做数据存储的媒介，MOS管作为开关。但电容会缓慢放电，因此为了维持数据，其需要不断被补充电荷，这个过程就是刷新。因此这种RAM被称为动态RAM，DRAM用于内存。<br><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/5.png" alt=" "><br>参考来源：B站Ele实验室</p>
+]]></content>
+      <categories>
+        <category>底层原理</category>
+      </categories>
+      <tags>
+        <tag>数字电路</tag>
+        <tag>RAM</tag>
       </tags>
   </entry>
 </search>
