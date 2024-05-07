@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>BCD码</title>
+    <url>/2024/05/07/BCD%E7%A0%81/</url>
+    <content><![CDATA[<p>Binary-Coded Decimal，二进制编码的十进制数。将每个十进制的0-9映射到四个二进制位。显然四位二进制位可以表示16种数字，映射到9个数后必然有一些位是不合法的，同时映射方案不同，得到的BCD码也不一样。</p>
+<h1 id="BCD码"><a href="#BCD码" class="headerlink" title="BCD码"></a>BCD码</h1><p><img src="/images/BCD%E7%A0%81/1.PNG" alt=" "></p>
+<span id="more"></span>
+<h1 id="8421码"><a href="#8421码" class="headerlink" title="8421码"></a>8421码</h1><p>8421码与十进制数的互相转换：<br>1000 1000 &#x3D; 88<br>DEC &#x3D; BCD &#x2F; 16 * 10 +BCD % 16<br>BCD &#x3D; DEC &#x2F; 10 * 16 + BCD % 10</p>
+]]></content>
+      <categories>
+        <category>计算机组成原理</category>
+      </categories>
+      <tags>
+        <tag>8421码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>下拉电阻、上拉电阻</title>
+    <url>/2024/05/02/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/</url>
+    <content><![CDATA[<p>下拉电阻可以将一个不确定的信号钳位在低电平。<br>上拉电阻可以增强输出引脚的驱动能力。</p>
+<span id="more"></span>
+<h1 id="悬空状态"><a href="#悬空状态" class="headerlink" title="悬空状态"></a>悬空状态</h1><p>如图所示，当基极什么都不接的时候，该点的电压就是悬空状态。此时如果转化为数字信号，其既可能输出0，也可能输出1。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/1.png" alt=" "></p>
+<h1 id="下拉"><a href="#下拉" class="headerlink" title="下拉"></a>下拉</h1><p>此时，将该点连接一个电阻接地，由于该电路中NP结电阻无穷大，分走所有电压，所以此时该点的电压变为0，确定性的输出了0电压。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/2.png" alt=" "><br>该电阻存在的必要性是让该点同样可以输出高电压，如下图所示：<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/3.png" alt=" "></p>
+<h1 id="上拉"><a href="#上拉" class="headerlink" title="上拉"></a>上拉</h1><p>如图所示，上拉电阻的作用是将其与单片机内的等效电阻并联，让整体电阻变小，从而分走更少的电压，这样就可以提升输出点的电压了。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/4.png" alt=" "><br>同样，上拉电阻也能解决悬空状态的问题，如图所示，如果想要输出高电平，同样可以通过并联电阻解决。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/5.png" alt=" "><br>并联后，上面的电阻变小，而下方电阻为无穷大，所有电压将被下方分走。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/6.png" alt=" "><br>参考来源：B站爱上半导体</p>
+]]></content>
+      <categories>
+        <category>底层原理</category>
+      </categories>
+      <tags>
+        <tag>数字电路</tag>
+        <tag>上拉电阻</tag>
+        <tag>下拉电阻</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>DS1302</title>
     <url>/2024/05/07/DS1302/</url>
     <content><![CDATA[<h1 id="模块功能"><a href="#模块功能" class="headerlink" title="模块功能"></a>模块功能</h1><p>提供年、月、日、时、分、秒的计时。</p>
@@ -20,24 +53,6 @@
         <tag>时钟电路</tag>
         <tag>实时时钟</tag>
         <tag>单片机</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>下拉电阻、上拉电阻</title>
-    <url>/2024/05/02/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/</url>
-    <content><![CDATA[<p>下拉电阻可以将一个不确定的信号钳位在低电平。<br>上拉电阻可以增强输出引脚的驱动能力。</p>
-<span id="more"></span>
-<h1 id="悬空状态"><a href="#悬空状态" class="headerlink" title="悬空状态"></a>悬空状态</h1><p>如图所示，当基极什么都不接的时候，该点的电压就是悬空状态。此时如果转化为数字信号，其既可能输出0，也可能输出1。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/1.png" alt=" "></p>
-<h1 id="下拉"><a href="#下拉" class="headerlink" title="下拉"></a>下拉</h1><p>此时，将该点连接一个电阻接地，由于该电路中NP结电阻无穷大，分走所有电压，所以此时该点的电压变为0，确定性的输出了0电压。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/2.png" alt=" "><br>该电阻存在的必要性是让该点同样可以输出高电压，如下图所示：<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/3.png" alt=" "></p>
-<h1 id="上拉"><a href="#上拉" class="headerlink" title="上拉"></a>上拉</h1><p>如图所示，上拉电阻的作用是将其与单片机内的等效电阻并联，让整体电阻变小，从而分走更少的电压，这样就可以提升输出点的电压了。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/4.png" alt=" "><br>同样，上拉电阻也能解决悬空状态的问题，如图所示，如果想要输出高电平，同样可以通过并联电阻解决。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/5.png" alt=" "><br>并联后，上面的电阻变小，而下方电阻为无穷大，所有电压将被下方分走。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/6.png" alt=" "><br>参考来源：B站爱上半导体</p>
-]]></content>
-      <categories>
-        <category>底层原理</category>
-      </categories>
-      <tags>
-        <tag>数字电路</tag>
-        <tag>上拉电阻</tag>
-        <tag>下拉电阻</tag>
       </tags>
   </entry>
   <entry>
