@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>BCD码</title>
-    <url>/2024/05/07/BCD%E7%A0%81/</url>
-    <content><![CDATA[<p>Binary-Coded Decimal，二进制编码的十进制数。将每个十进制的0-9映射到四个二进制位。显然四位二进制位可以表示16种数字，映射到9个数后必然有一些位是不合法的，同时映射方案不同，得到的BCD码也不一样。</p>
-<h1 id="BCD码"><a href="#BCD码" class="headerlink" title="BCD码"></a>BCD码</h1><p><img src="/images/BCD%E7%A0%81/1.PNG" alt=" "></p>
-<span id="more"></span>
-<h1 id="8421码"><a href="#8421码" class="headerlink" title="8421码"></a>8421码</h1><p>8421码与十进制数的互相转换：<br>1000 1000 &#x3D; 88<br>DEC &#x3D; BCD &#x2F; 16 * 10 +BCD % 16<br>BCD &#x3D; DEC &#x2F; 10 * 16 + BCD % 10</p>
-]]></content>
-      <categories>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>8421码</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>AT24C02</title>
     <url>/2024/05/14/AT24C02/</url>
     <content><![CDATA[<h1 id="ROM-非易失性存储器"><a href="#ROM-非易失性存储器" class="headerlink" title="ROM(非易失性存储器)"></a>ROM(非易失性存储器)</h1><ol>
@@ -64,6 +49,36 @@
         <tag>ROM</tag>
         <tag>总线通讯</tag>
         <tag>I²C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>BCD码</title>
+    <url>/2024/05/07/BCD%E7%A0%81/</url>
+    <content><![CDATA[<p>Binary-Coded Decimal，二进制编码的十进制数。将每个十进制的0-9映射到四个二进制位。显然四位二进制位可以表示16种数字，映射到9个数后必然有一些位是不合法的，同时映射方案不同，得到的BCD码也不一样。</p>
+<h1 id="BCD码"><a href="#BCD码" class="headerlink" title="BCD码"></a>BCD码</h1><p><img src="/images/BCD%E7%A0%81/1.PNG" alt=" "></p>
+<span id="more"></span>
+<h1 id="8421码"><a href="#8421码" class="headerlink" title="8421码"></a>8421码</h1><p>8421码与十进制数的互相转换：<br>1000 1000 &#x3D; 88<br>DEC &#x3D; BCD &#x2F; 16 * 10 +BCD % 16<br>BCD &#x3D; DEC &#x2F; 10 * 16 + BCD % 10</p>
+]]></content>
+      <categories>
+        <category>计算机组成原理</category>
+      </categories>
+      <tags>
+        <tag>8421码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Canvas-Nest设置</title>
+    <url>/2024/05/14/Canvas-Nest%E8%AE%BE%E7%BD%AE/</url>
+    <content><![CDATA[<p>想设置如下图所示的动态背景，搜了很久没找到适用自己的。通过github源头轻松解决。<br><img src="/images/Canvas-Nest%E8%AE%BE%E7%BD%AE/1.png" alt=" "></p>
+<span id="more"></span>
+<h1 id="源文件README"><a href="#源文件README" class="headerlink" title="源文件README"></a>源文件README</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Step 1 → Go to Hexo dir</span><br><span class="line"></span><br><span class="line">Change dir to Hexo directory. There must be scaffolds, source, themes and other directories:</span><br><span class="line"></span><br><span class="line">$ cd hexo</span><br><span class="line">$ ls</span><br><span class="line">scaffolds  source  themes  _config.yml  package.json</span><br><span class="line"></span><br><span class="line">Step 2 → Create footer.swig</span><br><span class="line"></span><br><span class="line">Create a file named footer.swig in hexo/source/_data directory (create _data directory if it does not exist).</span><br><span class="line"></span><br><span class="line">Edit this file and add the following content:</span><br><span class="line"></span><br><span class="line">&lt;script color=&quot;0,0,255&quot; opacity=&quot;0.5&quot; zIndex=&quot;-1&quot; count=&quot;99&quot; src=&quot;https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">You can customize these options.</span><br><span class="line">Step 3 → Set it up</span><br><span class="line"></span><br><span class="line">In the NexT _config.yml, uncomment footer under the custom_file_path section.</span><br><span class="line"></span><br><span class="line"># Define custom file paths.</span><br><span class="line"># Create your custom files in site directory `source/_data` and uncomment needed files below.</span><br><span class="line">custom_file_path:</span><br><span class="line">  #head: source/_data/head.swig</span><br><span class="line">  #header: source/_data/header.swig</span><br><span class="line">  #sidebar: source/_data/sidebar.swig</span><br><span class="line">  #postMeta: source/_data/post-meta.swig</span><br><span class="line">  #postBodyEnd: source/_data/post-body-end.swig</span><br><span class="line">  footer: source/_data/footer.swig</span><br><span class="line">  #bodyEnd: source/_data/body-end.swig</span><br><span class="line">  #variable: source/_data/variables.styl</span><br><span class="line">  #mixin: source/_data/mixins.styl</span><br><span class="line">  #style: source/_data/styles.styl</span><br></pre></td></tr></table></figure>
+<p> 参考来源：<a href="https://github.com/theme-next/theme-next-canvas-nest">https://github.com/theme-next/theme-next-canvas-nest</a></p>
+]]></content>
+      <categories>
+        <category>个人博客</category>
+      </categories>
+      <tags>
+        <tag>动态背景</tag>
       </tags>
   </entry>
   <entry>
