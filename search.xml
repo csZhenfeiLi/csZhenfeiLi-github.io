@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>BCD码</title>
+    <url>/2024/05/07/BCD%E7%A0%81/</url>
+    <content><![CDATA[<p>Binary-Coded Decimal，二进制编码的十进制数。将每个十进制的0-9映射到四个二进制位。显然四位二进制位可以表示16种数字，映射到9个数后必然有一些位是不合法的，同时映射方案不同，得到的BCD码也不一样。</p>
+<h1 id="BCD码"><a href="#BCD码" class="headerlink" title="BCD码"></a>BCD码</h1><p><img src="/images/BCD%E7%A0%81/1.PNG" alt=" "></p>
+<span id="more"></span>
+<h1 id="8421码"><a href="#8421码" class="headerlink" title="8421码"></a>8421码</h1><p>8421码与十进制数的互相转换：<br>1000 1000 &#x3D; 88<br>DEC &#x3D; BCD &#x2F; 16 * 10 +BCD % 16<br>BCD &#x3D; DEC &#x2F; 10 * 16 + BCD % 10</p>
+]]></content>
+      <categories>
+        <category>计算机组成原理</category>
+      </categories>
+      <tags>
+        <tag>8421码</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AT24C02</title>
     <url>/2024/05/14/AT24C02/</url>
     <content><![CDATA[<h1 id="ROM-非易失性存储器"><a href="#ROM-非易失性存储器" class="headerlink" title="ROM(非易失性存储器)"></a>ROM(非易失性存储器)</h1><ol>
@@ -49,21 +64,6 @@
         <tag>ROM</tag>
         <tag>总线通讯</tag>
         <tag>I²C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>BCD码</title>
-    <url>/2024/05/07/BCD%E7%A0%81/</url>
-    <content><![CDATA[<p>Binary-Coded Decimal，二进制编码的十进制数。将每个十进制的0-9映射到四个二进制位。显然四位二进制位可以表示16种数字，映射到9个数后必然有一些位是不合法的，同时映射方案不同，得到的BCD码也不一样。</p>
-<h1 id="BCD码"><a href="#BCD码" class="headerlink" title="BCD码"></a>BCD码</h1><p><img src="/images/BCD%E7%A0%81/1.PNG" alt=" "></p>
-<span id="more"></span>
-<h1 id="8421码"><a href="#8421码" class="headerlink" title="8421码"></a>8421码</h1><p>8421码与十进制数的互相转换：<br>1000 1000 &#x3D; 88<br>DEC &#x3D; BCD &#x2F; 16 * 10 +BCD % 16<br>BCD &#x3D; DEC &#x2F; 10 * 16 + BCD % 10</p>
-]]></content>
-      <categories>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>8421码</tag>
       </tags>
   </entry>
   <entry>
@@ -164,6 +164,73 @@
       <tags>
         <tag>数字电路</tag>
         <tag>RAM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>红外遥控</title>
+    <url>/2024/05/21/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/</url>
+    <content><![CDATA[<p>简单来说，红外遥控的过程是红外发送LED发射红外光信号，红外接受LED接受信号，信号转化为高低电频之后需要满足一定的协议方可正常工作。</p>
+<h1 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h1><p>接收端红外二极管反向接入，红外光照射下电阻减小。未照射时输出高电平、照射时输出低电平。<br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/1.PNG" alt=" "></p>
+<span id="more"></span>
+<p>红外发射端发射的是高频脉冲（为了增强抗干扰能力），通过脉冲信号表示0、1以及起始和结束。<br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/2.PNG" alt=" "><br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/3.PNG" alt=" "><br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/4.PNG" alt=" "><br>红外信号的协议规定：起始码、地址码、地址反码（校验作用）、数据码、数据反码、（重复码）、结束码<br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/5.PNG" alt=" "><br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/6.PNG" alt=" "><br>不同设备可以用不同的地址码<br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/7.PNG" alt=" "><br>面对高频脉冲，处理并不容易，这里红外三极管，并加上一个专用芯片，将脉冲信号转化为数字信号。<br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/8.PNG" alt=" "><br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/9.PNG" alt=" "></p>
+<h1 id="外部中断"><a href="#外部中断" class="headerlink" title="外部中断"></a>外部中断</h1><p>由于红外信号持续时间短，一旦接收到相关信号应该立即处理，这就是需要外部中断了。<br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/10.PNG" alt=" "><br>外部中断INT0, INT1接收信号，并选择通过哪种方式出发。EX0, EX1, EA使能，PX0设置优先级。</p>
+]]></content>
+      <categories>
+        <category>元件模块</category>
+      </categories>
+      <tags>
+        <tag>光敏电阻</tag>
+        <tag>外部中断</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>直流电机</title>
+    <url>/2024/05/21/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA/</url>
+    <content><![CDATA[<p>直流电机简介<br>直流电机（Direct Current Motor）是一种将直流电能转换为机械能的电动机，广泛应用于各种需要精确控制速度和位置的机械系统中。直流电机因其调速范围广、启动性能好、控制简单等特点，在工业、家用电器、机器人等领域得到广泛应用。<br>直流电机的工作原理<br>直流电机的基本工作原理是利用电磁感应定律和电磁力相互作用。当直流电流通过电机的线圈（绕组）时，在线圈周围产生磁场，这个磁场与电机磁极的磁场相互作用，产生电磁力，推动电机转子旋转。<br><img src="/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA/1.PNG" alt=" "></p>
+<span id="more"></span>
+<p><img src="/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA/2.PNG" alt=" "><br>基本结构</p>
+<ol>
+<li>定子（Stator）：</li>
+</ol>
+<ul>
+<li>定子是直流电机的静止部分，通常包括磁极、机座和电刷装置。</li>
+<li>磁极：定子中的磁极产生恒定磁场，通常由永磁体或电磁铁构成。</li>
+</ul>
+<ol start="2">
+<li>转子（Rotor）：</li>
+</ol>
+<ul>
+<li>转子是直流电机的旋转部分，通常包括绕组和换向器。</li>
+<li>绕组：绕组是由导线绕成的线圈，当电流通过时产生电磁力。</li>
+<li>换向器：换向器与电刷接触，负责改变绕组中的电流方向，确保转子连续旋转。</li>
+</ul>
+<ol start="3">
+<li>电刷（Brush）：</li>
+</ol>
+<ul>
+<li>电刷是与换向器接触的部分，通常由石墨制成，用于将电流传递给转子绕组。<br>直流电机的控制<br>直流电机的控制主要包括速度控制和位置控制两大方面。</li>
+</ul>
+<ol>
+<li>速度控制：</li>
+</ol>
+<ul>
+<li>调压控制：通过改变电机输入电压来调节速度。</li>
+<li>PWM控制（脉宽调制）：通过调节电机输入电压的占空比来控制速度，常用于电子控制器中。</li>
+</ul>
+<ol start="2">
+<li>位置控制：</li>
+</ol>
+<ul>
+<li>开环控制：不使用反馈信号，控制简单，适用于精度要求不高的场合。</li>
+<li>闭环控制：使用反馈信号（如编码器信号）进行精确控制，适用于精度要求高的场合，如机器人、数控机床等。<br>PWM的思路就是利用定时器中断计数，划分一定的范围不供电，在高频下显出的效果就是电机转速的变化。<br><img src="/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA/3.PNG" alt=" "></li>
+</ul>
+]]></content>
+      <categories>
+        <category>元件模块</category>
+      </categories>
+      <tags>
+        <tag>电磁力</tag>
+        <tag>脉宽调制</tag>
       </tags>
   </entry>
   <entry>
