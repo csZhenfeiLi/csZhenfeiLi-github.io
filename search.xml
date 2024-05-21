@@ -122,6 +122,26 @@
       </tags>
   </entry>
   <entry>
+    <title>从锁存器到RAM</title>
+    <url>/2024/05/02/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/</url>
+    <content><![CDATA[<p>当电路中输出和输入相关时，我们就有机会得到带有存储功能的电路了，最简单的例子是SR锁存器。</p>
+<h1 id="SR锁存器"><a href="#SR锁存器" class="headerlink" title="SR锁存器"></a>SR锁存器</h1><p><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/1.png" alt=" "></p>
+<span id="more"></span>
+
+<p>分析该电路时，我们从确定性的角度出发，对于与非门，任何一端输入0，结果一定是1。那么我们很容易知道，(S, R) &#x3D; (0, 1), (1, 0), (1, 1)的情况。但当其为(0, 0)时，其保持上一阶段的状态，这就起到了保存一位数据的作用。<br><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/2.png" alt=" "></p>
+<h1 id="D触发器"><a href="#D触发器" class="headerlink" title="D触发器"></a>D触发器</h1><p>为了解决多个SR触发器无法同时动作以及SR触发器(1, 1)为非法状态的问题，我们引入D触发器，其电路示意图如下。<br><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/3.png" alt=" "></p>
+<h1 id="SRAM"><a href="#SRAM" class="headerlink" title="SRAM"></a>SRAM</h1><p>由此，我们就可以构建RAM了，也就是我们所说的内存或者Cache。其基本结构是MOS管，通过行选和列选信号确定一bit的数据，并通过读写控制信号控制读或者写。<br><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/4.png" alt=" "><br>一共用了8个MOS管，速度非常快，但是集成度做不上去，因此只用在Cache上。</p>
+<h1 id="DRAM"><a href="#DRAM" class="headerlink" title="DRAM"></a>DRAM</h1><p>为了提高集成度，我们使用电容做数据存储的媒介，MOS管作为开关。但电容会缓慢放电，因此为了维持数据，其需要不断被补充电荷，这个过程就是刷新。因此这种RAM被称为动态RAM，DRAM用于内存。<br><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/5.png" alt=" "><br>参考来源：B站Ele实验室</p>
+]]></content>
+      <categories>
+        <category>底层原理</category>
+      </categories>
+      <tags>
+        <tag>数字电路</tag>
+        <tag>RAM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>从原子到数字电路元器件</title>
     <url>/2024/04/29/%E4%BB%8E%E5%8E%9F%E5%AD%90%E5%88%B0%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%85%83%E5%99%A8%E4%BB%B6/</url>
     <content><![CDATA[<h1 id="从原子出发"><a href="#从原子出发" class="headerlink" title="从原子出发"></a>从原子出发</h1><p>原子由中子、质子、电子构成，质子带正电、电子带负电。不同原子因最外层电子数量不同而容易失去或者得到电子，呈现出正电性或者负电性。<br><img src="/images/%E4%BB%8E%E5%8E%9F%E5%AD%90%E5%88%B0%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%85%83%E5%99%A8%E4%BB%B6/1.PNG" alt=" "></p>
@@ -147,49 +167,12 @@
       </tags>
   </entry>
   <entry>
-    <title>从锁存器到RAM</title>
-    <url>/2024/05/02/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/</url>
-    <content><![CDATA[<p>当电路中输出和输入相关时，我们就有机会得到带有存储功能的电路了，最简单的例子是SR锁存器。</p>
-<h1 id="SR锁存器"><a href="#SR锁存器" class="headerlink" title="SR锁存器"></a>SR锁存器</h1><p><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/1.png" alt=" "></p>
-<span id="more"></span>
-
-<p>分析该电路时，我们从确定性的角度出发，对于与非门，任何一端输入0，结果一定是1。那么我们很容易知道，(S, R) &#x3D; (0, 1), (1, 0), (1, 1)的情况。但当其为(0, 0)时，其保持上一阶段的状态，这就起到了保存一位数据的作用。<br><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/2.png" alt=" "></p>
-<h1 id="D触发器"><a href="#D触发器" class="headerlink" title="D触发器"></a>D触发器</h1><p>为了解决多个SR触发器无法同时动作以及SR触发器(1, 1)为非法状态的问题，我们引入D触发器，其电路示意图如下。<br><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/3.png" alt=" "></p>
-<h1 id="SRAM"><a href="#SRAM" class="headerlink" title="SRAM"></a>SRAM</h1><p>由此，我们就可以构建RAM了，也就是我们所说的内存或者Cache。其基本结构是MOS管，通过行选和列选信号确定一bit的数据，并通过读写控制信号控制读或者写。<br><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/4.png" alt=" "><br>一共用了8个MOS管，速度非常快，但是集成度做不上去，因此只用在Cache上。</p>
-<h1 id="DRAM"><a href="#DRAM" class="headerlink" title="DRAM"></a>DRAM</h1><p>为了提高集成度，我们使用电容做数据存储的媒介，MOS管作为开关。但电容会缓慢放电，因此为了维持数据，其需要不断被补充电荷，这个过程就是刷新。因此这种RAM被称为动态RAM，DRAM用于内存。<br><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/5.png" alt=" "><br>参考来源：B站Ele实验室</p>
-]]></content>
-      <categories>
-        <category>底层原理</category>
-      </categories>
-      <tags>
-        <tag>数字电路</tag>
-        <tag>RAM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>红外遥控</title>
-    <url>/2024/05/21/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/</url>
-    <content><![CDATA[<p>简单来说，红外遥控的过程是红外发送LED发射红外光信号，红外接受LED接受信号，信号转化为高低电频之后需要满足一定的协议方可正常工作。</p>
-<h1 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h1><p>接收端红外二极管反向接入，红外光照射下电阻减小。未照射时输出高电平、照射时输出低电平。<br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/1.PNG" alt=" "></p>
-<span id="more"></span>
-<p>红外发射端发射的是高频脉冲（为了增强抗干扰能力），通过脉冲信号表示0、1以及起始和结束。<br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/2.PNG" alt=" "><br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/3.PNG" alt=" "><br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/4.PNG" alt=" "><br>红外信号的协议规定：起始码、地址码、地址反码（校验作用）、数据码、数据反码、（重复码）、结束码<br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/5.PNG" alt=" "><br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/6.PNG" alt=" "><br>不同设备可以用不同的地址码<br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/7.PNG" alt=" "><br>面对高频脉冲，处理并不容易，这里红外三极管，并加上一个专用芯片，将脉冲信号转化为数字信号。<br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/8.PNG" alt=" "><br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/9.PNG" alt=" "></p>
-<h1 id="外部中断"><a href="#外部中断" class="headerlink" title="外部中断"></a>外部中断</h1><p>由于红外信号持续时间短，一旦接收到相关信号应该立即处理，这就是需要外部中断了。<br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/10.PNG" alt=" "><br>外部中断INT0, INT1接收信号，并选择通过哪种方式出发。EX0, EX1, EA使能，PX0设置优先级。</p>
-]]></content>
-      <categories>
-        <category>元件模块</category>
-      </categories>
-      <tags>
-        <tag>光敏电阻</tag>
-        <tag>外部中断</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>直流电机</title>
     <url>/2024/05/21/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA/</url>
-    <content><![CDATA[<p>直流电机简介<br>直流电机（Direct Current Motor）是一种将直流电能转换为机械能的电动机，广泛应用于各种需要精确控制速度和位置的机械系统中。直流电机因其调速范围广、启动性能好、控制简单等特点，在工业、家用电器、机器人等领域得到广泛应用。<br>直流电机的工作原理<br>直流电机的基本工作原理是利用电磁感应定律和电磁力相互作用。当直流电流通过电机的线圈（绕组）时，在线圈周围产生磁场，这个磁场与电机磁极的磁场相互作用，产生电磁力，推动电机转子旋转。<br><img src="/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA/1.PNG" alt=" "></p>
+    <content><![CDATA[<h1 id="直流电机简介"><a href="#直流电机简介" class="headerlink" title="直流电机简介"></a>直流电机简介</h1><p>直流电机（Direct Current Motor）是一种将直流电能转换为机械能的电动机，广泛应用于各种需要精确控制速度和位置的机械系统中。直流电机因其调速范围广、启动性能好、控制简单等特点，在工业、家用电器、机器人等领域得到广泛应用。<br>直流电机的工作原理<br>直流电机的基本工作原理是利用电磁感应定律和电磁力相互作用。当直流电流通过电机的线圈（绕组）时，在线圈周围产生磁场，这个磁场与电机磁极的磁场相互作用，产生电磁力，推动电机转子旋转。<br><img src="/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA/1.PNG" alt=" "></p>
 <span id="more"></span>
-<p><img src="/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA/2.PNG" alt=" "><br>基本结构</p>
-<ol>
+<p><img src="/images/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA/2.PNG" alt=" "></p>
+<h1 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h1><ol>
 <li>定子（Stator）：</li>
 </ol>
 <ul>
@@ -208,8 +191,9 @@
 <li>电刷（Brush）：</li>
 </ol>
 <ul>
-<li>电刷是与换向器接触的部分，通常由石墨制成，用于将电流传递给转子绕组。<br>直流电机的控制<br>直流电机的控制主要包括速度控制和位置控制两大方面。</li>
+<li>电刷是与换向器接触的部分，通常由石墨制成，用于将电流传递给转子绕组。</li>
 </ul>
+<h1 id="直流电机的控制"><a href="#直流电机的控制" class="headerlink" title="直流电机的控制"></a>直流电机的控制</h1><p>直流电机的控制主要包括速度控制和位置控制两大方面。</p>
 <ol>
 <li>速度控制：</li>
 </ol>
@@ -231,6 +215,23 @@
       <tags>
         <tag>电磁力</tag>
         <tag>脉宽调制</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>红外遥控</title>
+    <url>/2024/05/21/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/</url>
+    <content><![CDATA[<p>简单来说，红外遥控的过程是红外发送LED发射红外光信号，红外接受LED接受信号，信号转化为高低电频之后需要满足一定的协议方可正常工作。</p>
+<h1 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h1><p>接收端红外二极管反向接入，红外光照射下电阻减小。未照射时输出高电平、照射时输出低电平。<br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/1.PNG" alt=" "></p>
+<span id="more"></span>
+<p>红外发射端发射的是高频脉冲（为了增强抗干扰能力），通过脉冲信号表示0、1以及起始和结束。<br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/2.PNG" alt=" "><br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/3.PNG" alt=" "><br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/4.PNG" alt=" "><br>红外信号的协议规定：起始码、地址码、地址反码（校验作用）、数据码、数据反码、（重复码）、结束码<br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/5.PNG" alt=" "><br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/6.PNG" alt=" "><br>不同设备可以用不同的地址码<br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/7.PNG" alt=" "><br>面对高频脉冲，处理并不容易，这里红外三极管，并加上一个专用芯片，将脉冲信号转化为数字信号。<br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/8.PNG" alt=" "><br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/9.PNG" alt=" "></p>
+<h1 id="外部中断"><a href="#外部中断" class="headerlink" title="外部中断"></a>外部中断</h1><p>由于红外信号持续时间短，一旦接收到相关信号应该立即处理，这就是需要外部中断了。<br><img src="/images/%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7/10.PNG" alt=" "><br>外部中断INT0, INT1接收信号，并选择通过哪种方式出发。EX0, EX1, EA使能，PX0设置优先级。</p>
+]]></content>
+      <categories>
+        <category>元件模块</category>
+      </categories>
+      <tags>
+        <tag>光敏电阻</tag>
+        <tag>外部中断</tag>
       </tags>
   </entry>
   <entry>
