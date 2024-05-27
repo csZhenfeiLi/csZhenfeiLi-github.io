@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"cszhenfeili.online","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"show_result":true,"style":null},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="标题（Title）Resource-Efficient Neural Networks for Embedded Systems基于嵌入式系统的高效神经网络，看标题应该是在嵌入式系统资源受限的情况下，部署合适的神经网络。Submitted 8&#x2F;18; Revised 12&#x2F;23; Published 2&#x2F;24  摘要（Abstract）深度学习，特别是当下的大模型对资">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Resource-Efficient Neural Networks for Embedded Systems">
+<meta property="og:url" content="https://cszhenfeili.online/2024/05/27/Resource-Efficient%20Neural%20Networks%20for%20Embedded%20Systems/index.html">
+<meta property="og:site_name" content="智能制造">
+<meta property="og:description" content="标题（Title）Resource-Efficient Neural Networks for Embedded Systems基于嵌入式系统的高效神经网络，看标题应该是在嵌入式系统资源受限的情况下，部署合适的神经网络。Submitted 8&#x2F;18; Revised 12&#x2F;23; Published 2&#x2F;24  摘要（Abstract）深度学习，特别是当下的大模型对资">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cszhenfeili.online/images/Resource-Efficient-NN-for-Embedded-Systems/1.PNG">
+<meta property="og:image" content="https://cszhenfeili.online/images/Resource-Efficient-NN-for-Embedded-Systems/2.PNG">
+<meta property="og:image" content="https://cszhenfeili.online/images/Resource-Efficient-NN-for-Embedded-Systems/3.PNG">
+<meta property="article:published_time" content="2024-05-27T14:37:14.000Z">
+<meta property="article:modified_time" content="2024-05-27T14:47:27.085Z">
+<meta property="article:author" content="晓飞">
+<meta property="article:tag" content="Resource-efficient machine learning">
+<meta property="article:tag" content="inference">
+<meta property="article:tag" content="deep neural networks.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cszhenfeili.online/images/Resource-Efficient-NN-for-Embedded-Systems/1.PNG">
+
+
+<link rel="canonical" href="https://cszhenfeili.online/2024/05/27/Resource-Efficient%20Neural%20Networks%20for%20Embedded%20Systems/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cszhenfeili.online/2024/05/27/Resource-Efficient%20Neural%20Networks%20for%20Embedded%20Systems/","path":"2024/05/27/Resource-Efficient Neural Networks for Embedded Systems/","title":"Resource-Efficient Neural Networks for Embedded Systems"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Resource-Efficient Neural Networks for Embedded Systems | 智能制造</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">智能制造</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">新一代控制技术</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">22</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">11</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%87%E9%A2%98%EF%BC%88Title%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">标题（Title）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81%EF%BC%88Abstract%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">摘要（Abstract）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%EF%BC%88Background%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">背景（Background）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9%EF%BC%88Main-Content%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">主要内容（Main Content）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%84%E4%BB%B7%E5%92%8C%E6%84%9F%E6%83%B3%EF%BC%88Evaluation-and-Reflections%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">评价和感想（Evaluation and Reflections）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AA%E6%9D%A5%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91%EF%BC%88Future-Research-Directions%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">未来研究方向（Future Research Directions）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%EF%BC%88References%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">参考文献（References）</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="晓飞"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">晓飞</p>
+  <div class="site-description" itemprop="description">自动化、信息化、智能化、集成化</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cszhenfeili.online/2024/05/27/Resource-Efficient%20Neural%20Networks%20for%20Embedded%20Systems/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="晓飞">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="智能制造">
+      <meta itemprop="description" content="自动化、信息化、智能化、集成化">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Resource-Efficient Neural Networks for Embedded Systems | 智能制造">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Resource-Efficient Neural Networks for Embedded Systems
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-05-27 22:37:14 / 修改时间：22:47:27" itemprop="dateCreated datePublished" datetime="2024-05-27T22:37:14+08:00">2024-05-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%96%87%E7%8C%AE%E8%B0%83%E7%A0%94/" itemprop="url" rel="index"><span itemprop="name">文献调研</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="标题（Title）"><a href="#标题（Title）" class="headerlink" title="标题（Title）"></a>标题（Title）</h1><p>Resource-Efficient Neural Networks for Embedded Systems<br>基于嵌入式系统的高效神经网络，看标题应该是在嵌入式系统资源受限的情况下，部署合适的神经网络。<br>Submitted 8&#x2F;18; Revised 12&#x2F;23; Published 2&#x2F;24 </p>
+<h1 id="摘要（Abstract）"><a href="#摘要（Abstract）" class="headerlink" title="摘要（Abstract）"></a>摘要（Abstract）</h1><p>深度学习，特别是当下的大模型对资源的消耗是巨大的。而嵌入式设备天然又具备资源受限的属性，那么如何平衡性能和资源消耗就成了嵌入式设备利用人工智能成果的一项重大挑战。显然未来当AI发展到一定程度，一定时需要大规模部署到嵌入式设备中，让其更好的服务于人类社会的，由此看来，此项研究意义重大。<br>本文是综述，主要研究了目前DNN模型压缩的方法，以及在一些硬件上的兼容情况，详细说明如下；</p>
+<span id="more"></span>
+<p>DNN模型压缩方法</p>
+<ul>
+<li>量化神经网络：通过减少权重和激活值的位数来降低内存和计算需求。</li>
+<li>网络剪枝：通过移除不必要的权重或神经元来减少计算和内存需求。</li>
+<li>结构效率：通过优化神经网络的结构来提高资源利用率，例如知识蒸馏、权重共享和特殊矩阵结构。</li>
+</ul>
+<p>技术应用与优化<br>这些技术可以在训练期间或作为后处理步骤应用，以减少计算需求，提高内存占用效率和推理速度，降低能源消耗。</p>
+<p>嵌入式硬件兼容性<br>文献还讨论了不同类型的嵌入式硬件（如CPU、GPU和FPGA）与DNN的兼容性，及其在能量和延迟方面的潜力和限制。</p>
+<h1 id="背景（Background）"><a href="#背景（Background）" class="headerlink" title="背景（Background）"></a>背景（Background）</h1><p>进一步说，嵌入式环境下，深度学习面临三方面的挑战，分别是：表示效率（内存）、计算效率（推理速度）、预测质量（准确性），嵌入式环境下，我们需要找到嵌入式资源下能够达到的最佳状态，显然是极具挑战的。<br><img src="/images/Resource-Efficient-NN-for-Embedded-Systems/1.PNG" alt=" "><br>目前的主要解决方案如下：<br>文献识别了增强深度神经网络（DNN）资源效率的三大主要研究方向，分别是量化神经网络、网络剪枝和结构效率。下面详细介绍这三个研究方向：</p>
+<p>量化神经网络（Quantized Neural Networks）<br>量化是通过减少权重和激活值的位数来降低内存占用和计算需求的方法。传统DNN使用32位浮点数来存储和计算权重，而量化技术则将这些数值压缩为更少的位数，例如16位、8位，甚至1位或2位。主要技术包括：</p>
+<ul>
+<li>定点数和浮点数量化：将32位浮点数量化为更少位数的定点数或浮点数。例如，8位定点数量化在不显著损失精度的情况下大幅减少了存储需求和计算复杂度。</li>
+<li>二值化和三值化：将权重和激活值量化为二值（-1, 1）或三值（-1, 0, 1）。这可以显著减少乘法运算，许多计算可以通过简单的逻辑运算（如XNOR和bitcount）来实现，从而大幅提高计算效率。</li>
+<li>逐层量化：对每一层使用不同的量化级别，以在不显著影响整体性能的情况下进一步优化资源使用。</li>
+</ul>
+<p>网络剪枝（Network Pruning）<br>剪枝是通过移除神经网络中的某些权重或神经元来减少模型复杂度和计算需求的方法。剪枝技术可以在训练过程中或训练后进行，主要技术包括：</p>
+<ul>
+<li>非结构化剪枝：删除权重值较小的个别连接。这种方法较为灵活，但需要稀疏矩阵操作来实际获得计算性能的提升。</li>
+<li>结构化剪枝：删除整个神经元、通道或层，这使得剩余部分的结构仍然保持致密，便于利用现有的高效密集矩阵运算库。这种方法在删除大块冗余部分时更高效，但可能对精度有更大影响。</li>
+<li>动态剪枝：根据输入数据的特性，动态决定计算哪些部分。这种方法可以在推理过程中根据需要进行剪枝，从而提高计算效率。</li>
+</ul>
+<p>结构效率（Structural Efficiency）<br>结构效率是通过优化神经网络的结构设计以提高资源利用率的方法。主要技术包括：</p>
+<ul>
+<li>知识蒸馏：将大模型（教师模型）中的知识转移到小模型（学生模型）中，使得学生模型在保持高精度的同时，具有更低的复杂度和资源需求。学生模型通过模仿教师模型的输出软标签进行训练。</li>
+<li>权重共享：在网络中共享部分权重，以减少参数数量。例如，使用哈希函数将网络连接分组到相同的权重“桶”中，这样可以大幅减少需要存储和计算的独立权重数量。</li>
+<li>特殊矩阵结构：利用特定的矩阵结构来减少参数和计算量。例如，使用稀疏矩阵或低秩分解的方法，减少全连接层或卷积层中的参数数量和计算复杂度。</li>
+</ul>
+<h1 id="主要内容（Main-Content）"><a href="#主要内容（Main-Content）" class="headerlink" title="主要内容（Main Content）"></a>主要内容（Main Content）</h1><p>硬件平台介绍</p>
+<ul>
+<li>CPU（中央处理器）：多线程和向量化提升性能，适合处理稀疏矩阵操作。</li>
+<li>GPU（图形处理单元）：具有高并行性和大内存带宽，适合结构化计算。</li>
+<li>FPGA（现场可编程门阵列）：高度灵活，可定制化，适合压缩的DNNs。</li>
+<li>专用领域加速器（TPU等）：专门为特定任务优化的硬件，如TPU适合密集计算。</li>
+<li>回路架构：固定处理器和内存系统，适合通用计算但频繁片外内存访问。</li>
+<li>数据流架构：可重构处理器和内存系统，实现高效流水线推理，但开发成本高。</li>
+</ul>
+<p>实验设置<br><img src="/images/Resource-Efficient-NN-for-Embedded-Systems/2.PNG" alt=" "></p>
+<p>研究方向总结</p>
+<ol>
+<li>量化（Quantization）：</li>
+</ol>
+<ul>
+<li>发现：成功的方法通常将实值表示与量化相结合，以增强计算密集操作的效率。混合精度量化（bit widths在训练期间确定）是一个新兴的主题。</li>
+</ul>
+<ol start="2">
+<li>剪枝（Pruning）：</li>
+</ol>
+<ul>
+<li>发现：趋势正在向结构化剪枝发展，这种方法得到的较小模型的数据结构兼容于高度优化的密集张量操作。</li>
+</ul>
+<ol start="3">
+<li>结构效率（Structural Efficiency）：</li>
+</ol>
+<ul>
+<li>发现：在DNN结构层面上，已经取得了很大进展，开发出既能保持高表达能力又能显著减少计算开销的特定架构。新兴的神经架构搜索（NAS）方法有望自动设计特定应用的高效架构，减少用户干预。</li>
+</ul>
+<p>实验结果和硬件目标</p>
+<ul>
+<li>实验结果：在两个基准数据集上展示了在预测质量、表示效率和计算效率之间找到良好折衷方案的难度。实验表明，推理效率需要大量的并行性，并且量化和结构化剪枝在这些加速器上映射良好。</li>
+<li>硬件属性：硬件特性和相应的计算效率构成了资源效率的很大一部分，这突显了在寻找资源高效的机器学习模型时需要考虑特定的硬件目标。<br><img src="/images/Resource-Efficient-NN-for-Embedded-Systems/3.PNG" alt=" "></li>
+</ul>
+<h1 id="评价和感想（Evaluation-and-Reflections）"><a href="#评价和感想（Evaluation-and-Reflections）" class="headerlink" title="评价和感想（Evaluation and Reflections）"></a>评价和感想（Evaluation and Reflections）</h1><p>这是一个很有前景的研究方向，但我对模型提升资源利用率方面还没有任何接触，这篇文献算是初步对这个方向有一些认识，了解一些主流的方案。</p>
+<h1 id="未来研究方向（Future-Research-Directions）"><a href="#未来研究方向（Future-Research-Directions）" class="headerlink" title="未来研究方向（Future Research Directions）"></a>未来研究方向（Future Research Directions）</h1><ul>
+<li>混合量化精度</li>
+<li>结构化剪枝</li>
+<li>神经架构搜索（NAS）方法</li>
+</ul>
+<h1 id="参考文献（References）"><a href="#参考文献（References）" class="headerlink" title="参考文献（References）"></a>参考文献（References）</h1><p><a target="_blank" rel="noopener" href="https://www.jmlr.org/papers/volume25/18-566/18-566.pdf">https://www.jmlr.org/papers/volume25/18-566/18-566.pdf</a><br>Roth, W., Schindler, G., Klein, B., Peharz, R., Tschiatschek, S., Fröning, H., … &amp; Ghahramani, Z. (2024). Resource-efficient neural networks for embedded systems. Journal of Machine Learning Research, 25(50), 1-51.</p>
+
+    </div>
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Resource-efficient-machine-learning/" rel="tag"># Resource-efficient machine learning</a>
+              <a href="/tags/inference/" rel="tag"># inference</a>
+              <a href="/tags/deep-neural-networks/" rel="tag"># deep neural networks.</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/05/21/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA/" rel="prev" title="直流电机">
+                  <i class="fa fa-angle-left"></i> 直流电机
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">晓飞</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"mhchem":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":300,"height":600},"mobile":{"show":false},"log":false});</script></body>
+</html>

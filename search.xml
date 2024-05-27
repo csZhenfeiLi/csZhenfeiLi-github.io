@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>BCD码</title>
-    <url>/2024/05/07/BCD%E7%A0%81/</url>
-    <content><![CDATA[<p>Binary-Coded Decimal，二进制编码的十进制数。将每个十进制的0-9映射到四个二进制位。显然四位二进制位可以表示16种数字，映射到9个数后必然有一些位是不合法的，同时映射方案不同，得到的BCD码也不一样。</p>
-<h1 id="BCD码"><a href="#BCD码" class="headerlink" title="BCD码"></a>BCD码</h1><p><img src="/images/BCD%E7%A0%81/1.PNG" alt=" "></p>
-<span id="more"></span>
-<h1 id="8421码"><a href="#8421码" class="headerlink" title="8421码"></a>8421码</h1><p>8421码与十进制数的互相转换：<br>1000 1000 &#x3D; 88<br>DEC &#x3D; BCD &#x2F; 16 * 10 +BCD % 16<br>BCD &#x3D; DEC &#x2F; 10 * 16 + BCD % 10</p>
-]]></content>
-      <categories>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>8421码</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>AT24C02</title>
     <url>/2024/05/14/AT24C02/</url>
     <content><![CDATA[<h1 id="ROM-非易失性存储器"><a href="#ROM-非易失性存储器" class="headerlink" title="ROM(非易失性存储器)"></a>ROM(非易失性存储器)</h1><ol>
@@ -67,6 +52,21 @@
       </tags>
   </entry>
   <entry>
+    <title>BCD码</title>
+    <url>/2024/05/07/BCD%E7%A0%81/</url>
+    <content><![CDATA[<p>Binary-Coded Decimal，二进制编码的十进制数。将每个十进制的0-9映射到四个二进制位。显然四位二进制位可以表示16种数字，映射到9个数后必然有一些位是不合法的，同时映射方案不同，得到的BCD码也不一样。</p>
+<h1 id="BCD码"><a href="#BCD码" class="headerlink" title="BCD码"></a>BCD码</h1><p><img src="/images/BCD%E7%A0%81/1.PNG" alt=" "></p>
+<span id="more"></span>
+<h1 id="8421码"><a href="#8421码" class="headerlink" title="8421码"></a>8421码</h1><p>8421码与十进制数的互相转换：<br>1000 1000 &#x3D; 88<br>DEC &#x3D; BCD &#x2F; 16 * 10 +BCD % 16<br>BCD &#x3D; DEC &#x2F; 10 * 16 + BCD % 10</p>
+]]></content>
+      <categories>
+        <category>计算机组成原理</category>
+      </categories>
+      <tags>
+        <tag>8421码</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Canvas-Nest设置</title>
     <url>/2024/05/14/Canvas-Nest%E8%AE%BE%E7%BD%AE/</url>
     <content><![CDATA[<p>想设置如下图所示的动态背景，搜了很久没找到适用自己的。通过github源头轻松解决。<br><img src="/images/Canvas-Nest%E8%AE%BE%E7%BD%AE/1.png" alt=" "></p>
@@ -104,6 +104,90 @@
       </tags>
   </entry>
   <entry>
+    <title>Resource-Efficient Neural Networks for Embedded Systems</title>
+    <url>/2024/05/27/Resource-Efficient%20Neural%20Networks%20for%20Embedded%20Systems/</url>
+    <content><![CDATA[<h1 id="标题（Title）"><a href="#标题（Title）" class="headerlink" title="标题（Title）"></a>标题（Title）</h1><p>Resource-Efficient Neural Networks for Embedded Systems<br>基于嵌入式系统的高效神经网络，看标题应该是在嵌入式系统资源受限的情况下，部署合适的神经网络。<br>Submitted 8&#x2F;18; Revised 12&#x2F;23; Published 2&#x2F;24 </p>
+<h1 id="摘要（Abstract）"><a href="#摘要（Abstract）" class="headerlink" title="摘要（Abstract）"></a>摘要（Abstract）</h1><p>深度学习，特别是当下的大模型对资源的消耗是巨大的。而嵌入式设备天然又具备资源受限的属性，那么如何平衡性能和资源消耗就成了嵌入式设备利用人工智能成果的一项重大挑战。显然未来当AI发展到一定程度，一定时需要大规模部署到嵌入式设备中，让其更好的服务于人类社会的，由此看来，此项研究意义重大。<br>本文是综述，主要研究了目前DNN模型压缩的方法，以及在一些硬件上的兼容情况，详细说明如下；</p>
+<span id="more"></span>
+<p>DNN模型压缩方法</p>
+<ul>
+<li>量化神经网络：通过减少权重和激活值的位数来降低内存和计算需求。</li>
+<li>网络剪枝：通过移除不必要的权重或神经元来减少计算和内存需求。</li>
+<li>结构效率：通过优化神经网络的结构来提高资源利用率，例如知识蒸馏、权重共享和特殊矩阵结构。</li>
+</ul>
+<p>技术应用与优化<br>这些技术可以在训练期间或作为后处理步骤应用，以减少计算需求，提高内存占用效率和推理速度，降低能源消耗。</p>
+<p>嵌入式硬件兼容性<br>文献还讨论了不同类型的嵌入式硬件（如CPU、GPU和FPGA）与DNN的兼容性，及其在能量和延迟方面的潜力和限制。</p>
+<h1 id="背景（Background）"><a href="#背景（Background）" class="headerlink" title="背景（Background）"></a>背景（Background）</h1><p>进一步说，嵌入式环境下，深度学习面临三方面的挑战，分别是：表示效率（内存）、计算效率（推理速度）、预测质量（准确性），嵌入式环境下，我们需要找到嵌入式资源下能够达到的最佳状态，显然是极具挑战的。<br><img src="/images/Resource-Efficient-NN-for-Embedded-Systems/1.PNG" alt=" "><br>目前的主要解决方案如下：<br>文献识别了增强深度神经网络（DNN）资源效率的三大主要研究方向，分别是量化神经网络、网络剪枝和结构效率。下面详细介绍这三个研究方向：</p>
+<p>量化神经网络（Quantized Neural Networks）<br>量化是通过减少权重和激活值的位数来降低内存占用和计算需求的方法。传统DNN使用32位浮点数来存储和计算权重，而量化技术则将这些数值压缩为更少的位数，例如16位、8位，甚至1位或2位。主要技术包括：</p>
+<ul>
+<li>定点数和浮点数量化：将32位浮点数量化为更少位数的定点数或浮点数。例如，8位定点数量化在不显著损失精度的情况下大幅减少了存储需求和计算复杂度。</li>
+<li>二值化和三值化：将权重和激活值量化为二值（-1, 1）或三值（-1, 0, 1）。这可以显著减少乘法运算，许多计算可以通过简单的逻辑运算（如XNOR和bitcount）来实现，从而大幅提高计算效率。</li>
+<li>逐层量化：对每一层使用不同的量化级别，以在不显著影响整体性能的情况下进一步优化资源使用。</li>
+</ul>
+<p>网络剪枝（Network Pruning）<br>剪枝是通过移除神经网络中的某些权重或神经元来减少模型复杂度和计算需求的方法。剪枝技术可以在训练过程中或训练后进行，主要技术包括：</p>
+<ul>
+<li>非结构化剪枝：删除权重值较小的个别连接。这种方法较为灵活，但需要稀疏矩阵操作来实际获得计算性能的提升。</li>
+<li>结构化剪枝：删除整个神经元、通道或层，这使得剩余部分的结构仍然保持致密，便于利用现有的高效密集矩阵运算库。这种方法在删除大块冗余部分时更高效，但可能对精度有更大影响。</li>
+<li>动态剪枝：根据输入数据的特性，动态决定计算哪些部分。这种方法可以在推理过程中根据需要进行剪枝，从而提高计算效率。</li>
+</ul>
+<p>结构效率（Structural Efficiency）<br>结构效率是通过优化神经网络的结构设计以提高资源利用率的方法。主要技术包括：</p>
+<ul>
+<li>知识蒸馏：将大模型（教师模型）中的知识转移到小模型（学生模型）中，使得学生模型在保持高精度的同时，具有更低的复杂度和资源需求。学生模型通过模仿教师模型的输出软标签进行训练。</li>
+<li>权重共享：在网络中共享部分权重，以减少参数数量。例如，使用哈希函数将网络连接分组到相同的权重“桶”中，这样可以大幅减少需要存储和计算的独立权重数量。</li>
+<li>特殊矩阵结构：利用特定的矩阵结构来减少参数和计算量。例如，使用稀疏矩阵或低秩分解的方法，减少全连接层或卷积层中的参数数量和计算复杂度。</li>
+</ul>
+<h1 id="主要内容（Main-Content）"><a href="#主要内容（Main-Content）" class="headerlink" title="主要内容（Main Content）"></a>主要内容（Main Content）</h1><p>硬件平台介绍</p>
+<ul>
+<li>CPU（中央处理器）：多线程和向量化提升性能，适合处理稀疏矩阵操作。</li>
+<li>GPU（图形处理单元）：具有高并行性和大内存带宽，适合结构化计算。</li>
+<li>FPGA（现场可编程门阵列）：高度灵活，可定制化，适合压缩的DNNs。</li>
+<li>专用领域加速器（TPU等）：专门为特定任务优化的硬件，如TPU适合密集计算。</li>
+<li>回路架构：固定处理器和内存系统，适合通用计算但频繁片外内存访问。</li>
+<li>数据流架构：可重构处理器和内存系统，实现高效流水线推理，但开发成本高。</li>
+</ul>
+<p>实验设置<br><img src="/images/Resource-Efficient-NN-for-Embedded-Systems/2.PNG" alt=" "></p>
+<p>研究方向总结</p>
+<ol>
+<li>量化（Quantization）：</li>
+</ol>
+<ul>
+<li>发现：成功的方法通常将实值表示与量化相结合，以增强计算密集操作的效率。混合精度量化（bit widths在训练期间确定）是一个新兴的主题。</li>
+</ul>
+<ol start="2">
+<li>剪枝（Pruning）：</li>
+</ol>
+<ul>
+<li>发现：趋势正在向结构化剪枝发展，这种方法得到的较小模型的数据结构兼容于高度优化的密集张量操作。</li>
+</ul>
+<ol start="3">
+<li>结构效率（Structural Efficiency）：</li>
+</ol>
+<ul>
+<li>发现：在DNN结构层面上，已经取得了很大进展，开发出既能保持高表达能力又能显著减少计算开销的特定架构。新兴的神经架构搜索（NAS）方法有望自动设计特定应用的高效架构，减少用户干预。</li>
+</ul>
+<p>实验结果和硬件目标</p>
+<ul>
+<li>实验结果：在两个基准数据集上展示了在预测质量、表示效率和计算效率之间找到良好折衷方案的难度。实验表明，推理效率需要大量的并行性，并且量化和结构化剪枝在这些加速器上映射良好。</li>
+<li>硬件属性：硬件特性和相应的计算效率构成了资源效率的很大一部分，这突显了在寻找资源高效的机器学习模型时需要考虑特定的硬件目标。<br><img src="/images/Resource-Efficient-NN-for-Embedded-Systems/3.PNG" alt=" "></li>
+</ul>
+<h1 id="评价和感想（Evaluation-and-Reflections）"><a href="#评价和感想（Evaluation-and-Reflections）" class="headerlink" title="评价和感想（Evaluation and Reflections）"></a>评价和感想（Evaluation and Reflections）</h1><p>这是一个很有前景的研究方向，但我对模型提升资源利用率方面还没有任何接触，这篇文献算是初步对这个方向有一些认识，了解一些主流的方案。</p>
+<h1 id="未来研究方向（Future-Research-Directions）"><a href="#未来研究方向（Future-Research-Directions）" class="headerlink" title="未来研究方向（Future Research Directions）"></a>未来研究方向（Future Research Directions）</h1><ul>
+<li>混合量化精度</li>
+<li>结构化剪枝</li>
+<li>神经架构搜索（NAS）方法</li>
+</ul>
+<h1 id="参考文献（References）"><a href="#参考文献（References）" class="headerlink" title="参考文献（References）"></a>参考文献（References）</h1><p><a href="https://www.jmlr.org/papers/volume25/18-566/18-566.pdf">https://www.jmlr.org/papers/volume25/18-566/18-566.pdf</a><br>Roth, W., Schindler, G., Klein, B., Peharz, R., Tschiatschek, S., Fröning, H., … &amp; Ghahramani, Z. (2024). Resource-efficient neural networks for embedded systems. Journal of Machine Learning Research, 25(50), 1-51.</p>
+]]></content>
+      <categories>
+        <category>文献调研</category>
+      </categories>
+      <tags>
+        <tag>Resource-efficient machine learning</tag>
+        <tag>inference</tag>
+        <tag>deep neural networks.</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>下拉电阻、上拉电阻</title>
     <url>/2024/05/02/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/</url>
     <content><![CDATA[<p>下拉电阻可以将一个不确定的信号钳位在低电平。<br>上拉电阻可以增强输出引脚的驱动能力。</p>
@@ -119,26 +203,6 @@
         <tag>数字电路</tag>
         <tag>上拉电阻</tag>
         <tag>下拉电阻</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>从锁存器到RAM</title>
-    <url>/2024/05/02/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/</url>
-    <content><![CDATA[<p>当电路中输出和输入相关时，我们就有机会得到带有存储功能的电路了，最简单的例子是SR锁存器。</p>
-<h1 id="SR锁存器"><a href="#SR锁存器" class="headerlink" title="SR锁存器"></a>SR锁存器</h1><p><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/1.png" alt=" "></p>
-<span id="more"></span>
-
-<p>分析该电路时，我们从确定性的角度出发，对于与非门，任何一端输入0，结果一定是1。那么我们很容易知道，(S, R) &#x3D; (0, 1), (1, 0), (1, 1)的情况。但当其为(0, 0)时，其保持上一阶段的状态，这就起到了保存一位数据的作用。<br><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/2.png" alt=" "></p>
-<h1 id="D触发器"><a href="#D触发器" class="headerlink" title="D触发器"></a>D触发器</h1><p>为了解决多个SR触发器无法同时动作以及SR触发器(1, 1)为非法状态的问题，我们引入D触发器，其电路示意图如下。<br><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/3.png" alt=" "></p>
-<h1 id="SRAM"><a href="#SRAM" class="headerlink" title="SRAM"></a>SRAM</h1><p>由此，我们就可以构建RAM了，也就是我们所说的内存或者Cache。其基本结构是MOS管，通过行选和列选信号确定一bit的数据，并通过读写控制信号控制读或者写。<br><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/4.png" alt=" "><br>一共用了8个MOS管，速度非常快，但是集成度做不上去，因此只用在Cache上。</p>
-<h1 id="DRAM"><a href="#DRAM" class="headerlink" title="DRAM"></a>DRAM</h1><p>为了提高集成度，我们使用电容做数据存储的媒介，MOS管作为开关。但电容会缓慢放电，因此为了维持数据，其需要不断被补充电荷，这个过程就是刷新。因此这种RAM被称为动态RAM，DRAM用于内存。<br><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/5.png" alt=" "><br>参考来源：B站Ele实验室</p>
-]]></content>
-      <categories>
-        <category>底层原理</category>
-      </categories>
-      <tags>
-        <tag>数字电路</tag>
-        <tag>RAM</tag>
       </tags>
   </entry>
   <entry>
@@ -164,6 +228,26 @@
         <tag>数字电路</tag>
         <tag>半导体</tag>
         <tag>门电路</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>从锁存器到RAM</title>
+    <url>/2024/05/02/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/</url>
+    <content><![CDATA[<p>当电路中输出和输入相关时，我们就有机会得到带有存储功能的电路了，最简单的例子是SR锁存器。</p>
+<h1 id="SR锁存器"><a href="#SR锁存器" class="headerlink" title="SR锁存器"></a>SR锁存器</h1><p><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/1.png" alt=" "></p>
+<span id="more"></span>
+
+<p>分析该电路时，我们从确定性的角度出发，对于与非门，任何一端输入0，结果一定是1。那么我们很容易知道，(S, R) &#x3D; (0, 1), (1, 0), (1, 1)的情况。但当其为(0, 0)时，其保持上一阶段的状态，这就起到了保存一位数据的作用。<br><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/2.png" alt=" "></p>
+<h1 id="D触发器"><a href="#D触发器" class="headerlink" title="D触发器"></a>D触发器</h1><p>为了解决多个SR触发器无法同时动作以及SR触发器(1, 1)为非法状态的问题，我们引入D触发器，其电路示意图如下。<br><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/3.png" alt=" "></p>
+<h1 id="SRAM"><a href="#SRAM" class="headerlink" title="SRAM"></a>SRAM</h1><p>由此，我们就可以构建RAM了，也就是我们所说的内存或者Cache。其基本结构是MOS管，通过行选和列选信号确定一bit的数据，并通过读写控制信号控制读或者写。<br><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/4.png" alt=" "><br>一共用了8个MOS管，速度非常快，但是集成度做不上去，因此只用在Cache上。</p>
+<h1 id="DRAM"><a href="#DRAM" class="headerlink" title="DRAM"></a>DRAM</h1><p>为了提高集成度，我们使用电容做数据存储的媒介，MOS管作为开关。但电容会缓慢放电，因此为了维持数据，其需要不断被补充电荷，这个过程就是刷新。因此这种RAM被称为动态RAM，DRAM用于内存。<br><img src="/images/%E4%BB%8E%E9%94%81%E5%AD%98%E5%99%A8%E5%88%B0RAM/5.png" alt=" "><br>参考来源：B站Ele实验室</p>
+]]></content>
+      <categories>
+        <category>底层原理</category>
+      </categories>
+      <tags>
+        <tag>数字电路</tag>
+        <tag>RAM</tag>
       </tags>
   </entry>
   <entry>
