@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>BCD码</title>
+    <url>/2024/05/07/BCD%E7%A0%81/</url>
+    <content><![CDATA[<p>Binary-Coded Decimal，二进制编码的十进制数。将每个十进制的0-9映射到四个二进制位。显然四位二进制位可以表示16种数字，映射到9个数后必然有一些位是不合法的，同时映射方案不同，得到的BCD码也不一样。</p>
+<h1 id="BCD码"><a href="#BCD码" class="headerlink" title="BCD码"></a>BCD码</h1><p><img src="/images/BCD%E7%A0%81/1.PNG" alt=" "></p>
+<span id="more"></span>
+<h1 id="8421码"><a href="#8421码" class="headerlink" title="8421码"></a>8421码</h1><p>8421码与十进制数的互相转换：<br>1000 1000 &#x3D; 88<br>DEC &#x3D; BCD &#x2F; 16 * 10 +BCD % 16<br>BCD &#x3D; DEC &#x2F; 10 * 16 + BCD % 10</p>
+]]></content>
+      <categories>
+        <category>计算机组成原理</category>
+      </categories>
+      <tags>
+        <tag>8421码</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AT24C02</title>
     <url>/2024/05/14/AT24C02/</url>
     <content><![CDATA[<h1 id="ROM-非易失性存储器"><a href="#ROM-非易失性存储器" class="headerlink" title="ROM(非易失性存储器)"></a>ROM(非易失性存储器)</h1><ol>
@@ -49,21 +64,6 @@
         <tag>ROM</tag>
         <tag>总线通讯</tag>
         <tag>I²C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>BCD码</title>
-    <url>/2024/05/07/BCD%E7%A0%81/</url>
-    <content><![CDATA[<p>Binary-Coded Decimal，二进制编码的十进制数。将每个十进制的0-9映射到四个二进制位。显然四位二进制位可以表示16种数字，映射到9个数后必然有一些位是不合法的，同时映射方案不同，得到的BCD码也不一样。</p>
-<h1 id="BCD码"><a href="#BCD码" class="headerlink" title="BCD码"></a>BCD码</h1><p><img src="/images/BCD%E7%A0%81/1.PNG" alt=" "></p>
-<span id="more"></span>
-<h1 id="8421码"><a href="#8421码" class="headerlink" title="8421码"></a>8421码</h1><p>8421码与十进制数的互相转换：<br>1000 1000 &#x3D; 88<br>DEC &#x3D; BCD &#x2F; 16 * 10 +BCD % 16<br>BCD &#x3D; DEC &#x2F; 10 * 16 + BCD % 10</p>
-]]></content>
-      <categories>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>8421码</tag>
       </tags>
   </entry>
   <entry>
@@ -337,6 +337,24 @@
       <tags>
         <tag>数字电路</tag>
         <tag>RAM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基于YOLOv10的摄像头实时检测</title>
+    <url>/2024/06/01/%E5%9F%BA%E4%BA%8EYOLOv10%E7%9A%84%E6%91%84%E5%83%8F%E5%A4%B4%E5%AE%9E%E6%97%B6%E6%A3%80%E6%B5%8B/</url>
+    <content><![CDATA[<p>本项目基于开源项目：<a href="https://github.com/THU-MIG/yolov10?tab=readme-ov-file">https://github.com/THU-MIG/yolov10?tab=readme-ov-file</a><br>实现一个简单的实时检测效果。</p>
+<span id="more"></span>
+<h1 id="Start-capturing-from-the-webcam"><a href="#Start-capturing-from-the-webcam" class="headerlink" title="Start capturing from the webcam"></a>Start capturing from the webcam</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">cap = cv2.VideoCapture(<span class="number">0</span>) <span class="comment"># 从默认摄像头获取数据</span></span><br><span class="line">cap.<span class="built_in">set</span>(<span class="number">3</span>, <span class="number">640</span>)</span><br><span class="line">cap.<span class="built_in">set</span>(<span class="number">4</span>, <span class="number">480</span>) <span class="comment"># 设置显示图像的长和宽</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    ret, img= cap.read()</span><br><span class="line">    cv2.imshow(<span class="string">&#x27;Webcam&#x27;</span>, img) <span class="comment"># 显示图像</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == <span class="built_in">ord</span>(<span class="string">&#x27;q&#x27;</span>):</span><br><span class="line">        <span class="keyword">break</span> <span class="comment"># 设置退出条件</span></span><br><span class="line"></span><br><span class="line">cap.release()</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<h1 id="Complete-code-—-object-detection-with-YOLO-and-webcam"><a href="#Complete-code-—-object-detection-with-YOLO-and-webcam" class="headerlink" title="Complete code — object detection with YOLO and webcam"></a>Complete code — object detection with YOLO and webcam</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">from</span> ultralytics <span class="keyword">import</span> YOLOv10 </span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型路径和配置</span></span><br><span class="line">image_size = <span class="number">640</span></span><br><span class="line">conf_threshold = <span class="number">0.25</span></span><br><span class="line">model_path = <span class="string">&#x27;/yolov10-main/yolov10b.pt&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载模型</span></span><br><span class="line">model = YOLOv10(model_path)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开摄像头</span></span><br><span class="line">cap = cv2.VideoCapture(<span class="number">0</span>)</span><br><span class="line">cap.<span class="built_in">set</span>(<span class="number">3</span>, <span class="number">640</span>)</span><br><span class="line">cap.<span class="built_in">set</span>(<span class="number">4</span>, <span class="number">480</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    ret, img = cap.read()</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> ret:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 使用模型进行预测</span></span><br><span class="line">    results = model.predict(source=img, imgsz=image_size, conf=conf_threshold, save=<span class="literal">False</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 获取标注后的图像</span></span><br><span class="line">    annotated_img = results[<span class="number">0</span>].plot()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 显示结果</span></span><br><span class="line">    cv2.imshow(<span class="string">&#x27;YOLOv10 Real Time Dectection&#x27;</span>, annotated_img)</span><br><span class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == <span class="built_in">ord</span>(<span class="string">&#x27;q&#x27;</span>):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 释放资源</span></span><br><span class="line">cap.release()</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p>这是一个简单版本，更精美的方法可以用gradio实现。</p>
+<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="/images/%E5%9F%BA%E4%BA%8EYOLOv10%E7%9A%84%E6%91%84%E5%83%8F%E5%A4%B4%E5%AE%9E%E6%97%B6%E6%A3%80%E6%B5%8B/1.jpeg" alt=" "><br>参考文献<br><a href="https://dipankarmedh1.medium.com/real-time-object-detection-with-yolo-and-webcam-enhancing-your-computer-vision-skills-861b97c78993">https://dipankarmedh1.medium.com/real-time-object-detection-with-yolo-and-webcam-enhancing-your-computer-vision-skills-861b97c78993</a></p>
+]]></content>
+      <categories>
+        <category>项目实践</category>
+      </categories>
+      <tags>
+        <tag>YOLO</tag>
+        <tag>目标检测</tag>
       </tags>
   </entry>
   <entry>

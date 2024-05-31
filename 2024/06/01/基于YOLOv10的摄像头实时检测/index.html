@@ -21,41 +21,31 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"cszhenfeili.online","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"show_result":true,"style":null},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="ROM(非易失性存储器) 掩模ROM（Mask ROM）   掩模ROM在制造过程中就被编程，内容由硅片设计图决定，因此不能被修改。掩模ROM成本在大规模生产时很低，但需要大量的初始投资用于开发掩模。它常用于大批量生产的消费电子产品中。   可编程ROM（PROM）   PROM在制造后空白，允许用户一次性编程。编程通常通过烧写设备进行，一旦编程完成，数据就永久保存，无法更改。PROM适合于需要定">
+    <meta name="description" content="本项目基于开源项目：https:&#x2F;&#x2F;github.com&#x2F;THU-MIG&#x2F;yolov10?tab&#x3D;readme-ov-file实现一个简单的实时检测效果。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AT24C02">
-<meta property="og:url" content="https://cszhenfeili.online/2024/05/14/AT24C02/index.html">
+<meta property="og:title" content="基于YOLOv10的摄像头实时检测">
+<meta property="og:url" content="https://cszhenfeili.online/2024/06/01/%E5%9F%BA%E4%BA%8EYOLOv10%E7%9A%84%E6%91%84%E5%83%8F%E5%A4%B4%E5%AE%9E%E6%97%B6%E6%A3%80%E6%B5%8B/index.html">
 <meta property="og:site_name" content="智能制造">
-<meta property="og:description" content="ROM(非易失性存储器) 掩模ROM（Mask ROM）   掩模ROM在制造过程中就被编程，内容由硅片设计图决定，因此不能被修改。掩模ROM成本在大规模生产时很低，但需要大量的初始投资用于开发掩模。它常用于大批量生产的消费电子产品中。   可编程ROM（PROM）   PROM在制造后空白，允许用户一次性编程。编程通常通过烧写设备进行，一旦编程完成，数据就永久保存，无法更改。PROM适合于需要定">
+<meta property="og:description" content="本项目基于开源项目：https:&#x2F;&#x2F;github.com&#x2F;THU-MIG&#x2F;yolov10?tab&#x3D;readme-ov-file实现一个简单的实时检测效果。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cszhenfeili.online/images/AT24C02/1.PNG">
-<meta property="og:image" content="https://cszhenfeili.online/images/AT24C02/2.PNG">
-<meta property="og:image" content="https://cszhenfeili.online/images/AT24C02/3.PNG">
-<meta property="og:image" content="https://cszhenfeili.online/images/AT24C02/4.PNG">
-<meta property="og:image" content="https://cszhenfeili.online/images/AT24C02/5.PNG">
-<meta property="og:image" content="https://cszhenfeili.online/images/AT24C02/6.PNG">
-<meta property="og:image" content="https://cszhenfeili.online/images/AT24C02/7.png">
-<meta property="og:image" content="https://cszhenfeili.online/images/AT24C02/8.png">
-<meta property="og:image" content="https://cszhenfeili.online/images/AT24C02/9.png">
-<meta property="og:image" content="https://cszhenfeili.online/images/AT24C02/10.png">
-<meta property="article:published_time" content="2024-05-13T16:41:13.000Z">
-<meta property="article:modified_time" content="2024-05-13T16:49:56.339Z">
+<meta property="og:image" content="https://cszhenfeili.online/images/%E5%9F%BA%E4%BA%8EYOLOv10%E7%9A%84%E6%91%84%E5%83%8F%E5%A4%B4%E5%AE%9E%E6%97%B6%E6%A3%80%E6%B5%8B/1.jpeg">
+<meta property="article:published_time" content="2024-05-31T16:35:10.000Z">
+<meta property="article:modified_time" content="2024-05-31T16:41:26.359Z">
 <meta property="article:author" content="晓飞">
-<meta property="article:tag" content="ROM">
-<meta property="article:tag" content="总线通讯">
-<meta property="article:tag" content="I²C">
+<meta property="article:tag" content="YOLO">
+<meta property="article:tag" content="目标检测">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cszhenfeili.online/images/AT24C02/1.PNG">
+<meta name="twitter:image" content="https://cszhenfeili.online/images/%E5%9F%BA%E4%BA%8EYOLOv10%E7%9A%84%E6%91%84%E5%83%8F%E5%A4%B4%E5%AE%9E%E6%97%B6%E6%A3%80%E6%B5%8B/1.jpeg">
 
 
-<link rel="canonical" href="https://cszhenfeili.online/2024/05/14/AT24C02/">
+<link rel="canonical" href="https://cszhenfeili.online/2024/06/01/%E5%9F%BA%E4%BA%8EYOLOv10%E7%9A%84%E6%91%84%E5%83%8F%E5%A4%B4%E5%AE%9E%E6%97%B6%E6%A3%80%E6%B5%8B/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cszhenfeili.online/2024/05/14/AT24C02/","path":"2024/05/14/AT24C02/","title":"AT24C02"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cszhenfeili.online/2024/06/01/%E5%9F%BA%E4%BA%8EYOLOv10%E7%9A%84%E6%91%84%E5%83%8F%E5%A4%B4%E5%AE%9E%E6%97%B6%E6%A3%80%E6%B5%8B/","path":"2024/06/01/基于YOLOv10的摄像头实时检测/","title":"基于YOLOv10的摄像头实时检测"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>AT24C02 | 智能制造</title>
+<title>基于YOLOv10的摄像头实时检测 | 智能制造</title>
   
 
 
@@ -155,7 +145,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ROM-%E9%9D%9E%E6%98%93%E5%A4%B1%E6%80%A7%E5%AD%98%E5%82%A8%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">ROM(非易失性存储器)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E5%99%A8%E7%AE%80%E5%8C%96%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">存储器简化模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="nav-number">2.1.</span> <span class="nav-text">基本结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E9%80%89%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">线选法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E5%90%88%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">重合法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AT24C02"><span class="nav-number">3.</span> <span class="nav-text">AT24C02</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BA%BF%E9%80%9A%E8%AE%AF"><span class="nav-number">3.1.</span> <span class="nav-text">总线通讯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E6%95%B0%E6%8D%AE%E5%B8%A7"><span class="nav-number">3.2.</span> <span class="nav-text">写数据帧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E6%95%B0%E6%8D%AE%E5%B8%A7"><span class="nav-number">3.3.</span> <span class="nav-text">读数据帧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E5%BA%8F%E4%BF%A1%E5%8F%B7"><span class="nav-number">3.4.</span> <span class="nav-text">时序信号</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Start-capturing-from-the-webcam"><span class="nav-number">1.</span> <span class="nav-text">Start capturing from the webcam</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Complete-code-%E2%80%94-object-detection-with-YOLO-and-webcam"><span class="nav-number">2.</span> <span class="nav-text">Complete code — object detection with YOLO and webcam</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%88%E6%9E%9C"><span class="nav-number">3.</span> <span class="nav-text">效果</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -208,7 +198,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cszhenfeili.online/2024/05/14/AT24C02/">
+    <link itemprop="mainEntityOfPage" href="https://cszhenfeili.online/2024/06/01/%E5%9F%BA%E4%BA%8EYOLOv10%E7%9A%84%E6%91%84%E5%83%8F%E5%A4%B4%E5%AE%9E%E6%97%B6%E6%A3%80%E6%B5%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -221,12 +211,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="AT24C02 | 智能制造">
+      <meta itemprop="name" content="基于YOLOv10的摄像头实时检测 | 智能制造">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          AT24C02
+          基于YOLOv10的摄像头实时检测
         </h1>
 
         <div class="post-meta-container">
@@ -238,7 +228,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-05-14 00:41:13 / 修改时间：00:49:56" itemprop="dateCreated datePublished" datetime="2024-05-14T00:41:13+08:00">2024-05-14</time>
+      <time title="创建时间：2024-06-01 00:35:10 / 修改时间：00:41:26" itemprop="dateCreated datePublished" datetime="2024-06-01T00:35:10+08:00">2024-06-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -246,7 +236,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%85%83%E4%BB%B6%E6%A8%A1%E5%9D%97/" itemprop="url" rel="index"><span itemprop="name">元件模块</span></a>
+          <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5/" itemprop="url" rel="index"><span itemprop="name">项目实践</span></a>
         </span>
     </span>
 
@@ -259,44 +249,12 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="ROM-非易失性存储器"><a href="#ROM-非易失性存储器" class="headerlink" title="ROM(非易失性存储器)"></a>ROM(非易失性存储器)</h1><ol>
-<li>掩模ROM（Mask ROM）</li>
-</ol>
-<ul>
-<li>掩模ROM在制造过程中就被编程，内容由硅片设计图决定，因此不能被修改。掩模ROM成本在大规模生产时很低，但需要大量的初始投资用于开发掩模。它常用于大批量生产的消费电子产品中。</li>
-</ul>
-<ol start="2">
-<li>可编程ROM（PROM）</li>
-</ol>
-<ul>
-<li>PROM在制造后空白，允许用户一次性编程。编程通常通过烧写设备进行，一旦编程完成，数据就永久保存，无法更改。PROM适合于需要定制固件的应用。<span id="more"></span></li>
-</ul>
-<ol start="3">
-<li>可擦除可编程ROM（EPROM）</li>
-</ol>
-<ul>
-<li>EPROM可以通过紫外线光照射擦除其内容，之后可以重新编程。EPROM的窗口盖上有透明的石英玻璃，用于传输紫外线。这种类型的ROM适用于开发过程中需要多次修改代码的情况。</li>
-</ul>
-<ol start="4">
-<li>电可擦除可编程ROM（EEPROM）</li>
-</ol>
-<ul>
-<li>EEPROM可以在电路内电气地擦除和重新编程，不需要拆除芯片或使用紫外线。它允许按字节进行编程和擦除，提供极大的灵活性。EEPROM适用于需要频繁更新存储数据的应用，如配置设置存储。</li>
-</ul>
-<ol start="5">
-<li>闪存（Flash Memory）</li>
-</ol>
-<ul>
-<li>闪存是一种特殊类型的EEPROM，它支持更快的擦除和更高密度的数据存储。与EEPROM不同，闪存通常按块（而非单个字节）进行擦除和编程。因其高效性和成本效益，闪存广泛用于USB闪存驱动器、固态硬盘、手机和其他便携式电子设备。</li>
-</ul>
-<h1 id="存储器简化模型"><a href="#存储器简化模型" class="headerlink" title="存储器简化模型"></a>存储器简化模型</h1><h2 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h2><p><img src="/images/AT24C02/1.PNG" alt=" "><br>具体有线选法和重合法，不同的电路设计需要的地址线不同，一次取出的数据位数也不同</p>
-<h2 id="线选法"><a href="#线选法" class="headerlink" title="线选法"></a>线选法</h2><p><img src="/images/AT24C02/2.PNG" alt=" "></p>
-<h2 id="重合法"><a href="#重合法" class="headerlink" title="重合法"></a>重合法</h2><p><img src="/images/AT24C02/3.PNG" alt=" "><br>Mask ROM出厂就被设置好了，输出1的就加上二极管，否则就不加；PROM有两个二极管，第二个二极管高压容易被击穿，支持一次性烧录。<br><img src="/images/AT24C02/4.PNG" alt=" "></p>
-<h1 id="AT24C02"><a href="#AT24C02" class="headerlink" title="AT24C02"></a>AT24C02</h1><p>存储介质：EEPROM<br>通讯接口：I²C总线<br>容量：256字节<br><img src="/images/AT24C02/5.PNG" alt=" "></p>
-<h2 id="总线通讯"><a href="#总线通讯" class="headerlink" title="总线通讯"></a>总线通讯</h2><p>为什么需要这个协议？多个设备通讯时，如果两两通讯，将需要极为复杂的电路。如图所示：<br><img src="/images/AT24C02/6.PNG" alt=" "><br>通过总线通讯，上述电路可以大大简化：<br><img src="/images/AT24C02/7.png" alt=" "><br>既然共用数据线，就要解决怎么传输、怎么接收的问题。我们要规定一套规则完成两个设备之间的通讯。</p>
-<h2 id="写数据帧"><a href="#写数据帧" class="headerlink" title="写数据帧"></a>写数据帧</h2><p>通过规定好的时序，我们依次写入设备地址、寄存器地址、数据。也就是先选中一个从设备，然后选中AT24C02的地址，再输入一个数据即可。<br><img src="/images/AT24C02/8.png" alt=" "></p>
-<h2 id="读数据帧"><a href="#读数据帧" class="headerlink" title="读数据帧"></a>读数据帧</h2><p>类似的，这里是读数据帧<br><img src="/images/AT24C02/9.png" alt=" "></p>
-<h2 id="时序信号"><a href="#时序信号" class="headerlink" title="时序信号"></a>时序信号</h2><p><img src="/images/AT24C02/10.png" alt=" "><br>参考来源：GTP-4生成；知乎计算机组成原理学习笔记（三）：存储器（Lucius）；B站爱上半导体</p>
+    <div class="post-body" itemprop="articleBody"><p>本项目基于开源项目：<a target="_blank" rel="noopener" href="https://github.com/THU-MIG/yolov10?tab=readme-ov-file">https://github.com/THU-MIG/yolov10?tab=readme-ov-file</a><br>实现一个简单的实时检测效果。</p>
+<span id="more"></span>
+<h1 id="Start-capturing-from-the-webcam"><a href="#Start-capturing-from-the-webcam" class="headerlink" title="Start capturing from the webcam"></a>Start capturing from the webcam</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">cap = cv2.VideoCapture(<span class="number">0</span>) <span class="comment"># 从默认摄像头获取数据</span></span><br><span class="line">cap.<span class="built_in">set</span>(<span class="number">3</span>, <span class="number">640</span>)</span><br><span class="line">cap.<span class="built_in">set</span>(<span class="number">4</span>, <span class="number">480</span>) <span class="comment"># 设置显示图像的长和宽</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    ret, img= cap.read()</span><br><span class="line">    cv2.imshow(<span class="string">&#x27;Webcam&#x27;</span>, img) <span class="comment"># 显示图像</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == <span class="built_in">ord</span>(<span class="string">&#x27;q&#x27;</span>):</span><br><span class="line">        <span class="keyword">break</span> <span class="comment"># 设置退出条件</span></span><br><span class="line"></span><br><span class="line">cap.release()</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<h1 id="Complete-code-—-object-detection-with-YOLO-and-webcam"><a href="#Complete-code-—-object-detection-with-YOLO-and-webcam" class="headerlink" title="Complete code — object detection with YOLO and webcam"></a>Complete code — object detection with YOLO and webcam</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">from</span> ultralytics <span class="keyword">import</span> YOLOv10 </span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型路径和配置</span></span><br><span class="line">image_size = <span class="number">640</span></span><br><span class="line">conf_threshold = <span class="number">0.25</span></span><br><span class="line">model_path = <span class="string">&#x27;/yolov10-main/yolov10b.pt&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载模型</span></span><br><span class="line">model = YOLOv10(model_path)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开摄像头</span></span><br><span class="line">cap = cv2.VideoCapture(<span class="number">0</span>)</span><br><span class="line">cap.<span class="built_in">set</span>(<span class="number">3</span>, <span class="number">640</span>)</span><br><span class="line">cap.<span class="built_in">set</span>(<span class="number">4</span>, <span class="number">480</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    ret, img = cap.read()</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> ret:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 使用模型进行预测</span></span><br><span class="line">    results = model.predict(source=img, imgsz=image_size, conf=conf_threshold, save=<span class="literal">False</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 获取标注后的图像</span></span><br><span class="line">    annotated_img = results[<span class="number">0</span>].plot()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 显示结果</span></span><br><span class="line">    cv2.imshow(<span class="string">&#x27;YOLOv10 Real Time Dectection&#x27;</span>, annotated_img)</span><br><span class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == <span class="built_in">ord</span>(<span class="string">&#x27;q&#x27;</span>):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 释放资源</span></span><br><span class="line">cap.release()</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p>这是一个简单版本，更精美的方法可以用gradio实现。</p>
+<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="/images/%E5%9F%BA%E4%BA%8EYOLOv10%E7%9A%84%E6%91%84%E5%83%8F%E5%A4%B4%E5%AE%9E%E6%97%B6%E6%A3%80%E6%B5%8B/1.jpeg" alt=" "><br>参考文献<br><a target="_blank" rel="noopener" href="https://dipankarmedh1.medium.com/real-time-object-detection-with-yolo-and-webcam-enhancing-your-computer-vision-skills-861b97c78993">https://dipankarmedh1.medium.com/real-time-object-detection-with-yolo-and-webcam-enhancing-your-computer-vision-skills-861b97c78993</a></p>
 
     </div>
     
@@ -318,23 +276,19 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/ROM/" rel="tag"># ROM</a>
-              <a href="/tags/%E6%80%BB%E7%BA%BF%E9%80%9A%E8%AE%AF/" rel="tag"># 总线通讯</a>
-              <a href="/tags/I%C2%B2C/" rel="tag"># I²C</a>
+              <a href="/tags/YOLO/" rel="tag"># YOLO</a>
+              <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" rel="tag"># 目标检测</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/05/14/%E8%9C%82%E9%B8%A3%E5%99%A8/" rel="prev" title="蜂鸣器">
-                  <i class="fa fa-angle-left"></i> 蜂鸣器
+                <a href="/2024/05/29/Literature2/" rel="prev" title="Virtual PLC in Industrial Edge Platform">
+                  <i class="fa fa-angle-left"></i> Virtual PLC in Industrial Edge Platform
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/05/14/Canvas-Nest%E8%AE%BE%E7%BD%AE/" rel="next" title="Canvas-Nest设置">
-                  Canvas-Nest设置 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
