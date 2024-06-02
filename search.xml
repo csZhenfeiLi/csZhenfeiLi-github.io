@@ -193,6 +193,218 @@
       </tags>
   </entry>
   <entry>
+    <title>YOLOv10 Real-Time End-to-End Object Detection</title>
+    <url>/2024/06/02/Literature3/</url>
+    <content><![CDATA[<h1 id="标题（Title）"><a href="#标题（Title）" class="headerlink" title="标题（Title）"></a>标题（Title）</h1><p>YOLOv10: Real-Time End-to-End Object Detection<br>目标检测经典模型，YOLO系列，还没用过，试一次。<br>23 May 2024</p>
+<h1 id="摘要（Abstract）"><a href="#摘要（Abstract）" class="headerlink" title="摘要（Abstract）"></a>摘要（Abstract）</h1><p>YOLOs在实施目标检测的应用方向占据主导地位，其很好的平衡了计算效率和准确率。然而YOLO依然存在问题，YOLO算法依赖于非极大值抑制（NMS）进行后处理，这对端到端部署和推理延迟产生负面影响。此外，YOLO的各个组件设计缺乏全面检查，导致计算冗余和模型能力受限。为了解决上述问题，本文提出一致双重分配策略（Consistent Dual Assignments）和整体效率-准确性驱动的模型设计策略。大量实验验证本策略达到了state-of-the-art的效率以及表现。</p>
+<span id="more"></span>
+<h1 id="主要内容（Main-Content）"><a href="#主要内容（Main-Content）" class="headerlink" title="主要内容（Main Content）"></a>主要内容（Main Content）</h1><h2 id="现有技术的缺陷"><a href="#现有技术的缺陷" class="headerlink" title="现有技术的缺陷"></a>现有技术的缺陷</h2><ol>
+<li>依赖于非极大值抑制（NMS）</li>
+</ol>
+<ul>
+<li>问题描述：YOLO算法依赖于非极大值抑制（NMS）进行后处理，以消除重叠的检测框。NMS是一种后处理技术，用于在多个重叠的检测框中保留得分最高的一个，消除其他重叠框。</li>
+<li>缺陷：NMS的计算复杂度较高，并且在端到端的实时检测任务中增加了额外的计算开销和延迟。此外，NMS处理步骤需要将模型输出与后处理分离，这使得整个模型不完全端到端。</li>
+</ul>
+<ol start="2">
+<li>组件设计缺乏系统性检查</li>
+</ol>
+<ul>
+<li>问题描述：YOLO系列算法的各个组件（如检测头、特征提取网络等）的设计和优化常常是独立进行的，缺乏全局视角的系统性检查和优化。</li>
+<li>缺陷：这种缺乏系统性检查的设计方式导致了计算冗余和模型能力受限。例如，某些组件可能存在计算资源浪费，或设计上未能充分发挥其潜力，整体效率和性能受到影响。</li>
+</ul>
+<ol start="3">
+<li>计算冗余</li>
+</ol>
+<ul>
+<li>问题描述：YOLO算法的某些设计存在计算冗余，未能充分利用计算资源。</li>
+<li>缺陷：计算冗余意味着在模型的推理过程中，有些计算步骤是多余的或可以简化的。这不仅增加了模型的计算量，也增加了推理时间，降低了模型的整体效率。</li>
+</ul>
+<ol start="4">
+<li>模型能力受限</li>
+</ol>
+<ul>
+<li>问题描述：由于设计上的局限性，现有YOLO模型在处理复杂场景和小目标时表现不够理想。</li>
+<li>缺陷：模型能力受限意味着在实际应用中，YOLO模型可能无法准确检测复杂背景中的小目标，影响了模型的实用性和可靠性。</li>
+</ul>
+<h2 id="核心解决思路"><a href="#核心解决思路" class="headerlink" title="核心解决思路"></a>核心解决思路</h2><ol>
+<li>一致双重分配策略（Consistent Dual Assignments）<br>1.1 无NMS训练</li>
+</ol>
+<ul>
+<li>背景：传统YOLO模型依赖非极大值抑制（NMS）来消除多余的重叠检测框。这增加了计算开销，并在端到端推理过程中引入延迟。</li>
+<li>解决方案：YOLOv10提出了一种无NMS的训练策略，通过结合一对多和一对一匹配方法来实现高效的目标检测。<ul>
+<li>一对多匹配：在训练阶段，模型将一个预测框与多个真实框匹配。这有助于提高模型对目标的召回率（recall），即减少漏检。</li>
+<li>一对一匹配：在推理阶段，模型仅使用一对一匹配来确保每个真实框只对应一个预测框，从而避免重复检测。<br>1.2 一致匹配度量</li>
+</ul>
+</li>
+<li>背景：传统的一对多和一对一匹配方法在优化目标上可能存在差异，导致模型在训练和推理时表现不一致。</li>
+<li>解决方案：YOLOv10采用一致的匹配度量方法，使得一对多匹配和一对一匹配在优化方向上保持一致。这减少了监督差距，确保训练和推理的优化目标一致，提高了模型性能。</li>
+</ul>
+<ol start="2">
+<li>整体效率-准确性驱动的模型设计策略<br>2.1 轻量级分类头</li>
+</ol>
+<ul>
+<li>背景：YOLO模型的分类头通常较为复杂，增加了计算量和模型参数量。</li>
+<li>解决方案：YOLOv10引入轻量级分类头，通过简化分类头的结构来减少计算开销，同时保持分类性能。这样既能降低计算负担，又能保持高效的分类能力。<br>2.2 空间-通道解耦下采样</li>
+<li>背景：传统的下采样操作（如卷积）同时处理空间和通道信息，可能导致信息丢失和计算冗余。</li>
+<li>解决方案：YOLOv10提出了空间-通道解耦下采样方法，将空间下采样和通道变换解耦开来，分别进行处理。这种方法能够更有效地保留和处理信息，提高模型的计算效率和检测性能。<br>2.3 基于内在秩的模块设计</li>
+<li>背景：传统YOLO模型在不同阶段的特征图处理上可能存在冗余，未充分利用计算资源。</li>
+<li>解决方案：YOLOv10基于内在秩分析各个阶段的冗余，提出了紧凑的反转块设计。这种设计方法有助于减少冗余计算，提高模型的整体效率。<br><img src="/images/Literature3/1.PNG" alt=" "><br><img src="/images/Literature3/2.PNG" alt=" "></li>
+</ul>
+<h2 id="实验设置"><a href="#实验设置" class="headerlink" title="实验设置"></a>实验设置</h2><ol>
+<li>基准数据集<br>作者在多个标准目标检测基准数据集上评估了YOLOv10，包括：</li>
+</ol>
+<ul>
+<li>COCO（Common Objects in Context）：一个广泛使用的目标检测数据集，包含80个对象类别。</li>
+<li>VOC（PASCAL Visual Object Classes）：另一个著名的数据集，包含20个对象类别。</li>
+</ul>
+<ol start="2">
+<li>模型变体<br>YOLOv10在不同配置下进行了测试，分别标记为n、s、m、b、l和x，代表纳米（nano）、小（small）、中（medium）、基础（base）、大（large）和超大（extra-large）模型。这些配置在速度和准确性之间取得了平衡。</li>
+<li>评估指标<br>主要评估指标包括：</li>
+</ol>
+<ul>
+<li>mAP（mean Average Precision）：目标检测准确性的标准指标。</li>
+<li>推理速度：每张图像的推理时间（以毫秒为单位），表示模型的效率。</li>
+<li>模型大小：反映参数数量和计算复杂度。</li>
+</ul>
+<ol start="4">
+<li>性能比较<br>YOLOv10与几个最先进的模型进行了比较，包括以前的YOLO版本和其他领先的目标检测模型如Faster R-CNN、SSD和EfficientDet。结果显示：</li>
+</ol>
+<ul>
+<li>更高的mAP：YOLOv10在mAP得分上优于以前的版本，表明其准确性更高。</li>
+<li>更快的推理速度：该模型保持了实时推理能力，这对需要低延迟的应用至关重要。</li>
+<li>更小的模型大小：尽管性能提高，YOLOv10模型设计紧凑，适合在资源受限的设备上部署。</li>
+</ul>
+<ol start="5">
+<li>消融研究<br>论文包括详细的消融研究，以单独分析YOLOv10的不同组件的贡献。这些研究考察了：</li>
+</ol>
+<ul>
+<li>一致双重分配策略的效果：展示了提出的双重分配策略对模型性能的影响。</li>
+<li>效率驱动的设计选择的影响：评估了轻量级分类头和空间-通道解耦下采样等架构变化对整体性能的贡献。</li>
+</ul>
+<ol start="6">
+<li>定性结果<br>作者提供了定性示例，展示了YOLOv10在复杂条件下检测目标的能力，例如拥挤场景和小目标。这些视觉结果突出了模型的鲁棒性和泛化能力。<br><img src="/images/Literature3/3.PNG" alt=" "></li>
+</ol>
+<h1 id="评价和感想（Evaluation-and-Reflections）"><a href="#评价和感想（Evaluation-and-Reflections）" class="headerlink" title="评价和感想（Evaluation and Reflections）"></a>评价和感想（Evaluation and Reflections）</h1><p>经典的模型优化思路，详实的实验验证。<br>未来研究方向（Future Research Directions）</p>
+<ul>
+<li>主要是直接应用这些模型吧，想要自己做改进并不容易，可能对于具体情境可以做相对应的微创新。</li>
+</ul>
+<h1 id="参考文献（References）"><a href="#参考文献（References）" class="headerlink" title="参考文献（References）"></a>参考文献（References）</h1><p>Wang, A., Chen, H., Liu, L., Chen, K., Lin, Z., Han, J., &amp; Ding, G. (2024). YOLOv10: Real-Time End-to-End Object Detection. arXiv preprint arXiv:2405.14458.<br><a href="https://arxiv.org/pdf/2405.14458">https://arxiv.org/pdf/2405.14458</a></p>
+]]></content>
+      <categories>
+        <category>文献调研</category>
+      </categories>
+      <tags>
+        <tag>YOLO</tag>
+        <tag>实时目标监测</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>A Cyber-Physical Systems architecture for Industry 4.0-based manufacturing</title>
+    <url>/2024/06/02/Literature4/</url>
+    <content><![CDATA[<h1 id="标题（Title）"><a href="#标题（Title）" class="headerlink" title="标题（Title）"></a>标题（Title）</h1><p>A Cyber-Physical Systems architecture for Industry 4.0-based manufacturing systems<br>本文研究工业4.0背景下制造系统的信息物理系统架构<br>Article  in  Manufacturing Letters · December 2014 </p>
+<h1 id="摘要（Abstract）"><a href="#摘要（Abstract）" class="headerlink" title="摘要（Abstract）"></a>摘要（Abstract）</h1><p>本文主要讨论了如何通过部署网络物理系统（CPS）来实现工业4.0，工业4.0的核心在于通过网络物理系统（CPS）将物理世界和计算空间紧密结合，以实现更高效、更协作和更具弹性的制造系统。CPS利用传感器、大数据和先进的分析方法，实时监控和管理制造过程中的各个方面。在这一早期发展阶段，迫切需要对CPS进行明确定义。本文提出了一个统一的五级架构，作为CPS实施的指导方针。</p>
+<span id="more"></span>
+<h1 id="背景（Background）"><a href="#背景（Background）" class="headerlink" title="背景（Background）"></a>背景（Background）</h1><p>网络物理系统（CPS）被定义为管理物理资产和计算能力之间互联系统的变革性技术。随着传感器、数据采集系统和计算机网络的普及，越来越多的工厂开始实施高科技方法。不断增加的传感器和联网机器的使用导致了大量数据的生成，称为大数据。在这种环境下，CPS可以进一步发展，以管理大数据并利用机器的互联性，实现智能、弹性和自适应的目标。<br><img src="/images/Literature4/1.PNG" alt=" "></p>
+<h1 id="主要内容（Main-Content）"><a href="#主要内容（Main-Content）" class="headerlink" title="主要内容（Main Content）"></a>主要内容（Main Content）</h1><p>CPS 5C架构部分总结<br>本文提出的五级CPS结构，即5C架构，提供了一个逐步开发和部署CPS用于制造应用的指导方针。一般来说，CPS包括两个主要功能组件：<br>（1）先进的连接性，确保从物理世界到网络空间的实时数据采集和信息反馈；<br>（2）智能数据管理、分析和计算能力，构建网络空间。<br>然而，这种要求过于抽象，不足以用于具体的实施。相反，本文提出的5C架构通过顺序工作流程方式，明确定义了如何从初始数据采集、到分析、再到最终价值创造构建CPS。具体的5C架构如下：<br><img src="/images/Literature4/2.PNG" alt=" "></p>
+<ol>
+<li>智能连接（Smart Connection）</li>
+</ol>
+<ul>
+<li>获取机器及其组件的准确可靠数据是开发CPS的第一步。这些数据可能直接通过传感器测量，或从控制器或企业制造系统（如ERP、MES、SCM和CMM）中获取。需要考虑的两个重要因素是：管理数据采集过程并将数据传输到中央服务器的无缝方法，以及选择合适的传感器（类型和规格）。</li>
+</ul>
+<ol start="2">
+<li>数据到信息的转换（Data-to-Information Conversion）</li>
+</ol>
+<ul>
+<li>需要从数据中推导出有意义的信息。目前有多种工具和方法可用于数据到信息的转换，特别是用于预测和健康管理应用的算法，例如计算健康值和剩余使用寿命等，使机器具备自我感知能力。</li>
+</ul>
+<ol start="3">
+<li>网络（Cyber）</li>
+</ol>
+<ul>
+<li>在该层级，信息从每台联网的机器推送到中央信息中心，形成机器网络。通过特定的分析方法，从大量信息中提取出更好的洞察力，支持机器之间的自我比较和未来行为预测。</li>
+</ul>
+<ol start="4">
+<li>认知（Cognition）</li>
+</ol>
+<ul>
+<li>在该层级，CPS的实施会对监控系统生成全面的知识，帮助专家用户进行正确决策。由于获得了比较信息和单个机器状态的信息，优化维护过程的任务优先级可以被确定。</li>
+</ul>
+<ol start="5">
+<li>配置（Configuration）</li>
+</ol>
+<ul>
+<li>这是从网络空间到物理空间的反馈控制，使机器能够自我配置和自适应。该层级作为弹性控制系统（RCS），应用认知层级所做的纠正和预防决策于监控系统。<br><img src="/images/Literature4/3.PNG" alt=" "><br>基于PHM的CPS系统设计部分总结<br>网络层级的PHM（预测性健康管理）的极大优势在于，通过机器-网络接口（CPI）在网络层级实现机器健康分析的互联互通，这在概念上类似于社交网络。一旦网络层级的基础设施到位，机器可以注册到网络中并通过网络接口交换信息。在这一点上，需要建立一个算法来跟踪机器状态的变化，从历史信息中推断出额外的知识，进行点对点比较，并将输出传递到下一个层级。为了执行这些操作并生成适当的结果，需要开发新的方法。本文介绍了在网络层级执行分析的“时间机器”，包括以下三个并行部分：</li>
+</ul>
+<ol>
+<li>快照收集</li>
+</ol>
+<ul>
+<li>信息不断从机器推送到网络空间。快照收集的作用是管理传入的数据并以高效的方式存储信息。基本上，为了减少所需的磁盘空间和处理能力，只记录机器性能、使用历史和维护的快照，而不是整个时间序列。只有在监控机器状态发生显著变化时才会拍摄这些快照。此变化可以定义为机器健康值的剧烈变化、维护行动或工作状态的变化。在机器生命周期中，这些快照将累积起来，用于构建特定资产的时间机器历史记录。此活动的时间机器记录将用于资产之间的点对点比较。一旦资产故障或更换，其相关时间机器记录将从活动状态变为历史状态，用于相似性识别和合成参考。</li>
+</ul>
+<ol start="2">
+<li>相似性识别</li>
+</ol>
+<ul>
+<li>在网络层级，由于可以从多台机器获得信息，在较短时间内捕获特定故障模式的可能性较高。因此，相似性识别部分必须回顾历史时间机器记录，计算当前机器行为与前期资产利用和健康状况的相似性。在此阶段，可以使用不同的算法进行模式匹配，例如匹配矩阵、轨迹相似性方法或各种随机方法。一旦模式匹配，监控系统的未来行为可以更准确地预测。</li>
+</ul>
+<ol start="3">
+<li>合成优化未来步骤</li>
+</ol>
+<ul>
+<li>预测资产的剩余使用寿命有助于在制造工厂中维持即时维护策略。此外，寿命预测与历史时间机器记录相结合，可以根据当前健康状况提高资产利用效率。类似资产在不同健康阶段的历史利用模式提供了所需信息，用于模拟目标资产可能的未来利用场景及其结果。在这些场景中，可以为目标资产实施最有效且最具生产力的利用模式。<br><img src="/images/Literature4/4.png" alt=" "><br><img src="/images/Literature4/5.png" alt=" "><br>在现代工厂中实施网络物理系统（CPS）可以带来多方面的优势，这些优势可以分为三个阶段：组件、机器和生产系统。具体如下：</li>
+</ul>
+<ol>
+<li>组件阶段</li>
+</ol>
+<ul>
+<li>一旦将关键组件的传感数据转换为信息，每个组件的数字孪生体将负责捕获时间机器记录并综合未来步骤，以实现自我感知和自我预测。</li>
+</ul>
+<ol start="2">
+<li>机器阶段</li>
+</ol>
+<ul>
+<li>更高级的机器数据（如控制器参数）将被聚合到组件信息中，以监控状态并生成每台机器的数字孪生体。这些机器的数字孪生体在CPS中提供了额外的自我比较能力。</li>
+</ul>
+<ol start="3">
+<li>生产系统阶段</li>
+</ol>
+<ul>
+<li>从组件和机器级信息中聚合的知识为工厂提供了自我配置和自我维护能力。这种知识水平不仅保证了无忧和接近零停机时间的生产，还为工厂管理提供了优化的生产计划和库存管理方案。</li>
+</ul>
+<h1 id="评价和感想（Evaluation-and-Reflections）"><a href="#评价和感想（Evaluation-and-Reflections）" class="headerlink" title="评价和感想（Evaluation and Reflections）"></a>评价和感想（Evaluation and Reflections）</h1><p>物理信息系统是实现工业4.0的核心，整个工厂就像一个智能生物体。就像人类的身体有无数的感官系统（传感器）来收集信息，这个智能生物体的各个机器通过网络空间互联，形成一个紧密合作的系统。数据被汇聚和处理，就像人体中的神经系统和大脑进行分析和决策。通过大数据处理技术，这个智能生物体能够进行自我体检，提前发现和解决潜在的问题，从而保持最佳状态和高效运行。</p>
+<h1 id="未来研究方向（Future-Research-Directions）"><a href="#未来研究方向（Future-Research-Directions）" class="headerlink" title="未来研究方向（Future Research Directions）"></a>未来研究方向（Future Research Directions）</h1><p>这篇文献不能实践，只是了解下CPS在I4.0下的应用。</p>
+<h1 id="参考文献（References）"><a href="#参考文献（References）" class="headerlink" title="参考文献（References）"></a>参考文献（References）</h1><p><a href="https://www.researchgate.net/publication/269709304">https://www.researchgate.net/publication/269709304</a><br>Lee, J., Bagheri, B., &amp; Kao, H. A. (2015). A cyber-physical systems architecture for industry 4.0-based manufacturing systems. Manufacturing letters, 3, 18-23.</p>
+]]></content>
+      <categories>
+        <category>文献调研</category>
+      </categories>
+      <tags>
+        <tag>Cyber-Physical System</tag>
+        <tag>Industry 4.0</tag>
+        <tag>Health management and prognostics</tag>
+        <tag>Time machine</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>下拉电阻、上拉电阻</title>
+    <url>/2024/05/02/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/</url>
+    <content><![CDATA[<p>下拉电阻可以将一个不确定的信号钳位在低电平。<br>上拉电阻可以增强输出引脚的驱动能力。</p>
+<span id="more"></span>
+<h1 id="悬空状态"><a href="#悬空状态" class="headerlink" title="悬空状态"></a>悬空状态</h1><p>如图所示，当基极什么都不接的时候，该点的电压就是悬空状态。此时如果转化为数字信号，其既可能输出0，也可能输出1。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/1.png" alt=" "></p>
+<h1 id="下拉"><a href="#下拉" class="headerlink" title="下拉"></a>下拉</h1><p>此时，将该点连接一个电阻接地，由于该电路中NP结电阻无穷大，分走所有电压，所以此时该点的电压变为0，确定性的输出了0电压。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/2.png" alt=" "><br>该电阻存在的必要性是让该点同样可以输出高电压，如下图所示：<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/3.png" alt=" "></p>
+<h1 id="上拉"><a href="#上拉" class="headerlink" title="上拉"></a>上拉</h1><p>如图所示，上拉电阻的作用是将其与单片机内的等效电阻并联，让整体电阻变小，从而分走更少的电压，这样就可以提升输出点的电压了。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/4.png" alt=" "><br>同样，上拉电阻也能解决悬空状态的问题，如图所示，如果想要输出高电平，同样可以通过并联电阻解决。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/5.png" alt=" "><br>并联后，上面的电阻变小，而下方电阻为无穷大，所有电压将被下方分走。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/6.png" alt=" "><br>参考来源：B站爱上半导体</p>
+]]></content>
+      <categories>
+        <category>底层原理</category>
+      </categories>
+      <tags>
+        <tag>数字电路</tag>
+        <tag>上拉电阻</tag>
+        <tag>下拉电阻</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Resource-Efficient Neural Networks for Embedded Systems</title>
     <url>/2024/05/27/Resource-Efficient%20Neural%20Networks%20for%20Embedded%20Systems/</url>
     <content><![CDATA[<h1 id="标题（Title）"><a href="#标题（Title）" class="headerlink" title="标题（Title）"></a>标题（Title）</h1><p>Resource-Efficient Neural Networks for Embedded Systems<br>基于嵌入式系统的高效神经网络，看标题应该是在嵌入式系统资源受限的情况下，部署合适的神经网络。<br>Submitted 8&#x2F;18; Revised 12&#x2F;23; Published 2&#x2F;24 </p>
@@ -274,24 +486,6 @@
         <tag>Resource-efficient machine learning</tag>
         <tag>inference</tag>
         <tag>deep neural networks.</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>下拉电阻、上拉电阻</title>
-    <url>/2024/05/02/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/</url>
-    <content><![CDATA[<p>下拉电阻可以将一个不确定的信号钳位在低电平。<br>上拉电阻可以增强输出引脚的驱动能力。</p>
-<span id="more"></span>
-<h1 id="悬空状态"><a href="#悬空状态" class="headerlink" title="悬空状态"></a>悬空状态</h1><p>如图所示，当基极什么都不接的时候，该点的电压就是悬空状态。此时如果转化为数字信号，其既可能输出0，也可能输出1。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/1.png" alt=" "></p>
-<h1 id="下拉"><a href="#下拉" class="headerlink" title="下拉"></a>下拉</h1><p>此时，将该点连接一个电阻接地，由于该电路中NP结电阻无穷大，分走所有电压，所以此时该点的电压变为0，确定性的输出了0电压。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/2.png" alt=" "><br>该电阻存在的必要性是让该点同样可以输出高电压，如下图所示：<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/3.png" alt=" "></p>
-<h1 id="上拉"><a href="#上拉" class="headerlink" title="上拉"></a>上拉</h1><p>如图所示，上拉电阻的作用是将其与单片机内的等效电阻并联，让整体电阻变小，从而分走更少的电压，这样就可以提升输出点的电压了。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/4.png" alt=" "><br>同样，上拉电阻也能解决悬空状态的问题，如图所示，如果想要输出高电平，同样可以通过并联电阻解决。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/5.png" alt=" "><br>并联后，上面的电阻变小，而下方电阻为无穷大，所有电压将被下方分走。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/6.png" alt=" "><br>参考来源：B站爱上半导体</p>
-]]></content>
-      <categories>
-        <category>底层原理</category>
-      </categories>
-      <tags>
-        <tag>数字电路</tag>
-        <tag>上拉电阻</tag>
-        <tag>下拉电阻</tag>
       </tags>
   </entry>
   <entry>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"cszhenfeili.online","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"show_result":true,"style":null},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="标题（Title）YOLOv10: Real-Time End-to-End Object Detection目标检测经典模型，YOLO系列，还没用过，试一次。23 May 2024 摘要（Abstract）YOLOs在实施目标检测的应用方向占据主导地位，其很好的平衡了计算效率和准确率。然而YOLO依然存在问题，YOLO算法依赖于非极大值抑制（NMS）进行后处理，这对端到端部署和推理延迟产生负面影">
+<meta property="og:type" content="article">
+<meta property="og:title" content="YOLOv10 Real-Time End-to-End Object Detection">
+<meta property="og:url" content="https://cszhenfeili.online/2024/06/02/Literature3/index.html">
+<meta property="og:site_name" content="智能制造">
+<meta property="og:description" content="标题（Title）YOLOv10: Real-Time End-to-End Object Detection目标检测经典模型，YOLO系列，还没用过，试一次。23 May 2024 摘要（Abstract）YOLOs在实施目标检测的应用方向占据主导地位，其很好的平衡了计算效率和准确率。然而YOLO依然存在问题，YOLO算法依赖于非极大值抑制（NMS）进行后处理，这对端到端部署和推理延迟产生负面影">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cszhenfeili.online/images/Literature3/1.PNG">
+<meta property="og:image" content="https://cszhenfeili.online/images/Literature3/2.PNG">
+<meta property="og:image" content="https://cszhenfeili.online/images/Literature3/3.PNG">
+<meta property="article:published_time" content="2024-06-02T14:49:21.000Z">
+<meta property="article:modified_time" content="2024-06-02T14:59:21.186Z">
+<meta property="article:author" content="晓飞">
+<meta property="article:tag" content="YOLO">
+<meta property="article:tag" content="实时目标监测">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cszhenfeili.online/images/Literature3/1.PNG">
+
+
+<link rel="canonical" href="https://cszhenfeili.online/2024/06/02/Literature3/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cszhenfeili.online/2024/06/02/Literature3/","path":"2024/06/02/Literature3/","title":"YOLOv10 Real-Time End-to-End Object Detection"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>YOLOv10 Real-Time End-to-End Object Detection | 智能制造</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">智能制造</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">新一代控制技术</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">35</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">15</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%87%E9%A2%98%EF%BC%88Title%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">标题（Title）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81%EF%BC%88Abstract%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">摘要（Abstract）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9%EF%BC%88Main-Content%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">主要内容（Main Content）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%B0%E6%9C%89%E6%8A%80%E6%9C%AF%E7%9A%84%E7%BC%BA%E9%99%B7"><span class="nav-number">3.1.</span> <span class="nav-text">现有技术的缺陷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E8%A7%A3%E5%86%B3%E6%80%9D%E8%B7%AF"><span class="nav-number">3.2.</span> <span class="nav-text">核心解决思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.3.</span> <span class="nav-text">实验设置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%84%E4%BB%B7%E5%92%8C%E6%84%9F%E6%83%B3%EF%BC%88Evaluation-and-Reflections%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">评价和感想（Evaluation and Reflections）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%EF%BC%88References%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">参考文献（References）</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="晓飞"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">晓飞</p>
+  <div class="site-description" itemprop="description">自动化、信息化、智能化、集成化</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cszhenfeili.online/2024/06/02/Literature3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="晓飞">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="智能制造">
+      <meta itemprop="description" content="自动化、信息化、智能化、集成化">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="YOLOv10 Real-Time End-to-End Object Detection | 智能制造">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          YOLOv10 Real-Time End-to-End Object Detection
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-06-02 22:49:21 / 修改时间：22:59:21" itemprop="dateCreated datePublished" datetime="2024-06-02T22:49:21+08:00">2024-06-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%96%87%E7%8C%AE%E8%B0%83%E7%A0%94/" itemprop="url" rel="index"><span itemprop="name">文献调研</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="标题（Title）"><a href="#标题（Title）" class="headerlink" title="标题（Title）"></a>标题（Title）</h1><p>YOLOv10: Real-Time End-to-End Object Detection<br>目标检测经典模型，YOLO系列，还没用过，试一次。<br>23 May 2024</p>
+<h1 id="摘要（Abstract）"><a href="#摘要（Abstract）" class="headerlink" title="摘要（Abstract）"></a>摘要（Abstract）</h1><p>YOLOs在实施目标检测的应用方向占据主导地位，其很好的平衡了计算效率和准确率。然而YOLO依然存在问题，YOLO算法依赖于非极大值抑制（NMS）进行后处理，这对端到端部署和推理延迟产生负面影响。此外，YOLO的各个组件设计缺乏全面检查，导致计算冗余和模型能力受限。为了解决上述问题，本文提出一致双重分配策略（Consistent Dual Assignments）和整体效率-准确性驱动的模型设计策略。大量实验验证本策略达到了state-of-the-art的效率以及表现。</p>
+<span id="more"></span>
+<h1 id="主要内容（Main-Content）"><a href="#主要内容（Main-Content）" class="headerlink" title="主要内容（Main Content）"></a>主要内容（Main Content）</h1><h2 id="现有技术的缺陷"><a href="#现有技术的缺陷" class="headerlink" title="现有技术的缺陷"></a>现有技术的缺陷</h2><ol>
+<li>依赖于非极大值抑制（NMS）</li>
+</ol>
+<ul>
+<li>问题描述：YOLO算法依赖于非极大值抑制（NMS）进行后处理，以消除重叠的检测框。NMS是一种后处理技术，用于在多个重叠的检测框中保留得分最高的一个，消除其他重叠框。</li>
+<li>缺陷：NMS的计算复杂度较高，并且在端到端的实时检测任务中增加了额外的计算开销和延迟。此外，NMS处理步骤需要将模型输出与后处理分离，这使得整个模型不完全端到端。</li>
+</ul>
+<ol start="2">
+<li>组件设计缺乏系统性检查</li>
+</ol>
+<ul>
+<li>问题描述：YOLO系列算法的各个组件（如检测头、特征提取网络等）的设计和优化常常是独立进行的，缺乏全局视角的系统性检查和优化。</li>
+<li>缺陷：这种缺乏系统性检查的设计方式导致了计算冗余和模型能力受限。例如，某些组件可能存在计算资源浪费，或设计上未能充分发挥其潜力，整体效率和性能受到影响。</li>
+</ul>
+<ol start="3">
+<li>计算冗余</li>
+</ol>
+<ul>
+<li>问题描述：YOLO算法的某些设计存在计算冗余，未能充分利用计算资源。</li>
+<li>缺陷：计算冗余意味着在模型的推理过程中，有些计算步骤是多余的或可以简化的。这不仅增加了模型的计算量，也增加了推理时间，降低了模型的整体效率。</li>
+</ul>
+<ol start="4">
+<li>模型能力受限</li>
+</ol>
+<ul>
+<li>问题描述：由于设计上的局限性，现有YOLO模型在处理复杂场景和小目标时表现不够理想。</li>
+<li>缺陷：模型能力受限意味着在实际应用中，YOLO模型可能无法准确检测复杂背景中的小目标，影响了模型的实用性和可靠性。</li>
+</ul>
+<h2 id="核心解决思路"><a href="#核心解决思路" class="headerlink" title="核心解决思路"></a>核心解决思路</h2><ol>
+<li>一致双重分配策略（Consistent Dual Assignments）<br>1.1 无NMS训练</li>
+</ol>
+<ul>
+<li>背景：传统YOLO模型依赖非极大值抑制（NMS）来消除多余的重叠检测框。这增加了计算开销，并在端到端推理过程中引入延迟。</li>
+<li>解决方案：YOLOv10提出了一种无NMS的训练策略，通过结合一对多和一对一匹配方法来实现高效的目标检测。<ul>
+<li>一对多匹配：在训练阶段，模型将一个预测框与多个真实框匹配。这有助于提高模型对目标的召回率（recall），即减少漏检。</li>
+<li>一对一匹配：在推理阶段，模型仅使用一对一匹配来确保每个真实框只对应一个预测框，从而避免重复检测。<br>1.2 一致匹配度量</li>
+</ul>
+</li>
+<li>背景：传统的一对多和一对一匹配方法在优化目标上可能存在差异，导致模型在训练和推理时表现不一致。</li>
+<li>解决方案：YOLOv10采用一致的匹配度量方法，使得一对多匹配和一对一匹配在优化方向上保持一致。这减少了监督差距，确保训练和推理的优化目标一致，提高了模型性能。</li>
+</ul>
+<ol start="2">
+<li>整体效率-准确性驱动的模型设计策略<br>2.1 轻量级分类头</li>
+</ol>
+<ul>
+<li>背景：YOLO模型的分类头通常较为复杂，增加了计算量和模型参数量。</li>
+<li>解决方案：YOLOv10引入轻量级分类头，通过简化分类头的结构来减少计算开销，同时保持分类性能。这样既能降低计算负担，又能保持高效的分类能力。<br>2.2 空间-通道解耦下采样</li>
+<li>背景：传统的下采样操作（如卷积）同时处理空间和通道信息，可能导致信息丢失和计算冗余。</li>
+<li>解决方案：YOLOv10提出了空间-通道解耦下采样方法，将空间下采样和通道变换解耦开来，分别进行处理。这种方法能够更有效地保留和处理信息，提高模型的计算效率和检测性能。<br>2.3 基于内在秩的模块设计</li>
+<li>背景：传统YOLO模型在不同阶段的特征图处理上可能存在冗余，未充分利用计算资源。</li>
+<li>解决方案：YOLOv10基于内在秩分析各个阶段的冗余，提出了紧凑的反转块设计。这种设计方法有助于减少冗余计算，提高模型的整体效率。<br><img src="/images/Literature3/1.PNG" alt=" "><br><img src="/images/Literature3/2.PNG" alt=" "></li>
+</ul>
+<h2 id="实验设置"><a href="#实验设置" class="headerlink" title="实验设置"></a>实验设置</h2><ol>
+<li>基准数据集<br>作者在多个标准目标检测基准数据集上评估了YOLOv10，包括：</li>
+</ol>
+<ul>
+<li>COCO（Common Objects in Context）：一个广泛使用的目标检测数据集，包含80个对象类别。</li>
+<li>VOC（PASCAL Visual Object Classes）：另一个著名的数据集，包含20个对象类别。</li>
+</ul>
+<ol start="2">
+<li>模型变体<br>YOLOv10在不同配置下进行了测试，分别标记为n、s、m、b、l和x，代表纳米（nano）、小（small）、中（medium）、基础（base）、大（large）和超大（extra-large）模型。这些配置在速度和准确性之间取得了平衡。</li>
+<li>评估指标<br>主要评估指标包括：</li>
+</ol>
+<ul>
+<li>mAP（mean Average Precision）：目标检测准确性的标准指标。</li>
+<li>推理速度：每张图像的推理时间（以毫秒为单位），表示模型的效率。</li>
+<li>模型大小：反映参数数量和计算复杂度。</li>
+</ul>
+<ol start="4">
+<li>性能比较<br>YOLOv10与几个最先进的模型进行了比较，包括以前的YOLO版本和其他领先的目标检测模型如Faster R-CNN、SSD和EfficientDet。结果显示：</li>
+</ol>
+<ul>
+<li>更高的mAP：YOLOv10在mAP得分上优于以前的版本，表明其准确性更高。</li>
+<li>更快的推理速度：该模型保持了实时推理能力，这对需要低延迟的应用至关重要。</li>
+<li>更小的模型大小：尽管性能提高，YOLOv10模型设计紧凑，适合在资源受限的设备上部署。</li>
+</ul>
+<ol start="5">
+<li>消融研究<br>论文包括详细的消融研究，以单独分析YOLOv10的不同组件的贡献。这些研究考察了：</li>
+</ol>
+<ul>
+<li>一致双重分配策略的效果：展示了提出的双重分配策略对模型性能的影响。</li>
+<li>效率驱动的设计选择的影响：评估了轻量级分类头和空间-通道解耦下采样等架构变化对整体性能的贡献。</li>
+</ul>
+<ol start="6">
+<li>定性结果<br>作者提供了定性示例，展示了YOLOv10在复杂条件下检测目标的能力，例如拥挤场景和小目标。这些视觉结果突出了模型的鲁棒性和泛化能力。<br><img src="/images/Literature3/3.PNG" alt=" "></li>
+</ol>
+<h1 id="评价和感想（Evaluation-and-Reflections）"><a href="#评价和感想（Evaluation-and-Reflections）" class="headerlink" title="评价和感想（Evaluation and Reflections）"></a>评价和感想（Evaluation and Reflections）</h1><p>经典的模型优化思路，详实的实验验证。<br>未来研究方向（Future Research Directions）</p>
+<ul>
+<li>主要是直接应用这些模型吧，想要自己做改进并不容易，可能对于具体情境可以做相对应的微创新。</li>
+</ul>
+<h1 id="参考文献（References）"><a href="#参考文献（References）" class="headerlink" title="参考文献（References）"></a>参考文献（References）</h1><p>Wang, A., Chen, H., Liu, L., Chen, K., Lin, Z., Han, J., &amp; Ding, G. (2024). YOLOv10: Real-Time End-to-End Object Detection. arXiv preprint arXiv:2405.14458.<br><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2405.14458">https://arxiv.org/pdf/2405.14458</a></p>
+
+    </div>
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/YOLO/" rel="tag"># YOLO</a>
+              <a href="/tags/%E5%AE%9E%E6%97%B6%E7%9B%AE%E6%A0%87%E7%9B%91%E6%B5%8B/" rel="tag"># 实时目标监测</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/01/%E5%9F%BA%E4%BA%8EYOLOv10%E7%9A%84%E6%91%84%E5%83%8F%E5%A4%B4%E5%AE%9E%E6%97%B6%E6%A3%80%E6%B5%8B/" rel="prev" title="基于YOLOv10的摄像头实时检测">
+                  <i class="fa fa-angle-left"></i> 基于YOLOv10的摄像头实时检测
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/02/Literature4/" rel="next" title="A Cyber-Physical Systems architecture for Industry 4.0-based manufacturing">
+                  A Cyber-Physical Systems architecture for Industry 4.0-based manufacturing <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">晓飞</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"mhchem":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":300,"height":600},"mobile":{"show":false},"log":false});</script></body>
+</html>
