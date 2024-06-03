@@ -52,21 +52,6 @@
       </tags>
   </entry>
   <entry>
-    <title>BCD码</title>
-    <url>/2024/05/07/BCD%E7%A0%81/</url>
-    <content><![CDATA[<p>Binary-Coded Decimal，二进制编码的十进制数。将每个十进制的0-9映射到四个二进制位。显然四位二进制位可以表示16种数字，映射到9个数后必然有一些位是不合法的，同时映射方案不同，得到的BCD码也不一样。</p>
-<h1 id="BCD码"><a href="#BCD码" class="headerlink" title="BCD码"></a>BCD码</h1><p><img src="/images/BCD%E7%A0%81/1.PNG" alt=" "></p>
-<span id="more"></span>
-<h1 id="8421码"><a href="#8421码" class="headerlink" title="8421码"></a>8421码</h1><p>8421码与十进制数的互相转换：<br>1000 1000 &#x3D; 88<br>DEC &#x3D; BCD &#x2F; 16 * 10 +BCD % 16<br>BCD &#x3D; DEC &#x2F; 10 * 16 + BCD % 10</p>
-]]></content>
-      <categories>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>8421码</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Canvas-Nest设置</title>
     <url>/2024/05/14/Canvas-Nest%E8%AE%BE%E7%BD%AE/</url>
     <content><![CDATA[<p>想设置如下图所示的动态背景，搜了很久没找到适用自己的。通过github源头轻松解决。<br><img src="/images/Canvas-Nest%E8%AE%BE%E7%BD%AE/1.png" alt=" "></p>
@@ -101,6 +86,21 @@
         <tag>时钟电路</tag>
         <tag>实时时钟</tag>
         <tag>单片机</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>BCD码</title>
+    <url>/2024/05/07/BCD%E7%A0%81/</url>
+    <content><![CDATA[<p>Binary-Coded Decimal，二进制编码的十进制数。将每个十进制的0-9映射到四个二进制位。显然四位二进制位可以表示16种数字，映射到9个数后必然有一些位是不合法的，同时映射方案不同，得到的BCD码也不一样。</p>
+<h1 id="BCD码"><a href="#BCD码" class="headerlink" title="BCD码"></a>BCD码</h1><p><img src="/images/BCD%E7%A0%81/1.PNG" alt=" "></p>
+<span id="more"></span>
+<h1 id="8421码"><a href="#8421码" class="headerlink" title="8421码"></a>8421码</h1><p>8421码与十进制数的互相转换：<br>1000 1000 &#x3D; 88<br>DEC &#x3D; BCD &#x2F; 16 * 10 +BCD % 16<br>BCD &#x3D; DEC &#x2F; 10 * 16 + BCD % 10</p>
+]]></content>
+      <categories>
+        <category>计算机组成原理</category>
+      </categories>
+      <tags>
+        <tag>8421码</tag>
       </tags>
   </entry>
   <entry>
@@ -515,6 +515,110 @@
         <tag>Resource-efficient machine learning</tag>
         <tag>inference</tag>
         <tag>deep neural networks.</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TIA Portal - Hardware Configuration</title>
+    <url>/2024/06/03/Simulation1/</url>
+    <content><![CDATA[<p>新创建一个项目，这一步很简单，命名名称、确认路径即可<br><img src="/images/Simulation1/1.PNG" alt=" "></p>
+<span id="more"></span>
+<p>进一步配置项目，通过项目视图配置会比较复杂，可以按照图中的提示依次配置。<br><img src="/images/Simulation1/2.PNG" alt=" "><br>首先添加PLC<br><img src="/images/Simulation1/3.PNG" alt=" "><br>命名规则解析<br>西门子S7-1500系列的CPU型号通常包含以下几个部分：</p>
+<ol>
+<li>CPU系列：</li>
+</ol>
+<ul>
+<li>开头的“CPU”表示这是一个中央处理单元。</li>
+</ul>
+<ol start="2">
+<li>型号编号：</li>
+</ol>
+<ul>
+<li>例如，1511、1513、1515等。这些数字表示CPU的性能和功能等级，数字越高，性能越强，功能越多。</li>
+</ul>
+<ol start="3">
+<li>功能和特性：</li>
+</ol>
+<ul>
+<li>字母表示特定的功能或特性，如“C”、“F”、“T”等。<ul>
+<li>“C”表示Compact，即紧凑型设计。</li>
+<li>“F”表示Fail-safe，即带有安全功能。</li>
+<li>“T”表示Technology，即带有技术功能，如运动控制。</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>通信协议：</li>
+</ol>
+<ul>
+<li>“PN”表示Profinet接口，适用于以太网通信。</li>
+<li>“DP”表示Profibus接口，适用于现场总线通信。</li>
+<li>“PN&#x2F;DP”表示同时支持Profinet和Profibus。</li>
+</ul>
+<ol start="5">
+<li>附加功能：</li>
+</ol>
+<ul>
+<li>例如，“ODK”表示开放开发工具包。</li>
+<li>“MFP”表示多功能处理器。<br><img src="/images/Simulation1/4.PNG" alt=" "><br>添加后，我们可以得到项目视图，有PLC以及其I&#x2F;O接口。<br><img src="/images/Simulation1/5.png" alt=" "><br>设备视图（硬件配置表）</li>
+<li>模块:<ul>
+<li>列出了PLC系统中所有配置的模块。</li>
+<li>“AI 5&#x2F;AQ 2_1”表示一个模拟量输入（Analog Input）和模拟量输出（Analog Output）模块。</li>
+<li>“DI 16&#x2F;DQ 16_1”表示一个数字量输入（Digital Input）和数字量输出（Digital Output）模块。</li>
+<li>“HSC”表示高速计数器（High-Speed Counter）模块。</li>
+<li>“Pulse”表示脉冲输出模块。</li>
+</ul>
+</li>
+<li>机架和插槽:<ul>
+<li>机架（Rack）和插槽（Slot）列表示各模块在PLC系统中的物理位置。</li>
+<li>例如，主机（CPU 1512C-1 PN）位于机架0的插槽1。</li>
+</ul>
+</li>
+<li>地址:<ul>
+<li>地址列（Address）表示每个模块的起始地址。</li>
+<li>例如，“AI 5&#x2F;AQ 2_1”模块的起始地址是0，其通道范围是0到9。</li>
+<li>数字量输入模块“DI 16&#x2F;DQ 16_1”的起始地址是10，其通道范围是10到11（输入），以及4到5（输出）。</li>
+</ul>
+</li>
+<li>类型和订货号:<ul>
+<li>类型列（Type）显示了每个模块的类型，例如“CPU 1512C-1 PN”。</li>
+<li>订货号列（Order Number）显示了西门子的产品订货号，如“6ES7 512-1CK00-0AB0”。</li>
+</ul>
+</li>
+<li>固件版本:<ul>
+<li>固件版本列（Firmware Version）显示每个模块的固件版本，例如V2.8。<br><img src="/images/Simulation1/6.png" alt=" "><br>在TIA Portal中，PLC设备的地址（包括输入地址和输出地址）起着至关重要的作用。这些地址用于标识PLC系统中的每个模块和I&#x2F;O点，以便在编程和通信过程中准确地引用和访问它们。让我们深入探讨这些地址的作用和具体应用。<br>地址的作用</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>唯一标识：</li>
+</ol>
+<ul>
+<li>每个I&#x2F;O点在PLC系统中都有一个唯一的地址，确保在程序中能够准确地引用和操作这些点。例如，数字输入点的地址可能是I0.0，表示第一个数字输入点。</li>
+</ul>
+<ol start="2">
+<li>数据交换：</li>
+</ol>
+<ul>
+<li>PLC通过这些地址与外部设备（如传感器、执行器、HMI等）交换数据。地址用于定义哪些数据需要读取（输入）或写入（输出）。</li>
+</ul>
+<ol start="3">
+<li>程序控制：</li>
+</ol>
+<ul>
+<li>在PLC程序中，地址用于访问和控制I&#x2F;O点的状态。例如，使用I0.0读取一个传感器的状态，或使用Q0.0控制一个执行器的开关状态。</li>
+</ul>
+<ol start="4">
+<li>硬件配置：</li>
+</ol>
+<ul>
+<li>在TIA Portal中，硬件配置中为每个模块分配了具体的地址范围。这个配置确保了物理连接和逻辑编程的一致性。<br><img src="/images/Simulation1/7.png" alt=" "><br>TIA中，我们可以方便的给PLC拓展模块，并且修改其地址。<br><img src="/images/Simulation1/8.png" alt=" "><br>最后，这里完成编译。编译的主要目的是将工程师在TIA Portal中创建的PLC项目（包括硬件配置、PLC程序、HMI配置等）转换成可以在实际硬件上运行的二进制代码，并进行一系列检查和优化。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数字仿真</category>
+      </categories>
+      <tags>
+        <tag>TIA Portal</tag>
       </tags>
   </entry>
   <entry>
