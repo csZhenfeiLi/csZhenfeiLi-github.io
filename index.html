@@ -88,7 +88,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">35</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">15</span></a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">38</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">16</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -164,7 +164,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,6 +181,100 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://cszhenfeili.online/2024/06/03/Literature5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="晓飞">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="智能制造">
+      <meta itemprop="description" content="自动化、信息化、智能化、集成化">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 智能制造">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/03/Literature5/" class="post-title-link" itemprop="url">LLM4PLC Harnessing Large Language Models for Verifiable Programming of PLCs in Industrial Control Systems</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-06-03 21:34:48 / 修改时间：21:45:07" itemprop="dateCreated datePublished" datetime="2024-06-03T21:34:48+08:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%96%87%E7%8C%AE%E8%B0%83%E7%A0%94/" itemprop="url" rel="index"><span itemprop="name">文献调研</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="标题（Title）"><a href="#标题（Title）" class="headerlink" title="标题（Title）"></a>标题（Title）</h1><p>LLM4PLC Harnessing Large Language Models for Verifiable Programming of PLCs in Industrial Control Systems<br>利用大模型为PLC自动生成代码，PLC用于工业控制。<br>arXiv:2401.05443v1 [cs.SE] 8 Jan 2024</p>
+<h1 id="摘要（Abstract）"><a href="#摘要（Abstract）" class="headerlink" title="摘要（Abstract）"></a>摘要（Abstract）</h1><p>大语言模型在自动化生成代码方面已经起到重要作用，但是其应用在自动控制领域仍然面临挑战。类似用于PLC的代码面对如下挑战。</p>
+<ol>
+<li>训练样本少</li>
+<li>对代码的可靠性要求极高，这些代码会直接作用于物理世界，稍有偏差就可能造成重大损失。（仿真是解决问题的一个思路，如果PLC自动生成代码，然后先在仿真环境跑通，再部署到产线上，这应该是这个方向的进一步创新。而且仿真的结果可以直接反馈给LLM，方便其进一步迭代，这将比本文描述的方案更为高效。）<br>本文提出了LLM4PLC，用于自动化生成PLC代码，为了解决上述的问题，引入了grammar checkers, compilers and SMV verifiers确保生成代码的可靠性。对大模型进行微调和针对性的提示词工程。<br>最后本文生成的代码在MFTB平台上进行了测试，证明了该方法对PLC代码有较大提升。</li></ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/06/03/Literature5/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -220,7 +314,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-06-02 22:49:27 / 修改时间：22:58:00" itemprop="dateCreated datePublished" datetime="2024-06-02T22:49:27+08:00">2024-06-02</time>
+      <time title="创建时间：2024-06-02 22:49:27 / 修改时间：23:00:07" itemprop="dateCreated datePublished" datetime="2024-06-02T22:49:27+08:00">2024-06-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -981,96 +1075,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/05/14/AT24C02/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cszhenfeili.online/2024/05/14/%E8%9C%82%E9%B8%A3%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="晓飞">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="智能制造">
-      <meta itemprop="description" content="自动化、信息化、智能化、集成化">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 智能制造">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/05/14/%E8%9C%82%E9%B8%A3%E5%99%A8/" class="post-title-link" itemprop="url">蜂鸣器</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-05-14 00:34:32 / 修改时间：00:51:12" itemprop="dateCreated datePublished" datetime="2024-05-14T00:34:32+08:00">2024-05-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%85%83%E4%BB%B6%E6%A8%A1%E5%9D%97/" itemprop="url" rel="index"><span itemprop="name">元件模块</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>蜂鸣器可以将电信号转化为声音信号。用于设备的按键音、报警音。<br><img src="/images/%E8%9C%82%E9%B8%A3%E5%99%A8/1.PNG" alt=" "></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/05/14/%E8%9C%82%E9%B8%A3%E5%99%A8/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>BCD码</title>
-    <url>/2024/05/07/BCD%E7%A0%81/</url>
-    <content><![CDATA[<p>Binary-Coded Decimal，二进制编码的十进制数。将每个十进制的0-9映射到四个二进制位。显然四位二进制位可以表示16种数字，映射到9个数后必然有一些位是不合法的，同时映射方案不同，得到的BCD码也不一样。</p>
-<h1 id="BCD码"><a href="#BCD码" class="headerlink" title="BCD码"></a>BCD码</h1><p><img src="/images/BCD%E7%A0%81/1.PNG" alt=" "></p>
-<span id="more"></span>
-<h1 id="8421码"><a href="#8421码" class="headerlink" title="8421码"></a>8421码</h1><p>8421码与十进制数的互相转换：<br>1000 1000 &#x3D; 88<br>DEC &#x3D; BCD &#x2F; 16 * 10 +BCD % 16<br>BCD &#x3D; DEC &#x2F; 10 * 16 + BCD % 10</p>
-]]></content>
-      <categories>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>8421码</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>AT24C02</title>
     <url>/2024/05/14/AT24C02/</url>
     <content><![CDATA[<h1 id="ROM-非易失性存储器"><a href="#ROM-非易失性存储器" class="headerlink" title="ROM(非易失性存储器)"></a>ROM(非易失性存储器)</h1><ol>
@@ -64,6 +49,21 @@
         <tag>ROM</tag>
         <tag>总线通讯</tag>
         <tag>I²C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>BCD码</title>
+    <url>/2024/05/07/BCD%E7%A0%81/</url>
+    <content><![CDATA[<p>Binary-Coded Decimal，二进制编码的十进制数。将每个十进制的0-9映射到四个二进制位。显然四位二进制位可以表示16种数字，映射到9个数后必然有一些位是不合法的，同时映射方案不同，得到的BCD码也不一样。</p>
+<h1 id="BCD码"><a href="#BCD码" class="headerlink" title="BCD码"></a>BCD码</h1><p><img src="/images/BCD%E7%A0%81/1.PNG" alt=" "></p>
+<span id="more"></span>
+<h1 id="8421码"><a href="#8421码" class="headerlink" title="8421码"></a>8421码</h1><p>8421码与十进制数的互相转换：<br>1000 1000 &#x3D; 88<br>DEC &#x3D; BCD &#x2F; 16 * 10 +BCD % 16<br>BCD &#x3D; DEC &#x2F; 10 * 16 + BCD % 10</p>
+]]></content>
+      <categories>
+        <category>计算机组成原理</category>
+      </categories>
+      <tags>
+        <tag>8421码</tag>
       </tags>
   </entry>
   <entry>
@@ -305,7 +305,7 @@
 <h1 id="摘要（Abstract）"><a href="#摘要（Abstract）" class="headerlink" title="摘要（Abstract）"></a>摘要（Abstract）</h1><p>本文主要讨论了如何通过部署网络物理系统（CPS）来实现工业4.0，工业4.0的核心在于通过网络物理系统（CPS）将物理世界和计算空间紧密结合，以实现更高效、更协作和更具弹性的制造系统。CPS利用传感器、大数据和先进的分析方法，实时监控和管理制造过程中的各个方面。在这一早期发展阶段，迫切需要对CPS进行明确定义。本文提出了一个统一的五级架构，作为CPS实施的指导方针。</p>
 <span id="more"></span>
 <h1 id="背景（Background）"><a href="#背景（Background）" class="headerlink" title="背景（Background）"></a>背景（Background）</h1><p>网络物理系统（CPS）被定义为管理物理资产和计算能力之间互联系统的变革性技术。随着传感器、数据采集系统和计算机网络的普及，越来越多的工厂开始实施高科技方法。不断增加的传感器和联网机器的使用导致了大量数据的生成，称为大数据。在这种环境下，CPS可以进一步发展，以管理大数据并利用机器的互联性，实现智能、弹性和自适应的目标。<br><img src="/images/Literature4/1.PNG" alt=" "></p>
-<h1 id="主要内容（Main-Content）"><a href="#主要内容（Main-Content）" class="headerlink" title="主要内容（Main Content）"></a>主要内容（Main Content）</h1><p>CPS 5C架构部分总结<br>本文提出的五级CPS结构，即5C架构，提供了一个逐步开发和部署CPS用于制造应用的指导方针。一般来说，CPS包括两个主要功能组件：<br>（1）先进的连接性，确保从物理世界到网络空间的实时数据采集和信息反馈；<br>（2）智能数据管理、分析和计算能力，构建网络空间。<br>然而，这种要求过于抽象，不足以用于具体的实施。相反，本文提出的5C架构通过顺序工作流程方式，明确定义了如何从初始数据采集、到分析、再到最终价值创造构建CPS。具体的5C架构如下：<br><img src="/images/Literature4/2.PNG" alt=" "></p>
+<h1 id="主要内容（Main-Content）"><a href="#主要内容（Main-Content）" class="headerlink" title="主要内容（Main Content）"></a>主要内容（Main Content）</h1><h2 id="CPS-5C架构部分总结"><a href="#CPS-5C架构部分总结" class="headerlink" title="CPS 5C架构部分总结"></a>CPS 5C架构部分总结</h2><p>本文提出的五级CPS结构，即5C架构，提供了一个逐步开发和部署CPS用于制造应用的指导方针。一般来说，CPS包括两个主要功能组件：<br>（1）先进的连接性，确保从物理世界到网络空间的实时数据采集和信息反馈；<br>（2）智能数据管理、分析和计算能力，构建网络空间。<br>然而，这种要求过于抽象，不足以用于具体的实施。相反，本文提出的5C架构通过顺序工作流程方式，明确定义了如何从初始数据采集、到分析、再到最终价值创造构建CPS。具体的5C架构如下：<br><img src="/images/Literature4/2.PNG" alt=" "></p>
 <ol>
 <li>智能连接（Smart Connection）</li>
 </ol>
@@ -334,8 +334,9 @@
 <li>配置（Configuration）</li>
 </ol>
 <ul>
-<li>这是从网络空间到物理空间的反馈控制，使机器能够自我配置和自适应。该层级作为弹性控制系统（RCS），应用认知层级所做的纠正和预防决策于监控系统。<br><img src="/images/Literature4/3.PNG" alt=" "><br>基于PHM的CPS系统设计部分总结<br>网络层级的PHM（预测性健康管理）的极大优势在于，通过机器-网络接口（CPI）在网络层级实现机器健康分析的互联互通，这在概念上类似于社交网络。一旦网络层级的基础设施到位，机器可以注册到网络中并通过网络接口交换信息。在这一点上，需要建立一个算法来跟踪机器状态的变化，从历史信息中推断出额外的知识，进行点对点比较，并将输出传递到下一个层级。为了执行这些操作并生成适当的结果，需要开发新的方法。本文介绍了在网络层级执行分析的“时间机器”，包括以下三个并行部分：</li>
+<li>这是从网络空间到物理空间的反馈控制，使机器能够自我配置和自适应。该层级作为弹性控制系统（RCS），应用认知层级所做的纠正和预防决策于监控系统。<br><img src="/images/Literature4/3.PNG" alt=" "></li>
 </ul>
+<h2 id="基于PHM的CPS系统设计部分总结"><a href="#基于PHM的CPS系统设计部分总结" class="headerlink" title="基于PHM的CPS系统设计部分总结"></a>基于PHM的CPS系统设计部分总结</h2><p>网络层级的PHM（预测性健康管理）的极大优势在于，通过机器-网络接口（CPI）在网络层级实现机器健康分析的互联互通，这在概念上类似于社交网络。一旦网络层级的基础设施到位，机器可以注册到网络中并通过网络接口交换信息。在这一点上，需要建立一个算法来跟踪机器状态的变化，从历史信息中推断出额外的知识，进行点对点比较，并将输出传递到下一个层级。为了执行这些操作并生成适当的结果，需要开发新的方法。本文介绍了在网络层级执行分析的“时间机器”，包括以下三个并行部分：</p>
 <ol>
 <li>快照收集</li>
 </ol>
@@ -387,21 +388,49 @@
       </tags>
   </entry>
   <entry>
-    <title>下拉电阻、上拉电阻</title>
-    <url>/2024/05/02/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/</url>
-    <content><![CDATA[<p>下拉电阻可以将一个不确定的信号钳位在低电平。<br>上拉电阻可以增强输出引脚的驱动能力。</p>
-<span id="more"></span>
-<h1 id="悬空状态"><a href="#悬空状态" class="headerlink" title="悬空状态"></a>悬空状态</h1><p>如图所示，当基极什么都不接的时候，该点的电压就是悬空状态。此时如果转化为数字信号，其既可能输出0，也可能输出1。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/1.png" alt=" "></p>
-<h1 id="下拉"><a href="#下拉" class="headerlink" title="下拉"></a>下拉</h1><p>此时，将该点连接一个电阻接地，由于该电路中NP结电阻无穷大，分走所有电压，所以此时该点的电压变为0，确定性的输出了0电压。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/2.png" alt=" "><br>该电阻存在的必要性是让该点同样可以输出高电压，如下图所示：<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/3.png" alt=" "></p>
-<h1 id="上拉"><a href="#上拉" class="headerlink" title="上拉"></a>上拉</h1><p>如图所示，上拉电阻的作用是将其与单片机内的等效电阻并联，让整体电阻变小，从而分走更少的电压，这样就可以提升输出点的电压了。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/4.png" alt=" "><br>同样，上拉电阻也能解决悬空状态的问题，如图所示，如果想要输出高电平，同样可以通过并联电阻解决。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/5.png" alt=" "><br>并联后，上面的电阻变小，而下方电阻为无穷大，所有电压将被下方分走。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/6.png" alt=" "><br>参考来源：B站爱上半导体</p>
+    <title>LLM4PLC Harnessing Large Language Models for Verifiable Programming of PLCs in Industrial Control Systems</title>
+    <url>/2024/06/03/Literature5/</url>
+    <content><![CDATA[<h1 id="标题（Title）"><a href="#标题（Title）" class="headerlink" title="标题（Title）"></a>标题（Title）</h1><p>LLM4PLC Harnessing Large Language Models for Verifiable Programming of PLCs in Industrial Control Systems<br>利用大模型为PLC自动生成代码，PLC用于工业控制。<br>arXiv:2401.05443v1 [cs.SE] 8 Jan 2024</p>
+<h1 id="摘要（Abstract）"><a href="#摘要（Abstract）" class="headerlink" title="摘要（Abstract）"></a>摘要（Abstract）</h1><p>大语言模型在自动化生成代码方面已经起到重要作用，但是其应用在自动控制领域仍然面临挑战。类似用于PLC的代码面对如下挑战。</p>
+<ol>
+<li>训练样本少</li>
+<li>对代码的可靠性要求极高，这些代码会直接作用于物理世界，稍有偏差就可能造成重大损失。（仿真是解决问题的一个思路，如果PLC自动生成代码，然后先在仿真环境跑通，再部署到产线上，这应该是这个方向的进一步创新。而且仿真的结果可以直接反馈给LLM，方便其进一步迭代，这将比本文描述的方案更为高效。）<br>本文提出了LLM4PLC，用于自动化生成PLC代码，为了解决上述的问题，引入了grammar checkers, compilers and SMV verifiers确保生成代码的可靠性。对大模型进行微调和针对性的提示词工程。<br>最后本文生成的代码在MFTB平台上进行了测试，证明了该方法对PLC代码有较大提升。<span id="more"></span></li>
+</ol>
+<h1 id="背景（Background）"><a href="#背景（Background）" class="headerlink" title="背景（Background）"></a>背景（Background）</h1><p>PLC是特定领域的实时计算机，运行专门的程序，并采用IEC 61131-3标准下的五种编程范式之一。其中，结构化文本（ST）由于其语法和结构与传统编程语言相似，适合使用最先进的技术进行自动代码生成。<br>然而，开发可靠且安全的PLC软件非常复杂且耗时。为了提高工程效率，本文提出了LLM4PLC框架，该框架通过使用大型语言模型（LLM）自动生成PLC代码，并结合用户反馈和外部验证工具，确保代码的安全性和有效性。<br><img src="/images/Literature5/1.PNG" alt=" "></p>
+<h1 id="主要内容（Main-Content）"><a href="#主要内容（Main-Content）" class="headerlink" title="主要内容（Main Content）"></a>主要内容（Main Content）</h1><p>本文采用的方法基于现有的PLC软件工程、形式验证方法以及最先进的LLM提示和参数高效微调（PEFT）技术，包括低秩适应（LoRAs）。本节提供了每个领域的必要背景知识，并介绍了我们在所提出方法中采用的设计选择动机。<br><img src="/images/Literature5/2.PNG" alt=" "></p>
+<h3 id="大型语言模型（LLM）"><a href="#大型语言模型（LLM）" class="headerlink" title="大型语言模型（LLM）"></a>大型语言模型（LLM）</h3><p>大型语言模型（LLM）利用Transformer架构中的注意力机制来建模不断增加长度的序列。Transformer模型的核心是自注意力机制，它计算序列中每对标记的注意力分数，从而允许在序列内长距离之间的依赖关系和关系。所有主要的LLM都使用下一个标记预测（NTP）方案一次生成一个标记。</p>
+<h3 id="模型驱动设计（MBD）"><a href="#模型驱动设计（MBD）" class="headerlink" title="模型驱动设计（MBD）"></a>模型驱动设计（MBD）</h3><p>模型驱动设计（MBD）是一个工程范式，它利用数学和图形建模来促进复杂系统的分析、实现和模拟。通过使用有限状态机（FSM）显式规划来优化PLC扫描周期，每个FSM状态负责单一操作，使执行过程可预测且易于调试。在自然语言规范的MBD提示中，我们约束LLM遵循FSM设计以解决方案。</p>
+<h3 id="语法检查器和形式验证"><a href="#语法检查器和形式验证" class="headerlink" title="语法检查器和形式验证"></a>语法检查器和形式验证</h3><ul>
+<li>语法检查器：在将候选代码转换为可运行程序的第一步是检查其是否符合编程语言的标准。如果发现任何错误，这些错误会反馈到我们的管道中以创建下一个阶段的‘纠正提示’。通过集成语法检查器在LLM代码生成管道中，可以更深入地了解代码缺陷，并更好地准备LLM采取纠正措施。</li>
+<li>形式验证：通过符号模型检查进行程序和算法的形式验证是部署PLC代码到危险环境中的关键步骤。形式验证工具采用候选代码以及操作的严格约束来证明功能正确性。我们的方法利用接受的静态分析知识在验证管道中使用这些工具来验证LLM生成的代码。<br><img src="/images/Literature5/3.png" alt=" "></li>
+</ul>
+<h3 id="实验设置"><a href="#实验设置" class="headerlink" title="实验设置"></a>实验设置</h3><p>为了进行这项研究，我们针对GPT-3、GPT-4、Code Llama 7B和Code Llama 34B进行了全面评估。这些模型代表了当前最先进的一般用途语言模型（GPT-3和GPT-4）和专为代码生成设计的模型（Code Llama 7B和Code Llama 34B），使我们能够研究性能与计算资源之间的权衡。</p>
+<h3 id="提示工程"><a href="#提示工程" class="headerlink" title="提示工程"></a>提示工程</h3><p>我们采用了两种提示类型，即零样本提示和单样本提示来生成LLM的输出。单样本提示包含结构化文本语法和代码元素的代表性示例，从而为改进代码生成提供上下文线索。而零样本提示仅请求代码生成，没有任何上下文指导。</p>
+<h3 id="LLM微调"><a href="#LLM微调" class="headerlink" title="LLM微调"></a>LLM微调</h3><p>我们通过创建低秩适应（LoRA）对Code Llama 7B和Code Llama 34B进行了微调。GPT-3.5和GPT-4不提供LoRA训练接口，因此我们使用这些模型的默认配置。然后，我们利用这些知识训练了一组用于代码补全和代码修复任务的LoRA，每个模型两组。</p>
+<h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p>我们从OSCAT IEC 61131-3库生成了训练、验证和测试数据集。具体而言，我们运行自动化测试剔除OSCAT数据集中不合格的ST文件，然后创建三个独立的数据集来广泛测试我们的管道能力：</p>
+<ul>
+<li>生成数据集：即剔除所有不可编译文件后的OSCAT数据集。</li>
+<li>补全数据集：通过随机截断生成数据集中的文件来创建，模拟LLM的代码补全能力。</li>
+<li>修复数据集：通过从生成数据集中随机删除行，直到生成的ST文件无法编译为止，用于测试LLM解决特定语法错误的能力。</li>
+</ul>
+<h3 id="测量指标"><a href="#测量指标" class="headerlink" title="测量指标"></a>测量指标</h3><p>我们的测量指标包括通过率、编译器错误数量和代码质量的人类评估。通过率使用pass@k指标评估，编译器错误率提供对我们方法稳健性的洞察，代码质量评估则通过专家小组的评分来完成。</p>
+<h3 id="测试平台"><a href="#测试平台" class="headerlink" title="测试平台"></a>测试平台</h3><p>我们在实验室部署了FischerTechnik制造测试平台（MFTB），这是一个集成平台，用于模拟常见制造过程的小型版本。MFTB是一个复杂的网络物理系统，集成了各种输入和不同类型的输出，用于研究和验证自动化、数字控制系统和操作效率。<br><img src="/images/Literature5/4.png" alt=" "><br><img src="/images/Literature5/5.png" alt=" "></p>
+<h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><p>在本节中，我们展示了我们的方法——LLM4PLC的实证评估结果。我们通过三个关键指标来衡量方法的有效性：通过率、编译器错误计数和人工评估的代码质量。我们还比较了每种解决方案所需的工程时间。这些指标为我们的方法提供了全面的评估，涵盖了代码生成过程中的准确性、鲁棒性和实用性 。</p>
+<h3 id="通过率"><a href="#通过率" class="headerlink" title="通过率"></a>通过率</h3><p>为了评估通过率，我们通过LLM4PLC管道的各个阶段对40个专用测试文件集进行了测试。对于每个生成的40个输入文件，我们确定了通过率。结果表明，随着我们在各个阶段添加更多组件，通过率逐步提高，反映了我们提出的方法的有效性。特别是在包含单次提示、LoRA和语法检查器的最终阶段，Code Llama 34B模型的通过率达到了72.5% 。</p>
+<h3 id="编译器错误计数"><a href="#编译器错误计数" class="headerlink" title="编译器错误计数"></a>编译器错误计数</h3><p>接下来，我们计算了每个输出代码文件生成的编译器错误数量。然后我们对测试文件集中的错误数量进行平均，以规范化结果。结果显示，LoRA和语法检查配置的错误数高于单次提示。然而，随着管道的进展，我们的管道能够纠正这些错误，使得LoRA和语法检查的编译通过率高于单次提示配置 。</p>
+<h3 id="人工质量评估"><a href="#人工质量评估" class="headerlink" title="人工质量评估"></a>人工质量评估</h3><p>代码质量的人工评估使用了由各种PLC编程经验的专家组成的小组。专家们根据预定的标准评估生成的代码，包括正确性、可维护性和符合行业编码标准。高分表明我们的方法在生成可读且易于维护的代码方面的实用性，显示出其无缝集成到现有人工驱动开发过程中的潜力 。</p>
+<h3 id="工程时间"><a href="#工程时间" class="headerlink" title="工程时间"></a>工程时间</h3><p>在选择GPT基础的解决方案、LoRA增强的LLM和传统的手工编程技术时，工程时间是一个关键问题。我们的实证研究显示了每种方法所需时间的显著差异。GPT模型的设置非常高效，通常只需几分钟即可集成API并开始代码生成。而为现有开源模型（如Code Llama）设置LoRA则需要大量时间来收集数据和进行训练。手工编程PLC尽管是一个理解度很高的方法，但也是最耗时的，通常比基于LLM的方法需要更多的时间和专业人力资源投入 。<br><img src="/images/Literature5/6.png" alt=" "><br><img src="/images/Literature5/7.png" alt=" "></p>
+<h1 id="评价和感想（Evaluation-and-Reflections）"><a href="#评价和感想（Evaluation-and-Reflections）" class="headerlink" title="评价和感想（Evaluation and Reflections）"></a>评价和感想（Evaluation and Reflections）</h1><p>LLM4PLC方向非常扎实的工作，可以复现作为后续研究的基础。</p>
+<h1 id="未来研究方向（Future-Research-Directions）"><a href="#未来研究方向（Future-Research-Directions）" class="headerlink" title="未来研究方向（Future Research Directions）"></a>未来研究方向（Future Research Directions）</h1><p>结合仿真进行进一步优化，降低成本的同时优化代码生成、自反馈机制。</p>
+<h1 id="参考文献（References）"><a href="#参考文献（References）" class="headerlink" title="参考文献（References）"></a>参考文献（References）</h1><p><a href="https://arxiv.org/pdf/2401.05443">https://arxiv.org/pdf/2401.05443</a><br>Fakih, M., Dharmaji, R., Moghaddas, Y., Araya, G. Q., Ogundare, O., &amp; Faruque, M. A. A. (2024). LLM4PLC: Harnessing Large Language Models for Verifiable Programming of PLCs in Industrial Control Systems. arXiv preprint arXiv:2401.05443.</p>
 ]]></content>
       <categories>
-        <category>底层原理</category>
+        <category>文献调研</category>
       </categories>
       <tags>
-        <tag>数字电路</tag>
-        <tag>上拉电阻</tag>
-        <tag>下拉电阻</tag>
+        <tag>Formal software verification</tag>
+        <tag>Automatic programming</tag>
+        <tag>Natural language processing</tag>
       </tags>
   </entry>
   <entry>
@@ -486,6 +515,24 @@
         <tag>Resource-efficient machine learning</tag>
         <tag>inference</tag>
         <tag>deep neural networks.</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>下拉电阻、上拉电阻</title>
+    <url>/2024/05/02/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/</url>
+    <content><![CDATA[<p>下拉电阻可以将一个不确定的信号钳位在低电平。<br>上拉电阻可以增强输出引脚的驱动能力。</p>
+<span id="more"></span>
+<h1 id="悬空状态"><a href="#悬空状态" class="headerlink" title="悬空状态"></a>悬空状态</h1><p>如图所示，当基极什么都不接的时候，该点的电压就是悬空状态。此时如果转化为数字信号，其既可能输出0，也可能输出1。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/1.png" alt=" "></p>
+<h1 id="下拉"><a href="#下拉" class="headerlink" title="下拉"></a>下拉</h1><p>此时，将该点连接一个电阻接地，由于该电路中NP结电阻无穷大，分走所有电压，所以此时该点的电压变为0，确定性的输出了0电压。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/2.png" alt=" "><br>该电阻存在的必要性是让该点同样可以输出高电压，如下图所示：<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/3.png" alt=" "></p>
+<h1 id="上拉"><a href="#上拉" class="headerlink" title="上拉"></a>上拉</h1><p>如图所示，上拉电阻的作用是将其与单片机内的等效电阻并联，让整体电阻变小，从而分走更少的电压，这样就可以提升输出点的电压了。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/4.png" alt=" "><br>同样，上拉电阻也能解决悬空状态的问题，如图所示，如果想要输出高电平，同样可以通过并联电阻解决。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/5.png" alt=" "><br>并联后，上面的电阻变小，而下方电阻为无穷大，所有电压将被下方分走。<br><img src="/images/%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB%E3%80%81%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB/6.png" alt=" "><br>参考来源：B站爱上半导体</p>
+]]></content>
+      <categories>
+        <category>底层原理</category>
+      </categories>
+      <tags>
+        <tag>数字电路</tag>
+        <tag>上拉电阻</tag>
+        <tag>下拉电阻</tag>
       </tags>
   </entry>
   <entry>

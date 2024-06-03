@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"cszhenfeili.online","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"show_result":true,"style":null},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="标题（Title）LLM4PLC Harnessing Large Language Models for Verifiable Programming of PLCs in Industrial Control Systems利用大模型为PLC自动生成代码，PLC用于工业控制。arXiv:2401.05443v1 [cs.SE] 8 Jan 2024 摘要（Abstract）大语言模型在自动化生">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LLM4PLC Harnessing Large Language Models for Verifiable Programming of PLCs in Industrial Control Systems">
+<meta property="og:url" content="https://cszhenfeili.online/2024/06/03/Literature5/index.html">
+<meta property="og:site_name" content="智能制造">
+<meta property="og:description" content="标题（Title）LLM4PLC Harnessing Large Language Models for Verifiable Programming of PLCs in Industrial Control Systems利用大模型为PLC自动生成代码，PLC用于工业控制。arXiv:2401.05443v1 [cs.SE] 8 Jan 2024 摘要（Abstract）大语言模型在自动化生">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cszhenfeili.online/images/Literature5/1.PNG">
+<meta property="og:image" content="https://cszhenfeili.online/images/Literature5/2.PNG">
+<meta property="og:image" content="https://cszhenfeili.online/images/Literature5/3.png">
+<meta property="og:image" content="https://cszhenfeili.online/images/Literature5/4.png">
+<meta property="og:image" content="https://cszhenfeili.online/images/Literature5/5.png">
+<meta property="og:image" content="https://cszhenfeili.online/images/Literature5/6.png">
+<meta property="og:image" content="https://cszhenfeili.online/images/Literature5/7.png">
+<meta property="article:published_time" content="2024-06-03T13:34:48.000Z">
+<meta property="article:modified_time" content="2024-06-03T13:45:07.032Z">
+<meta property="article:author" content="晓飞">
+<meta property="article:tag" content="Formal software verification">
+<meta property="article:tag" content="Automatic programming">
+<meta property="article:tag" content="Natural language processing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cszhenfeili.online/images/Literature5/1.PNG">
+
+
+<link rel="canonical" href="https://cszhenfeili.online/2024/06/03/Literature5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cszhenfeili.online/2024/06/03/Literature5/","path":"2024/06/03/Literature5/","title":"LLM4PLC Harnessing Large Language Models for Verifiable Programming of PLCs in Industrial Control Systems"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>LLM4PLC Harnessing Large Language Models for Verifiable Programming of PLCs in Industrial Control Systems | 智能制造</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">智能制造</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">新一代控制技术</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">38</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">16</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%87%E9%A2%98%EF%BC%88Title%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">标题（Title）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81%EF%BC%88Abstract%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">摘要（Abstract）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%EF%BC%88Background%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">背景（Background）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9%EF%BC%88Main-Content%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">主要内容（Main Content）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E5%9E%8B%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%EF%BC%88LLM%EF%BC%89"><span class="nav-number">4.0.1.</span> <span class="nav-text">大型语言模型（LLM）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%EF%BC%88MBD%EF%BC%89"><span class="nav-number">4.0.2.</span> <span class="nav-text">模型驱动设计（MBD）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E6%A3%80%E6%9F%A5%E5%99%A8%E5%92%8C%E5%BD%A2%E5%BC%8F%E9%AA%8C%E8%AF%81"><span class="nav-number">4.0.3.</span> <span class="nav-text">语法检查器和形式验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%AE%BE%E7%BD%AE"><span class="nav-number">4.0.4.</span> <span class="nav-text">实验设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B"><span class="nav-number">4.0.5.</span> <span class="nav-text">提示工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LLM%E5%BE%AE%E8%B0%83"><span class="nav-number">4.0.6.</span> <span class="nav-text">LLM微调</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">4.0.7.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E9%87%8F%E6%8C%87%E6%A0%87"><span class="nav-number">4.0.8.</span> <span class="nav-text">测量指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0"><span class="nav-number">4.0.9.</span> <span class="nav-text">测试平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="nav-number">4.0.10.</span> <span class="nav-text">实验结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E7%8E%87"><span class="nav-number">4.0.11.</span> <span class="nav-text">通过率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%99%A8%E9%94%99%E8%AF%AF%E8%AE%A1%E6%95%B0"><span class="nav-number">4.0.12.</span> <span class="nav-text">编译器错误计数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%BA%E5%B7%A5%E8%B4%A8%E9%87%8F%E8%AF%84%E4%BC%B0"><span class="nav-number">4.0.13.</span> <span class="nav-text">人工质量评估</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E7%A8%8B%E6%97%B6%E9%97%B4"><span class="nav-number">4.0.14.</span> <span class="nav-text">工程时间</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%84%E4%BB%B7%E5%92%8C%E6%84%9F%E6%83%B3%EF%BC%88Evaluation-and-Reflections%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">评价和感想（Evaluation and Reflections）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AA%E6%9D%A5%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91%EF%BC%88Future-Research-Directions%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">未来研究方向（Future Research Directions）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%EF%BC%88References%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">参考文献（References）</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="晓飞"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">晓飞</p>
+  <div class="site-description" itemprop="description">自动化、信息化、智能化、集成化</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cszhenfeili.online/2024/06/03/Literature5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="晓飞">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="智能制造">
+      <meta itemprop="description" content="自动化、信息化、智能化、集成化">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="LLM4PLC Harnessing Large Language Models for Verifiable Programming of PLCs in Industrial Control Systems | 智能制造">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LLM4PLC Harnessing Large Language Models for Verifiable Programming of PLCs in Industrial Control Systems
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-06-03 21:34:48 / 修改时间：21:45:07" itemprop="dateCreated datePublished" datetime="2024-06-03T21:34:48+08:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%96%87%E7%8C%AE%E8%B0%83%E7%A0%94/" itemprop="url" rel="index"><span itemprop="name">文献调研</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="标题（Title）"><a href="#标题（Title）" class="headerlink" title="标题（Title）"></a>标题（Title）</h1><p>LLM4PLC Harnessing Large Language Models for Verifiable Programming of PLCs in Industrial Control Systems<br>利用大模型为PLC自动生成代码，PLC用于工业控制。<br>arXiv:2401.05443v1 [cs.SE] 8 Jan 2024</p>
+<h1 id="摘要（Abstract）"><a href="#摘要（Abstract）" class="headerlink" title="摘要（Abstract）"></a>摘要（Abstract）</h1><p>大语言模型在自动化生成代码方面已经起到重要作用，但是其应用在自动控制领域仍然面临挑战。类似用于PLC的代码面对如下挑战。</p>
+<ol>
+<li>训练样本少</li>
+<li>对代码的可靠性要求极高，这些代码会直接作用于物理世界，稍有偏差就可能造成重大损失。（仿真是解决问题的一个思路，如果PLC自动生成代码，然后先在仿真环境跑通，再部署到产线上，这应该是这个方向的进一步创新。而且仿真的结果可以直接反馈给LLM，方便其进一步迭代，这将比本文描述的方案更为高效。）<br>本文提出了LLM4PLC，用于自动化生成PLC代码，为了解决上述的问题，引入了grammar checkers, compilers and SMV verifiers确保生成代码的可靠性。对大模型进行微调和针对性的提示词工程。<br>最后本文生成的代码在MFTB平台上进行了测试，证明了该方法对PLC代码有较大提升。<span id="more"></span></li>
+</ol>
+<h1 id="背景（Background）"><a href="#背景（Background）" class="headerlink" title="背景（Background）"></a>背景（Background）</h1><p>PLC是特定领域的实时计算机，运行专门的程序，并采用IEC 61131-3标准下的五种编程范式之一。其中，结构化文本（ST）由于其语法和结构与传统编程语言相似，适合使用最先进的技术进行自动代码生成。<br>然而，开发可靠且安全的PLC软件非常复杂且耗时。为了提高工程效率，本文提出了LLM4PLC框架，该框架通过使用大型语言模型（LLM）自动生成PLC代码，并结合用户反馈和外部验证工具，确保代码的安全性和有效性。<br><img src="/images/Literature5/1.PNG" alt=" "></p>
+<h1 id="主要内容（Main-Content）"><a href="#主要内容（Main-Content）" class="headerlink" title="主要内容（Main Content）"></a>主要内容（Main Content）</h1><p>本文采用的方法基于现有的PLC软件工程、形式验证方法以及最先进的LLM提示和参数高效微调（PEFT）技术，包括低秩适应（LoRAs）。本节提供了每个领域的必要背景知识，并介绍了我们在所提出方法中采用的设计选择动机。<br><img src="/images/Literature5/2.PNG" alt=" "></p>
+<h3 id="大型语言模型（LLM）"><a href="#大型语言模型（LLM）" class="headerlink" title="大型语言模型（LLM）"></a>大型语言模型（LLM）</h3><p>大型语言模型（LLM）利用Transformer架构中的注意力机制来建模不断增加长度的序列。Transformer模型的核心是自注意力机制，它计算序列中每对标记的注意力分数，从而允许在序列内长距离之间的依赖关系和关系。所有主要的LLM都使用下一个标记预测（NTP）方案一次生成一个标记。</p>
+<h3 id="模型驱动设计（MBD）"><a href="#模型驱动设计（MBD）" class="headerlink" title="模型驱动设计（MBD）"></a>模型驱动设计（MBD）</h3><p>模型驱动设计（MBD）是一个工程范式，它利用数学和图形建模来促进复杂系统的分析、实现和模拟。通过使用有限状态机（FSM）显式规划来优化PLC扫描周期，每个FSM状态负责单一操作，使执行过程可预测且易于调试。在自然语言规范的MBD提示中，我们约束LLM遵循FSM设计以解决方案。</p>
+<h3 id="语法检查器和形式验证"><a href="#语法检查器和形式验证" class="headerlink" title="语法检查器和形式验证"></a>语法检查器和形式验证</h3><ul>
+<li>语法检查器：在将候选代码转换为可运行程序的第一步是检查其是否符合编程语言的标准。如果发现任何错误，这些错误会反馈到我们的管道中以创建下一个阶段的‘纠正提示’。通过集成语法检查器在LLM代码生成管道中，可以更深入地了解代码缺陷，并更好地准备LLM采取纠正措施。</li>
+<li>形式验证：通过符号模型检查进行程序和算法的形式验证是部署PLC代码到危险环境中的关键步骤。形式验证工具采用候选代码以及操作的严格约束来证明功能正确性。我们的方法利用接受的静态分析知识在验证管道中使用这些工具来验证LLM生成的代码。<br><img src="/images/Literature5/3.png" alt=" "></li>
+</ul>
+<h3 id="实验设置"><a href="#实验设置" class="headerlink" title="实验设置"></a>实验设置</h3><p>为了进行这项研究，我们针对GPT-3、GPT-4、Code Llama 7B和Code Llama 34B进行了全面评估。这些模型代表了当前最先进的一般用途语言模型（GPT-3和GPT-4）和专为代码生成设计的模型（Code Llama 7B和Code Llama 34B），使我们能够研究性能与计算资源之间的权衡。</p>
+<h3 id="提示工程"><a href="#提示工程" class="headerlink" title="提示工程"></a>提示工程</h3><p>我们采用了两种提示类型，即零样本提示和单样本提示来生成LLM的输出。单样本提示包含结构化文本语法和代码元素的代表性示例，从而为改进代码生成提供上下文线索。而零样本提示仅请求代码生成，没有任何上下文指导。</p>
+<h3 id="LLM微调"><a href="#LLM微调" class="headerlink" title="LLM微调"></a>LLM微调</h3><p>我们通过创建低秩适应（LoRA）对Code Llama 7B和Code Llama 34B进行了微调。GPT-3.5和GPT-4不提供LoRA训练接口，因此我们使用这些模型的默认配置。然后，我们利用这些知识训练了一组用于代码补全和代码修复任务的LoRA，每个模型两组。</p>
+<h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p>我们从OSCAT IEC 61131-3库生成了训练、验证和测试数据集。具体而言，我们运行自动化测试剔除OSCAT数据集中不合格的ST文件，然后创建三个独立的数据集来广泛测试我们的管道能力：</p>
+<ul>
+<li>生成数据集：即剔除所有不可编译文件后的OSCAT数据集。</li>
+<li>补全数据集：通过随机截断生成数据集中的文件来创建，模拟LLM的代码补全能力。</li>
+<li>修复数据集：通过从生成数据集中随机删除行，直到生成的ST文件无法编译为止，用于测试LLM解决特定语法错误的能力。</li>
+</ul>
+<h3 id="测量指标"><a href="#测量指标" class="headerlink" title="测量指标"></a>测量指标</h3><p>我们的测量指标包括通过率、编译器错误数量和代码质量的人类评估。通过率使用pass@k指标评估，编译器错误率提供对我们方法稳健性的洞察，代码质量评估则通过专家小组的评分来完成。</p>
+<h3 id="测试平台"><a href="#测试平台" class="headerlink" title="测试平台"></a>测试平台</h3><p>我们在实验室部署了FischerTechnik制造测试平台（MFTB），这是一个集成平台，用于模拟常见制造过程的小型版本。MFTB是一个复杂的网络物理系统，集成了各种输入和不同类型的输出，用于研究和验证自动化、数字控制系统和操作效率。<br><img src="/images/Literature5/4.png" alt=" "><br><img src="/images/Literature5/5.png" alt=" "></p>
+<h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><p>在本节中，我们展示了我们的方法——LLM4PLC的实证评估结果。我们通过三个关键指标来衡量方法的有效性：通过率、编译器错误计数和人工评估的代码质量。我们还比较了每种解决方案所需的工程时间。这些指标为我们的方法提供了全面的评估，涵盖了代码生成过程中的准确性、鲁棒性和实用性 。</p>
+<h3 id="通过率"><a href="#通过率" class="headerlink" title="通过率"></a>通过率</h3><p>为了评估通过率，我们通过LLM4PLC管道的各个阶段对40个专用测试文件集进行了测试。对于每个生成的40个输入文件，我们确定了通过率。结果表明，随着我们在各个阶段添加更多组件，通过率逐步提高，反映了我们提出的方法的有效性。特别是在包含单次提示、LoRA和语法检查器的最终阶段，Code Llama 34B模型的通过率达到了72.5% 。</p>
+<h3 id="编译器错误计数"><a href="#编译器错误计数" class="headerlink" title="编译器错误计数"></a>编译器错误计数</h3><p>接下来，我们计算了每个输出代码文件生成的编译器错误数量。然后我们对测试文件集中的错误数量进行平均，以规范化结果。结果显示，LoRA和语法检查配置的错误数高于单次提示。然而，随着管道的进展，我们的管道能够纠正这些错误，使得LoRA和语法检查的编译通过率高于单次提示配置 。</p>
+<h3 id="人工质量评估"><a href="#人工质量评估" class="headerlink" title="人工质量评估"></a>人工质量评估</h3><p>代码质量的人工评估使用了由各种PLC编程经验的专家组成的小组。专家们根据预定的标准评估生成的代码，包括正确性、可维护性和符合行业编码标准。高分表明我们的方法在生成可读且易于维护的代码方面的实用性，显示出其无缝集成到现有人工驱动开发过程中的潜力 。</p>
+<h3 id="工程时间"><a href="#工程时间" class="headerlink" title="工程时间"></a>工程时间</h3><p>在选择GPT基础的解决方案、LoRA增强的LLM和传统的手工编程技术时，工程时间是一个关键问题。我们的实证研究显示了每种方法所需时间的显著差异。GPT模型的设置非常高效，通常只需几分钟即可集成API并开始代码生成。而为现有开源模型（如Code Llama）设置LoRA则需要大量时间来收集数据和进行训练。手工编程PLC尽管是一个理解度很高的方法，但也是最耗时的，通常比基于LLM的方法需要更多的时间和专业人力资源投入 。<br><img src="/images/Literature5/6.png" alt=" "><br><img src="/images/Literature5/7.png" alt=" "></p>
+<h1 id="评价和感想（Evaluation-and-Reflections）"><a href="#评价和感想（Evaluation-and-Reflections）" class="headerlink" title="评价和感想（Evaluation and Reflections）"></a>评价和感想（Evaluation and Reflections）</h1><p>LLM4PLC方向非常扎实的工作，可以复现作为后续研究的基础。</p>
+<h1 id="未来研究方向（Future-Research-Directions）"><a href="#未来研究方向（Future-Research-Directions）" class="headerlink" title="未来研究方向（Future Research Directions）"></a>未来研究方向（Future Research Directions）</h1><p>结合仿真进行进一步优化，降低成本的同时优化代码生成、自反馈机制。</p>
+<h1 id="参考文献（References）"><a href="#参考文献（References）" class="headerlink" title="参考文献（References）"></a>参考文献（References）</h1><p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2401.05443">https://arxiv.org/pdf/2401.05443</a><br>Fakih, M., Dharmaji, R., Moghaddas, Y., Araya, G. Q., Ogundare, O., &amp; Faruque, M. A. A. (2024). LLM4PLC: Harnessing Large Language Models for Verifiable Programming of PLCs in Industrial Control Systems. arXiv preprint arXiv:2401.05443.</p>
+
+    </div>
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Formal-software-verification/" rel="tag"># Formal software verification</a>
+              <a href="/tags/Automatic-programming/" rel="tag"># Automatic programming</a>
+              <a href="/tags/Natural-language-processing/" rel="tag"># Natural language processing</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/02/Literature4/" rel="prev" title="A Cyber-Physical Systems architecture for Industry 4.0-based manufacturing">
+                  <i class="fa fa-angle-left"></i> A Cyber-Physical Systems architecture for Industry 4.0-based manufacturing
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">晓飞</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"mhchem":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":300,"height":600},"mobile":{"show":false},"log":false});</script></body>
+</html>
