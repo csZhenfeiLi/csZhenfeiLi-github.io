@@ -52,6 +52,21 @@
       </tags>
   </entry>
   <entry>
+    <title>BCD码</title>
+    <url>/2024/05/07/BCD%E7%A0%81/</url>
+    <content><![CDATA[<p>Binary-Coded Decimal，二进制编码的十进制数。将每个十进制的0-9映射到四个二进制位。显然四位二进制位可以表示16种数字，映射到9个数后必然有一些位是不合法的，同时映射方案不同，得到的BCD码也不一样。</p>
+<h1 id="BCD码"><a href="#BCD码" class="headerlink" title="BCD码"></a>BCD码</h1><p><img src="/images/BCD%E7%A0%81/1.PNG" alt=" "></p>
+<span id="more"></span>
+<h1 id="8421码"><a href="#8421码" class="headerlink" title="8421码"></a>8421码</h1><p>8421码与十进制数的互相转换：<br>1000 1000 &#x3D; 88<br>DEC &#x3D; BCD &#x2F; 16 * 10 +BCD % 16<br>BCD &#x3D; DEC &#x2F; 10 * 16 + BCD % 10</p>
+]]></content>
+      <categories>
+        <category>计算机组成原理</category>
+      </categories>
+      <tags>
+        <tag>8421码</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Canvas-Nest设置</title>
     <url>/2024/05/14/Canvas-Nest%E8%AE%BE%E7%BD%AE/</url>
     <content><![CDATA[<p>想设置如下图所示的动态背景，搜了很久没找到适用自己的。通过github源头轻松解决。<br><img src="/images/Canvas-Nest%E8%AE%BE%E7%BD%AE/1.png" alt=" "></p>
@@ -86,21 +101,6 @@
         <tag>时钟电路</tag>
         <tag>实时时钟</tag>
         <tag>单片机</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>BCD码</title>
-    <url>/2024/05/07/BCD%E7%A0%81/</url>
-    <content><![CDATA[<p>Binary-Coded Decimal，二进制编码的十进制数。将每个十进制的0-9映射到四个二进制位。显然四位二进制位可以表示16种数字，映射到9个数后必然有一些位是不合法的，同时映射方案不同，得到的BCD码也不一样。</p>
-<h1 id="BCD码"><a href="#BCD码" class="headerlink" title="BCD码"></a>BCD码</h1><p><img src="/images/BCD%E7%A0%81/1.PNG" alt=" "></p>
-<span id="more"></span>
-<h1 id="8421码"><a href="#8421码" class="headerlink" title="8421码"></a>8421码</h1><p>8421码与十进制数的互相转换：<br>1000 1000 &#x3D; 88<br>DEC &#x3D; BCD &#x2F; 16 * 10 +BCD % 16<br>BCD &#x3D; DEC &#x2F; 10 * 16 + BCD % 10</p>
-]]></content>
-      <categories>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>8421码</tag>
       </tags>
   </entry>
   <entry>
@@ -431,6 +431,105 @@
         <tag>Formal software verification</tag>
         <tag>Automatic programming</tag>
         <tag>Natural language processing</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Humanoid Locomotion as Next Token Prediction</title>
+    <url>/2024/06/09/Literature6/</url>
+    <content><![CDATA[<h1 id="标题（Title）"><a href="#标题（Title）" class="headerlink" title="标题（Title）"></a>标题（Title）</h1><p>Humanoid Locomotion as Next Token Prediction<br>借鉴自然语言处理的方法，训练人形机器人</p>
+<h1 id="摘要（Abstract）"><a href="#摘要（Abstract）" class="headerlink" title="摘要（Abstract）"></a>摘要（Abstract）</h1><p>本论文提出了一种将类人机器人控制问题转化为下一个令牌预测问题的方法，类似于自然语言处理中的下一个单词预测。这一方法通过自回归地预测传感器和运动轨迹，训练了一个因果transformer模型。</p>
+<span id="more"></span>
+<h1 id="背景（Background）"><a href="#背景（Background）" class="headerlink" title="背景（Background）"></a>背景（Background）</h1><p>研究背景<br>在过去的十年中，人工智能（AI）领域展示了大型神经网络在互联网上的大规模多样化数据集上训练后，在各种环境中取得了令人印象深刻的结果。特别是，通过生成模型对大规模语言数据进行训练，这些变压器模型（如GPT）能够进行下一个单词预测，并获得丰富的语言表示。<br>研究问题<br>研究人员提出的问题是，类似的建模技术是否可以应用于感官和运动表示的学习？虽然在高维视觉数据和机器人操控领域已经看到一些成功，但在更广泛的感官运动表示学习方面，特别是机器人控制方面，这一领域仍然尚未充分探索。<br>研究目标<br>本研究的目标是将类人机器人控制任务转化为对大规模感官运动轨迹数据建模的问题。与语言模型类似，研究人员训练了一个通用的变压器模型来自回归地预测移位输入序列。不同于语言数据，机器人领域的数据是高维的，并包含多种输入模式，如传感器（关节编码器或惯性测量单元）和运动指令。</p>
+<h1 id="主要内容（Main-Content）"><a href="#主要内容（Main-Content）" class="headerlink" title="主要内容（Main Content）"></a>主要内容（Main Content）</h1><p>数据集<br>数据集包含来自不同来源的感官运动轨迹：</p>
+<ol>
+<li>神经网络策略：使用大规模强化学习训练的策略生成的完整轨迹。</li>
+<li>基于模型的控制器：来自Agility Robotics控制器的轨迹，包含完整观测数据但缺少动作数据。</li>
+<li>人类动作捕捉：从AMASS库中的人类动作捕捉数据，通过逆运动学重定向到机器人上。</li>
+<li>YouTube视频：从YouTube视频中提取的人类运动轨迹，通过3D重建和逆运动学进行处理。<br><img src="/images/Literature6/1.png" alt=" "><br>模型架构</li>
+<li>输入嵌入：</li>
+</ol>
+<ul>
+<li>将传感器和运动数据转化为嵌入向量。</li>
+<li>不同模态数据使用独立的线性投影层。</li>
+</ul>
+<ol start="2">
+<li>自注意力层和多层感知器（MLP）：</li>
+</ol>
+<ul>
+<li>多头自注意力机制用于捕捉长距离依赖关系。</li>
+<li>每层包含层归一化和残差连接，确保训练稳定性。</li>
+</ul>
+<ol start="3">
+<li>因果遮掩：</li>
+</ol>
+<ul>
+<li>通过因果遮掩，确保每个位置的预测仅依赖于该位置之前的输入，保证预测的因果关系。</li>
+</ul>
+<ol start="4">
+<li>预测与损失函数：</li>
+</ol>
+<ul>
+<li>使用高斯分布假设，通过最小化均方误差来训练模型。</li>
+<li>对于缺失模态的数据，用掩码令牌替代，并忽略对应部分的损失。<br><img src="/images/Literature6/2.png" alt=" "><br>模型训练</li>
+</ul>
+<ol>
+<li>目标函数：</li>
+</ol>
+<ul>
+<li>对轨迹数据集中的负对数似然进行最小化。</li>
+<li>针对每个输入令牌预测下一个相同模态的令牌。</li>
+</ul>
+<ol start="2">
+<li>联合训练：</li>
+</ol>
+<ul>
+<li>同时在完整和不完整轨迹数据上进行训练。</li>
+<li>对于缺失模态的轨迹数据，通过掩码令牌处理，保持输入输出格式的一致性。<br>模型推理</li>
+</ul>
+<ol>
+<li>自回归预测：</li>
+</ol>
+<ul>
+<li>模型在推理时依赖于过去的观测和动作，逐步预测下一个动作。</li>
+<li>使用实际观测数据和预测的动作作为下一步的输入，保持预测的一致性。<br><img src="/images/Literature6/3.png" alt=" "><br><img src="/images/Literature6/4.png" alt=" "><br>实验设置<br>现实世界测试：机器人在各种地面条件下表现出良好的行走能力，适应复杂的城市环境。<br>跟踪和预测误差：跟踪误差和预测误差高度相关，低预测误差意味着高命令跟随准确性。<br>扩展与泛化能力：增加训练数据量、上下文窗口长度和模型参数量可以提高模型性能，模型能够适应未见过的命令。<br>缺失数据处理：联合训练策略显著提升了模型性能。<br>消融研究：验证了不同设计选择对模型性能的影响，确定了模式对齐、联合训练和状态-动作预测的优越性。<br><img src="/images/Literature6/5.png" alt=" "></li>
+</ul>
+<h1 id="评价和感想（Evaluation-and-Reflections）"><a href="#评价和感想（Evaluation-and-Reflections）" class="headerlink" title="评价和感想（Evaluation and Reflections）"></a>评价和感想（Evaluation and Reflections）</h1><p>简单了解一下。</p>
+<h1 id="未来研究方向（Future-Research-Directions）"><a href="#未来研究方向（Future-Research-Directions）" class="headerlink" title="未来研究方向（Future Research Directions）"></a>未来研究方向（Future Research Directions）</h1><p>潜在的改进方向</p>
+<ol>
+<li>数据扩展：</li>
+</ol>
+<ul>
+<li>进一步扩展和多样化数据集，可以包括更多不同类型的运动任务和环境数据，以增强模型的泛化能力。</li>
+</ul>
+<ol start="2">
+<li>模型优化：</li>
+</ol>
+<ul>
+<li>探索更复杂的模型架构和训练技术，以提高模型在处理高维、多模态数据时的效率和准确性。</li>
+</ul>
+<ol start="3">
+<li>应用扩展：</li>
+</ol>
+<ul>
+<li>将该方法应用于其他机器人控制任务，如手臂操控、路径规划和复杂任务执行，验证其在不同任务中的适用性和有效性。</li>
+</ul>
+<ol start="4">
+<li>长期稳定性测试：</li>
+</ol>
+<ul>
+<li>在更长时间和更复杂环境中测试模型的稳定性和鲁棒性，确保其在实际应用中的可靠性。</li>
+</ul>
+<h1 id="参考文献（References）"><a href="#参考文献（References）" class="headerlink" title="参考文献（References）"></a>参考文献（References）</h1><p><a href="https://arxiv.org/html/2402.19469v1">https://arxiv.org/html/2402.19469v1</a><br>Radosavovic, I., Zhang, B., Shi, B., Rajasegaran, J., Kamat, S., Darrell, T., … &amp; Malik, J. (2024). Humanoid Locomotion as Next Token Prediction. arXiv preprint arXiv:2402.19469.</p>
+]]></content>
+      <categories>
+        <category>文献调研</category>
+      </categories>
+      <tags>
+        <tag>类人机器人（Humanoid Robot）</tag>
+        <tag>下一个令牌预测（Next Token Prediction）</tag>
+        <tag>自回归Transformer（Autoregressive Transformer）</tag>
+        <tag>传感器和运动轨迹（Sensorimotor Trajectories）</tag>
+        <tag>多模态数据（Multi-modal Data）</tag>
       </tags>
   </entry>
   <entry>
