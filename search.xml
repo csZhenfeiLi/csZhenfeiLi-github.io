@@ -533,6 +533,55 @@
       </tags>
   </entry>
   <entry>
+    <title>Safety Helmet Detection Based on YOLOv5</title>
+    <url>/2024/06/11/Literature7/</url>
+    <content><![CDATA[<h1 id="标题（Title）"><a href="#标题（Title）" class="headerlink" title="标题（Title）"></a>标题（Title）</h1><p>Safety Helmet Detection Based on YOLOv5<br>用YOLOv5检测安全帽，是一个具体场景的应用<br>2021 IEEE International Conference on Power Electronics, Computer Applications (ICPECA)</p>
+<h1 id="摘要（Abstract）"><a href="#摘要（Abstract）" class="headerlink" title="摘要（Abstract）"></a>摘要（Abstract）</h1><p>安全帽是工人最基本的保护装备，对工人生命安全有重大意义。然而，由于缺乏安全意识，安全帽往往未被佩戴。本文提出了一种基于YOLOv5的安全帽检测方法，并对6045张收集的数据集进行了标注。使用不同参数的YOLOv5模型进行训练和测试，实验结果显示YOLOv5s的平均检测速度达到110帧每秒，完全满足实时检测要求。使用可训练目标检测器的预训练权重，YOLOv5x的mAP达到94.7%，证明了基于YOLOv5的安全帽检测方法的有效性。<br><img src="/images/Literature7/1.png" alt=" "></p>
+<span id="more"></span>
+<h1 id="背景（Background）"><a href="#背景（Background）" class="headerlink" title="背景（Background）"></a>背景（Background）</h1><p>安全帽作为工人最基本的个人防护装备，对保护工人生命具有重要意义。然而，由于缺乏安全意识，一些工人在工作时往往不佩戴安全帽，因此安全帽检测成为生产安全监控的重要手段，尤其在建筑工地、煤矿等场所应用广泛。<br>本文将利用YOLO实现对安全帽的自动检测。</p>
+<h1 id="主要内容（Main-Content）"><a href="#主要内容（Main-Content）" class="headerlink" title="主要内容（Main Content）"></a>主要内容（Main Content）</h1><h3 id="YOLOv5网络结构"><a href="#YOLOv5网络结构" class="headerlink" title="YOLOv5网络结构"></a>YOLOv5网络结构</h3><p>YOLOv5网络分为三个部分：骨干网络（Backbone）、颈部（Neck）和输出层（Output）。具体结构如下：</p>
+<ol>
+<li>骨干网络（Backbone）：输入图片的分辨率为640×640×3，首先经过Focus结构，利用切片操作生成320×320×12的特征图，然后通过32个卷积核的卷积操作，最终得到320×320×32的特征图。CBL模块是一个基本的卷积模块，包括Conv2D、BatchNormalization和LeakyRELU。</li>
+<li>BottleneckCSP模块：主要进行特征提取，提取图像中的丰富信息。与其他大型卷积神经网络相比，BottleneckCSP结构可以减少优化过程中梯度信息的重复，通过调整模块的宽度和深度，可以得到不同参数的四种模型（YOLOv5s, YOLOv5m, YOLOv5l, YOLOv5x）。</li>
+<li>SPP模块：增加网络的感受野，获取不同尺度的特征。</li>
+<li>底部特征金字塔（Bottom-up feature pyramid）：基于FPN结构，结合自上而下和自下而上的特征聚合，改善了网络检测不同尺度目标的能力。</li>
+</ol>
+<h3 id="分类器修改"><a href="#分类器修改" class="headerlink" title="分类器修改"></a>分类器修改</h3><p>针对安全帽检测场景，YOLOv5的分类器进行了修改：</p>
+<ul>
+<li>COCO数据集包含80个类别，输出张量的维度为3 × (5 + 80) &#x3D; 255，其中3代表每个网格预测的三个模板框，5代表每个预测框的坐标和置信度。</li>
+<li>在安全帽检测中，有两种类型的对象：佩戴安全帽和未佩戴安全帽。因此，将输出维度修改为3 × (5 + 2) &#x3D; 21，以适应安全帽检测场景，从而减少网络参数，降低计算开销，提高检测速度和准确性。<br><img src="/images/Literature7/2.png" alt=" "></li>
+</ul>
+<h3 id="实验细节"><a href="#实验细节" class="headerlink" title="实验细节"></a>实验细节</h3><p>实验在ubuntu18.04操作系统上进行，使用Pytorch框架，并在单个NVIDIA GTX1660 GPU上进行训练和测试。实验步骤包括：</p>
+<ul>
+<li>数据增强：对训练集图片进行随机裁剪至640×640大小，并采用随机翻转、几何失真、光照失真、图像遮挡、随机擦除、cutout、mixup等数据增强方法。</li>
+<li>测试阶段：图片缩放至640×640，以便于评估网络性能。</li>
+<li>优化器：使用SGD优化器优化网络，主要的实验超参数包括：<ul>
+<li>学习率：0.01</li>
+<li>学习率衰减：0.999</li>
+<li>学习率衰减步长：1</li>
+<li>权重衰减：5e-4</li>
+<li>动量：0.937</li>
+<li>批次大小：16</li>
+<li>迭代次数：100</li>
+</ul>
+</li>
+</ul>
+<h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><p>实验使用YOLOv5的四种模型（s, m, l, x）进行训练和测试，主要结果如下<br><img src="/images/Literature7/3.png" alt=" "><br><img src="/images/Literature7/4.png" alt=" "></p>
+<h1 id="评价和感想（Evaluation-and-Reflections）"><a href="#评价和感想（Evaluation-and-Reflections）" class="headerlink" title="评价和感想（Evaluation and Reflections）"></a>评价和感想（Evaluation and Reflections）</h1><p>无，简单的看看在做项目的应用。</p>
+<h1 id="未来研究方向（Future-Research-Directions）"><a href="#未来研究方向（Future-Research-Directions）" class="headerlink" title="未来研究方向（Future Research Directions）"></a>未来研究方向（Future Research Directions）</h1><p>无</p>
+<h1 id="参考文献（References）"><a href="#参考文献（References）" class="headerlink" title="参考文献（References）"></a>参考文献（References）</h1><p><a href="https://ieeexplore.ieee.org/abstract/document/9362711/">https://ieeexplore.ieee.org/abstract/document/9362711/</a><br>Zhou, F., Zhao, H., &amp; Nie, Z. (2021, January). Safety helmet detection based on YOLOv5. In 2021 IEEE International conference on power electronics, computer applications (ICPECA) (pp. 6-11). IEEE.</p>
+]]></content>
+      <categories>
+        <category>文献调研</category>
+      </categories>
+      <tags>
+        <tag>Object detection</tag>
+        <tag>Safety helmet detection</tag>
+        <tag>YOLOv5</tag>
+        <tag>Real-time detection</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Resource-Efficient Neural Networks for Embedded Systems</title>
     <url>/2024/05/27/Resource-Efficient%20Neural%20Networks%20for%20Embedded%20Systems/</url>
     <content><![CDATA[<h1 id="标题（Title）"><a href="#标题（Title）" class="headerlink" title="标题（Title）"></a>标题（Title）</h1><p>Resource-Efficient Neural Networks for Embedded Systems<br>基于嵌入式系统的高效神经网络，看标题应该是在嵌入式系统资源受限的情况下，部署合适的神经网络。<br>Submitted 8&#x2F;18; Revised 12&#x2F;23; Published 2&#x2F;24 </p>

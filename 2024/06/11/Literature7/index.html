@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"cszhenfeili.online","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"show_result":true,"style":null},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="标题（Title）Safety Helmet Detection Based on YOLOv5用YOLOv5检测安全帽，是一个具体场景的应用2021 IEEE International Conference on Power Electronics, Computer Applications (ICPECA) 摘要（Abstract）安全帽是工人最基本的保护装备，对工人生命安全有重大意义。然">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Safety Helmet Detection Based on YOLOv5">
+<meta property="og:url" content="https://cszhenfeili.online/2024/06/11/Literature7/index.html">
+<meta property="og:site_name" content="智能制造">
+<meta property="og:description" content="标题（Title）Safety Helmet Detection Based on YOLOv5用YOLOv5检测安全帽，是一个具体场景的应用2021 IEEE International Conference on Power Electronics, Computer Applications (ICPECA) 摘要（Abstract）安全帽是工人最基本的保护装备，对工人生命安全有重大意义。然">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cszhenfeili.online/images/Literature7/1.png">
+<meta property="og:image" content="https://cszhenfeili.online/images/Literature7/2.png">
+<meta property="og:image" content="https://cszhenfeili.online/images/Literature7/3.png">
+<meta property="og:image" content="https://cszhenfeili.online/images/Literature7/4.png">
+<meta property="article:published_time" content="2024-06-11T14:24:04.000Z">
+<meta property="article:modified_time" content="2024-06-11T14:27:26.837Z">
+<meta property="article:author" content="晓飞">
+<meta property="article:tag" content="Object detection">
+<meta property="article:tag" content="Safety helmet detection">
+<meta property="article:tag" content="YOLOv5">
+<meta property="article:tag" content="Real-time detection">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cszhenfeili.online/images/Literature7/1.png">
+
+
+<link rel="canonical" href="https://cszhenfeili.online/2024/06/11/Literature7/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cszhenfeili.online/2024/06/11/Literature7/","path":"2024/06/11/Literature7/","title":"Safety Helmet Detection Based on YOLOv5"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Safety Helmet Detection Based on YOLOv5 | 智能制造</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">智能制造</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">新一代控制技术</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">48</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">19</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%87%E9%A2%98%EF%BC%88Title%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">标题（Title）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81%EF%BC%88Abstract%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">摘要（Abstract）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%EF%BC%88Background%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">背景（Background）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9%EF%BC%88Main-Content%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">主要内容（Main Content）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#YOLOv5%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84"><span class="nav-number">4.0.1.</span> <span class="nav-text">YOLOv5网络结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%B1%BB%E5%99%A8%E4%BF%AE%E6%94%B9"><span class="nav-number">4.0.2.</span> <span class="nav-text">分类器修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%86%E8%8A%82"><span class="nav-number">4.0.3.</span> <span class="nav-text">实验细节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="nav-number">4.0.4.</span> <span class="nav-text">实验结果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%84%E4%BB%B7%E5%92%8C%E6%84%9F%E6%83%B3%EF%BC%88Evaluation-and-Reflections%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">评价和感想（Evaluation and Reflections）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AA%E6%9D%A5%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91%EF%BC%88Future-Research-Directions%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">未来研究方向（Future Research Directions）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%EF%BC%88References%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">参考文献（References）</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="晓飞"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">晓飞</p>
+  <div class="site-description" itemprop="description">自动化、信息化、智能化、集成化</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cszhenfeili.online/2024/06/11/Literature7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="晓飞">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="智能制造">
+      <meta itemprop="description" content="自动化、信息化、智能化、集成化">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Safety Helmet Detection Based on YOLOv5 | 智能制造">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Safety Helmet Detection Based on YOLOv5
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-06-11 22:24:04 / 修改时间：22:27:26" itemprop="dateCreated datePublished" datetime="2024-06-11T22:24:04+08:00">2024-06-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%96%87%E7%8C%AE%E8%B0%83%E7%A0%94/" itemprop="url" rel="index"><span itemprop="name">文献调研</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="标题（Title）"><a href="#标题（Title）" class="headerlink" title="标题（Title）"></a>标题（Title）</h1><p>Safety Helmet Detection Based on YOLOv5<br>用YOLOv5检测安全帽，是一个具体场景的应用<br>2021 IEEE International Conference on Power Electronics, Computer Applications (ICPECA)</p>
+<h1 id="摘要（Abstract）"><a href="#摘要（Abstract）" class="headerlink" title="摘要（Abstract）"></a>摘要（Abstract）</h1><p>安全帽是工人最基本的保护装备，对工人生命安全有重大意义。然而，由于缺乏安全意识，安全帽往往未被佩戴。本文提出了一种基于YOLOv5的安全帽检测方法，并对6045张收集的数据集进行了标注。使用不同参数的YOLOv5模型进行训练和测试，实验结果显示YOLOv5s的平均检测速度达到110帧每秒，完全满足实时检测要求。使用可训练目标检测器的预训练权重，YOLOv5x的mAP达到94.7%，证明了基于YOLOv5的安全帽检测方法的有效性。<br><img src="/images/Literature7/1.png" alt=" "></p>
+<span id="more"></span>
+<h1 id="背景（Background）"><a href="#背景（Background）" class="headerlink" title="背景（Background）"></a>背景（Background）</h1><p>安全帽作为工人最基本的个人防护装备，对保护工人生命具有重要意义。然而，由于缺乏安全意识，一些工人在工作时往往不佩戴安全帽，因此安全帽检测成为生产安全监控的重要手段，尤其在建筑工地、煤矿等场所应用广泛。<br>本文将利用YOLO实现对安全帽的自动检测。</p>
+<h1 id="主要内容（Main-Content）"><a href="#主要内容（Main-Content）" class="headerlink" title="主要内容（Main Content）"></a>主要内容（Main Content）</h1><h3 id="YOLOv5网络结构"><a href="#YOLOv5网络结构" class="headerlink" title="YOLOv5网络结构"></a>YOLOv5网络结构</h3><p>YOLOv5网络分为三个部分：骨干网络（Backbone）、颈部（Neck）和输出层（Output）。具体结构如下：</p>
+<ol>
+<li>骨干网络（Backbone）：输入图片的分辨率为640×640×3，首先经过Focus结构，利用切片操作生成320×320×12的特征图，然后通过32个卷积核的卷积操作，最终得到320×320×32的特征图。CBL模块是一个基本的卷积模块，包括Conv2D、BatchNormalization和LeakyRELU。</li>
+<li>BottleneckCSP模块：主要进行特征提取，提取图像中的丰富信息。与其他大型卷积神经网络相比，BottleneckCSP结构可以减少优化过程中梯度信息的重复，通过调整模块的宽度和深度，可以得到不同参数的四种模型（YOLOv5s, YOLOv5m, YOLOv5l, YOLOv5x）。</li>
+<li>SPP模块：增加网络的感受野，获取不同尺度的特征。</li>
+<li>底部特征金字塔（Bottom-up feature pyramid）：基于FPN结构，结合自上而下和自下而上的特征聚合，改善了网络检测不同尺度目标的能力。</li>
+</ol>
+<h3 id="分类器修改"><a href="#分类器修改" class="headerlink" title="分类器修改"></a>分类器修改</h3><p>针对安全帽检测场景，YOLOv5的分类器进行了修改：</p>
+<ul>
+<li>COCO数据集包含80个类别，输出张量的维度为3 × (5 + 80) &#x3D; 255，其中3代表每个网格预测的三个模板框，5代表每个预测框的坐标和置信度。</li>
+<li>在安全帽检测中，有两种类型的对象：佩戴安全帽和未佩戴安全帽。因此，将输出维度修改为3 × (5 + 2) &#x3D; 21，以适应安全帽检测场景，从而减少网络参数，降低计算开销，提高检测速度和准确性。<br><img src="/images/Literature7/2.png" alt=" "></li>
+</ul>
+<h3 id="实验细节"><a href="#实验细节" class="headerlink" title="实验细节"></a>实验细节</h3><p>实验在ubuntu18.04操作系统上进行，使用Pytorch框架，并在单个NVIDIA GTX1660 GPU上进行训练和测试。实验步骤包括：</p>
+<ul>
+<li>数据增强：对训练集图片进行随机裁剪至640×640大小，并采用随机翻转、几何失真、光照失真、图像遮挡、随机擦除、cutout、mixup等数据增强方法。</li>
+<li>测试阶段：图片缩放至640×640，以便于评估网络性能。</li>
+<li>优化器：使用SGD优化器优化网络，主要的实验超参数包括：<ul>
+<li>学习率：0.01</li>
+<li>学习率衰减：0.999</li>
+<li>学习率衰减步长：1</li>
+<li>权重衰减：5e-4</li>
+<li>动量：0.937</li>
+<li>批次大小：16</li>
+<li>迭代次数：100</li>
+</ul>
+</li>
+</ul>
+<h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><p>实验使用YOLOv5的四种模型（s, m, l, x）进行训练和测试，主要结果如下<br><img src="/images/Literature7/3.png" alt=" "><br><img src="/images/Literature7/4.png" alt=" "></p>
+<h1 id="评价和感想（Evaluation-and-Reflections）"><a href="#评价和感想（Evaluation-and-Reflections）" class="headerlink" title="评价和感想（Evaluation and Reflections）"></a>评价和感想（Evaluation and Reflections）</h1><p>无，简单的看看在做项目的应用。</p>
+<h1 id="未来研究方向（Future-Research-Directions）"><a href="#未来研究方向（Future-Research-Directions）" class="headerlink" title="未来研究方向（Future Research Directions）"></a>未来研究方向（Future Research Directions）</h1><p>无</p>
+<h1 id="参考文献（References）"><a href="#参考文献（References）" class="headerlink" title="参考文献（References）"></a>参考文献（References）</h1><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/9362711/">https://ieeexplore.ieee.org/abstract/document/9362711/</a><br>Zhou, F., Zhao, H., &amp; Nie, Z. (2021, January). Safety helmet detection based on YOLOv5. In 2021 IEEE International conference on power electronics, computer applications (ICPECA) (pp. 6-11). IEEE.</p>
+
+    </div>
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Object-detection/" rel="tag"># Object detection</a>
+              <a href="/tags/Safety-helmet-detection/" rel="tag"># Safety helmet detection</a>
+              <a href="/tags/YOLOv5/" rel="tag"># YOLOv5</a>
+              <a href="/tags/Real-time-detection/" rel="tag"># Real-time detection</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/09/Literature6/" rel="prev" title="Humanoid Locomotion as Next Token Prediction">
+                  <i class="fa fa-angle-left"></i> Humanoid Locomotion as Next Token Prediction
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">晓飞</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"mhchem":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":300,"height":600},"mobile":{"show":false},"log":false});</script></body>
+</html>
