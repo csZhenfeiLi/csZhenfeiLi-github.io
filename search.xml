@@ -1014,6 +1014,77 @@
       </tags>
   </entry>
   <entry>
+    <title>制作启动U盘并在飞腾开发板上运行</title>
+    <url>/2024/06/29/%E5%88%B6%E4%BD%9C%E5%90%AF%E5%8A%A8U%E7%9B%98%E5%B9%B6%E5%9C%A8%E9%A3%9E%E8%85%BE%E5%BC%80%E5%8F%91%E6%9D%BF%E4%B8%8A%E8%BF%90%E8%A1%8C/</url>
+    <content><![CDATA[<p>背景介绍：我需要在飞腾E2000Q核心的汉为开发板上运行linux操作系统，且操作系统通过U盘启动。本文章解决的问题是如何制作U盘。使用的工具包括：1、一台x86架构的Linux台式机。2、一个128G的U盘。</p>
+<h1 id="步骤1：安装交叉编译工具链"><a href="#步骤1：安装交叉编译工具链" class="headerlink" title="步骤1：安装交叉编译工具链"></a>步骤1：安装交叉编译工具链</h1><p>确保你的系统已安装适用于 ARM64 的交叉编译工具链：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install gcc-aarch64-linux-gnu</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="步骤2：下载和解压内核源代码"><a href="#步骤2：下载和解压内核源代码" class="headerlink" title="步骤2：下载和解压内核源代码"></a>步骤2：下载和解压内核源代码</h1><p>下载并解压内核源代码（飞腾内核需要去gitee上下载）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.xz</span><br><span class="line">tar -xf linux-5.10.tar.xz</span><br><span class="line"><span class="built_in">cd</span> linux-5.10</span><br></pre></td></tr></table></figure>
+<h1 id="步骤3：清理并使用默认配置"><a href="#步骤3：清理并使用默认配置" class="headerlink" title="步骤3：清理并使用默认配置"></a>步骤3：清理并使用默认配置</h1><p>清理配置并使用默认配置：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- mrproper</span><br><span class="line">make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- defconfig</span><br></pre></td></tr></table></figure>
+<h1 id="步骤4：手动配置内核"><a href="#步骤4：手动配置内核" class="headerlink" title="步骤4：手动配置内核"></a>步骤4：手动配置内核</h1><p>进入内核配置界面，确保启用了所需的选项：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- menuconfig</span><br></pre></td></tr></table></figure>
+<p>在配置界面中，确保以下选项已启用：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. Platform selection：选择与飞腾相关的选项：</span><br><span class="line"></span><br><span class="line">Platform selection  ---&gt;</span><br><span class="line">   [*] Phytium SoC Family (NEW)</span><br><span class="line"></span><br><span class="line">2. General setup：检查是否有生成内核镜像的选项：</span><br><span class="line"></span><br><span class="line">General setup  ---&gt;</span><br><span class="line">   [*] Initial RAM filesystem and RAM disk (initramfs/initrd) support</span><br><span class="line"></span><br><span class="line">3. Boot options：如果存在，启用UEFI支持：</span><br><span class="line"></span><br><span class="line">Boot options  ---&gt;</span><br><span class="line">   [*] UEFI runtime support</span><br><span class="line"></span><br><span class="line">4. Device Drivers：根据需要启用特定设备的支持。</span><br></pre></td></tr></table></figure>
+<p>完成配置后，保存并退出。</p>
+<h1 id="步骤5：编译内核"><a href="#步骤5：编译内核" class="headerlink" title="步骤5：编译内核"></a>步骤5：编译内核</h1><p>进行内核编译：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j$(<span class="built_in">nproc</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="步骤6：选择设备树文件（-dtb-文件）"><a href="#步骤6：选择设备树文件（-dtb-文件）" class="headerlink" title="步骤6：选择设备树文件（.dtb 文件）"></a>步骤6：选择设备树文件（.dtb 文件）</h1><p>设备树文件用于描述硬件配置。你需要选择与你的飞腾开发板匹配的设备树文件。以下是一些常见的设备树文件，你需要根据你的开发板型号选择合适的一个：</p>
+<ul>
+<li>e2000q-come-board.dtb</li>
+<li>e2000d-demo-board.dtb</li>
+<li>e2000q-miniitx-board.dtb</li>
+<li>e2000q-edu-board.dtb</li>
+<li>其他相关设备树文件</li>
+</ul>
+<p>通常，开发板的文档或厂商会提供具体的设备树文件名称。如果不确定，可以尝试多个文件，看哪个文件能够成功启动系统。</p>
+<h1 id="步骤7：准备U盘"><a href="#步骤7：准备U盘" class="headerlink" title="步骤7：准备U盘"></a>步骤7：准备U盘</h1><ol>
+<li><p>分区和格式化U盘：</p>
+<p>使用fdisk进行分区，然后使用mkfs.vfat格式化为FAT32文件系统。</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo fdisk /dev/sda</span><br></pre></td></tr></table></figure>
+
+<p>在fdisk命令提示符下：<br>o - 创建新的DOS分区表<br>n - 创建新的分区<br>p - 选择主分区<br>1 - 分区号<br>默认起始扇区和结束扇区<br>w - 写入分区表并退出</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mkfs.vfat /dev/sda1</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>挂载U盘：</p>
+<p>创建一个挂载点并挂载U盘：</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> /mnt/usb</span><br><span class="line">sudo mount /dev/sda1 /mnt/usb</span><br></pre></td></tr></table></figure>
+
+<h1 id="步骤8：复制内核和设备树文件到U盘"><a href="#步骤8：复制内核和设备树文件到U盘" class="headerlink" title="步骤8：复制内核和设备树文件到U盘"></a>步骤8：复制内核和设备树文件到U盘</h1><p>将编译好的内核镜像和设备树文件复制到U盘：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> <span class="built_in">arch</span>/arm64/boot/Image /mnt/usb</span><br><span class="line">sudo <span class="built_in">cp</span> <span class="built_in">arch</span>/arm64/boot/dts/phytium/e2000q-come-board.dtb /mnt/usb</span><br></pre></td></tr></table></figure>
+
+<h1 id="步骤9：配置U-Boot环境变量"><a href="#步骤9：配置U-Boot环境变量" class="headerlink" title="步骤9：配置U-Boot环境变量"></a>步骤9：配置U-Boot环境变量</h1><p>在开发板上设置U-Boot的环境变量，使其从U盘启动。</p>
+<ol>
+<li><p>连接开发板：</p>
+<p>将开发板通过串口或USB连接到主机，并打开串口终端（如minicom或screen）。</p>
+</li>
+<li><p>进入U-Boot命令行：</p>
+<p>重启开发板，并在启动过程中按下特定键（如ESC或Space）进入U-Boot命令行。</p>
+</li>
+<li><p>设置环境变量：</p>
+<p>按照你提供的配置设置环境变量：</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">setenv bootargs <span class="string">&#x27;console=ttyAMA1,115200 audit=0 earlycon=pl011,0x2800d000 root=/dev/sda1 rootdelay=5 rw;&#x27;</span></span><br><span class="line">setenv boot_usb <span class="string">&#x27;usb stop; usb start; fatload usb 0:1 0x90000000 e2000q-come-board.dtb; fatload usb 0:1 0x90100000 Image; booti 0x90100000 - 0x90000000;&#x27;</span></span><br><span class="line">setenv bootcmd <span class="string">&#x27;run boot_usb&#x27;</span></span><br><span class="line">saveenv</span><br></pre></td></tr></table></figure>
+<h1 id="步骤10：启动系统"><a href="#步骤10：启动系统" class="headerlink" title="步骤10：启动系统"></a>步骤10：启动系统</h1><p>确保U盘插入开发板，重启开发板后，系统应从U盘启动，并加载内核和设备树文件。</p>
+]]></content>
+      <categories>
+        <category>飞腾处理器</category>
+      </categories>
+      <tags>
+        <tag>交叉编译</tag>
+        <tag>启动U盘制作</tag>
+        <tag>汉为开发板</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>基于YOLOv10的摄像头实时检测</title>
     <url>/2024/06/01/%E5%9F%BA%E4%BA%8EYOLOv10%E7%9A%84%E6%91%84%E5%83%8F%E5%A4%B4%E5%AE%9E%E6%97%B6%E6%A3%80%E6%B5%8B/</url>
     <content><![CDATA[<p>本项目基于开源项目：<a href="https://github.com/THU-MIG/yolov10?tab=readme-ov-file">https://github.com/THU-MIG/yolov10?tab=readme-ov-file</a><br>实现一个简单的实时检测效果。</p>
