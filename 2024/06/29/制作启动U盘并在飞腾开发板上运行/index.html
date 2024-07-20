@@ -21,15 +21,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"cszhenfeili.online","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"show_result":true,"style":null},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="背景介绍：我需要在飞腾E2000Q核心的汉为开发板上运行linux操作系统，且操作系统通过U盘启动。本文章解决的问题是如何制作U盘。使用的工具包括：1、一台x86架构的Linux台式机。2、一个128G的U盘。 步骤1：安装交叉编译工具链确保你的系统已安装适用于 ARM64 的交叉编译工具链： 12sudo apt updatesudo apt install gcc-aarch64-linux-">
+    <meta name="description" content="背景介绍：我需要在飞腾E2000Q核心的汉为开发板上运行linux操作系统，且操作系统通过U盘启动。本文章解决的问题是如何制作U盘。使用的工具包括：1、一台x86架构的Linux台式机。2、一个128G的U盘。 构建内核、设备树、根目录方法来源：Phytium嵌入式软件&#x2F;Phytium-Linux-buildroot 系统要求Buildroot被设计为在x86 Linux系统上运行，我们">
 <meta property="og:type" content="article">
 <meta property="og:title" content="制作启动U盘并在飞腾开发板上运行">
 <meta property="og:url" content="https://cszhenfeili.online/2024/06/29/%E5%88%B6%E4%BD%9C%E5%90%AF%E5%8A%A8U%E7%9B%98%E5%B9%B6%E5%9C%A8%E9%A3%9E%E8%85%BE%E5%BC%80%E5%8F%91%E6%9D%BF%E4%B8%8A%E8%BF%90%E8%A1%8C/index.html">
 <meta property="og:site_name" content="智能制造">
-<meta property="og:description" content="背景介绍：我需要在飞腾E2000Q核心的汉为开发板上运行linux操作系统，且操作系统通过U盘启动。本文章解决的问题是如何制作U盘。使用的工具包括：1、一台x86架构的Linux台式机。2、一个128G的U盘。 步骤1：安装交叉编译工具链确保你的系统已安装适用于 ARM64 的交叉编译工具链： 12sudo apt updatesudo apt install gcc-aarch64-linux-">
+<meta property="og:description" content="背景介绍：我需要在飞腾E2000Q核心的汉为开发板上运行linux操作系统，且操作系统通过U盘启动。本文章解决的问题是如何制作U盘。使用的工具包括：1、一台x86架构的Linux台式机。2、一个128G的U盘。 构建内核、设备树、根目录方法来源：Phytium嵌入式软件&#x2F;Phytium-Linux-buildroot 系统要求Buildroot被设计为在x86 Linux系统上运行，我们">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-06-29T02:17:27.000Z">
-<meta property="article:modified_time" content="2024-06-29T02:28:02.855Z">
+<meta property="article:modified_time" content="2024-07-20T01:00:58.333Z">
 <meta property="article:author" content="晓飞">
 <meta property="article:tag" content="交叉编译">
 <meta property="article:tag" content="启动U盘制作">
@@ -144,7 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A41%EF%BC%9A%E5%AE%89%E8%A3%85%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE"><span class="nav-number">1.</span> <span class="nav-text">步骤1：安装交叉编译工具链</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A42%EF%BC%9A%E4%B8%8B%E8%BD%BD%E5%92%8C%E8%A7%A3%E5%8E%8B%E5%86%85%E6%A0%B8%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">步骤2：下载和解压内核源代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A43%EF%BC%9A%E6%B8%85%E7%90%86%E5%B9%B6%E4%BD%BF%E7%94%A8%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">步骤3：清理并使用默认配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A44%EF%BC%9A%E6%89%8B%E5%8A%A8%E9%85%8D%E7%BD%AE%E5%86%85%E6%A0%B8"><span class="nav-number">4.</span> <span class="nav-text">步骤4：手动配置内核</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A45%EF%BC%9A%E7%BC%96%E8%AF%91%E5%86%85%E6%A0%B8"><span class="nav-number">5.</span> <span class="nav-text">步骤5：编译内核</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A46%EF%BC%9A%E9%80%89%E6%8B%A9%E8%AE%BE%E5%A4%87%E6%A0%91%E6%96%87%E4%BB%B6%EF%BC%88-dtb-%E6%96%87%E4%BB%B6%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">步骤6：选择设备树文件（.dtb 文件）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A47%EF%BC%9A%E5%87%86%E5%A4%87U%E7%9B%98"><span class="nav-number">7.</span> <span class="nav-text">步骤7：准备U盘</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A48%EF%BC%9A%E5%A4%8D%E5%88%B6%E5%86%85%E6%A0%B8%E5%92%8C%E8%AE%BE%E5%A4%87%E6%A0%91%E6%96%87%E4%BB%B6%E5%88%B0U%E7%9B%98"><span class="nav-number">8.</span> <span class="nav-text">步骤8：复制内核和设备树文件到U盘</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A49%EF%BC%9A%E9%85%8D%E7%BD%AEU-Boot%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">9.</span> <span class="nav-text">步骤9：配置U-Boot环境变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A410%EF%BC%9A%E5%90%AF%E5%8A%A8%E7%B3%BB%E7%BB%9F"><span class="nav-number">10.</span> <span class="nav-text">步骤10：启动系统</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E5%86%85%E6%A0%B8%E3%80%81%E8%AE%BE%E5%A4%87%E6%A0%91%E3%80%81%E6%A0%B9%E7%9B%AE%E5%BD%95"><span class="nav-number">1.</span> <span class="nav-text">构建内核、设备树、根目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%A6%81%E6%B1%82"><span class="nav-number">2.</span> <span class="nav-text">系统要求</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDphytium-linux-buildroot"><span class="nav-number">2.1.</span> <span class="nav-text">下载phytium-linux-buildroot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%92%8C%E6%89%A9%E5%B1%95%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">默认配置文件和扩展配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE%E7%9A%84%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.3.</span> <span class="nav-text">编译默认配置的文件系统</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%B6%E4%BD%9C%E5%90%AF%E5%8A%A8U%E7%9B%98"><span class="nav-number">3.</span> <span class="nav-text">制作启动U盘</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A41%EF%BC%9A%E8%AF%86%E5%88%ABU%E7%9B%98"><span class="nav-number">3.1.</span> <span class="nav-text">步骤1：识别U盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A42%EF%BC%9A%E4%BD%BF%E7%94%A8-fdisk-%E5%88%86%E5%8C%BA"><span class="nav-number">3.2.</span> <span class="nav-text">步骤2：使用 fdisk 分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A43%EF%BC%9A%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%96%B0%E5%88%86%E5%8C%BA"><span class="nav-number">3.3.</span> <span class="nav-text">步骤3：格式化新分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A44%EF%BC%9A%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6%E5%88%B0%E5%88%86%E5%8C%BA"><span class="nav-number">3.4.</span> <span class="nav-text">步骤4：拷贝文件到分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A45%EF%BC%9A%E8%AE%BE%E7%BD%AEU-Boot%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">3.5.</span> <span class="nav-text">步骤5：设置U-Boot环境变量</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -225,9 +225,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2024-06-29 10:17:27 / 修改时间：10:28:02" itemprop="dateCreated datePublished" datetime="2024-06-29T10:17:27+08:00">2024-06-29</time>
+      <time title="创建时间：2024-06-29 10:17:27" itemprop="dateCreated datePublished" datetime="2024-06-29T10:17:27+08:00">2024-06-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-07-20 09:00:58" itemprop="dateModified" datetime="2024-07-20T09:00:58+08:00">2024-07-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -249,63 +255,73 @@
     
     
     <div class="post-body" itemprop="articleBody"><p>背景介绍：我需要在飞腾E2000Q核心的汉为开发板上运行linux操作系统，且操作系统通过U盘启动。本文章解决的问题是如何制作U盘。使用的工具包括：1、一台x86架构的Linux台式机。2、一个128G的U盘。</p>
-<h1 id="步骤1：安装交叉编译工具链"><a href="#步骤1：安装交叉编译工具链" class="headerlink" title="步骤1：安装交叉编译工具链"></a>步骤1：安装交叉编译工具链</h1><p>确保你的系统已安装适用于 ARM64 的交叉编译工具链：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install gcc-aarch64-linux-gnu</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="步骤2：下载和解压内核源代码"><a href="#步骤2：下载和解压内核源代码" class="headerlink" title="步骤2：下载和解压内核源代码"></a>步骤2：下载和解压内核源代码</h1><p>下载并解压内核源代码（飞腾内核需要去gitee上下载）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.xz</span><br><span class="line">tar -xf linux-5.10.tar.xz</span><br><span class="line"><span class="built_in">cd</span> linux-5.10</span><br></pre></td></tr></table></figure>
-<h1 id="步骤3：清理并使用默认配置"><a href="#步骤3：清理并使用默认配置" class="headerlink" title="步骤3：清理并使用默认配置"></a>步骤3：清理并使用默认配置</h1><p>清理配置并使用默认配置：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- mrproper</span><br><span class="line">make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- defconfig</span><br></pre></td></tr></table></figure>
-<h1 id="步骤4：手动配置内核"><a href="#步骤4：手动配置内核" class="headerlink" title="步骤4：手动配置内核"></a>步骤4：手动配置内核</h1><p>进入内核配置界面，确保启用了所需的选项：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- menuconfig</span><br></pre></td></tr></table></figure>
-<p>在配置界面中，确保以下选项已启用：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1. Platform selection：选择与飞腾相关的选项：</span><br><span class="line"></span><br><span class="line">Platform selection  ---&gt;</span><br><span class="line">   [*] Phytium SoC Family (NEW)</span><br><span class="line"></span><br><span class="line">2. General setup：检查是否有生成内核镜像的选项：</span><br><span class="line"></span><br><span class="line">General setup  ---&gt;</span><br><span class="line">   [*] Initial RAM filesystem and RAM disk (initramfs/initrd) support</span><br><span class="line"></span><br><span class="line">3. Boot options：如果存在，启用UEFI支持：</span><br><span class="line"></span><br><span class="line">Boot options  ---&gt;</span><br><span class="line">   [*] UEFI runtime support</span><br><span class="line"></span><br><span class="line">4. Device Drivers：根据需要启用特定设备的支持。</span><br></pre></td></tr></table></figure>
-<p>完成配置后，保存并退出。</p>
-<h1 id="步骤5：编译内核"><a href="#步骤5：编译内核" class="headerlink" title="步骤5：编译内核"></a>步骤5：编译内核</h1><p>进行内核编译：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j$(<span class="built_in">nproc</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="步骤6：选择设备树文件（-dtb-文件）"><a href="#步骤6：选择设备树文件（-dtb-文件）" class="headerlink" title="步骤6：选择设备树文件（.dtb 文件）"></a>步骤6：选择设备树文件（.dtb 文件）</h1><p>设备树文件用于描述硬件配置。你需要选择与你的飞腾开发板匹配的设备树文件。以下是一些常见的设备树文件，你需要根据你的开发板型号选择合适的一个：</p>
+<h1 id="构建内核、设备树、根目录"><a href="#构建内核、设备树、根目录" class="headerlink" title="构建内核、设备树、根目录"></a>构建内核、设备树、根目录</h1><p>方法来源：Phytium嵌入式软件&#x2F;Phytium-Linux-buildroot</p>
+<h1 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h1><p>Buildroot被设计为在x86 Linux系统上运行，我们只支持在ubuntu20.04、ubuntu22.04、debian11这三种x86主机上运行phytium-linux-buildroot，不支持其他系统。 Buildroot需要主机系统上安装以下依赖包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$$ sudo apt update</span><br><span class="line">$$ sudo apt install debianutils sed make binutils build-essential gcc </span><br><span class="line">\g++ bash patch gzip bzip2 perl tar cpio unzip rsync file bc wget git </span><br><span class="line">\debootstrap qemu-user-static binfmt-support debian-archive-keyring</span><br></pre></td></tr></table></figure>
+<p>对于debian11系统，需要设置PATH环境变量：PATH&#x3D;$PATH:&#x2F;usr&#x2F;sbin</p>
+<h2 id="下载phytium-linux-buildroot"><a href="#下载phytium-linux-buildroot" class="headerlink" title="下载phytium-linux-buildroot"></a>下载phytium-linux-buildroot</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://gitee.com/phytium_embedded/phytium-linux-buildroot.git</span><br></pre></td></tr></table></figure>
+<h2 id="默认配置文件和扩展配置文件"><a href="#默认配置文件和扩展配置文件" class="headerlink" title="默认配置文件和扩展配置文件"></a>默认配置文件和扩展配置文件</h2><p>为飞腾CPU平台构建的文件系统的配置文件位于configs目录。<br>其中，以defconfig结尾的为默认配置文件，以config结尾的为扩展配置文件。<br>defconfig可以和config文件进行组合，用以扩展特定的功能，但要注意不能随意组合。<br>defconfig<br>在phytium-linux-buildroot根目录下执行$ make list-defconfigs，返回configs目录中的defconfig配置文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$$ <span class="built_in">cd</span> xxx/phytium-linux-buildroot</span><br><span class="line">$$ make list-defconfigs</span><br></pre></td></tr></table></figure>
+<p>其中以phytium开头的为飞腾相关的defconfig配置文件，包含：</p>
 <ul>
-<li>e2000q-come-board.dtb</li>
-<li>e2000d-demo-board.dtb</li>
-<li>e2000q-miniitx-board.dtb</li>
-<li>e2000q-edu-board.dtb</li>
-<li>其他相关设备树文件</li>
+<li>phytium_debian_defconfig      </li>
+<li>Build for debian systemphytium_defconfig             </li>
+<li>Build for busybox minimal systemphytium_initrd_defconfig      </li>
+<li>Build for initrdphytium_ubuntu_defconfig      </li>
+<li>Build for ubuntu system</li>
 </ul>
-<p>通常，开发板的文档或厂商会提供具体的设备树文件名称。如果不确定，可以尝试多个文件，看哪个文件能够成功启动系统。</p>
-<h1 id="步骤7：准备U盘"><a href="#步骤7：准备U盘" class="headerlink" title="步骤7：准备U盘"></a>步骤7：准备U盘</h1><ol>
-<li><p>分区和格式化U盘：</p>
-<p>使用fdisk进行分区，然后使用mkfs.vfat格式化为FAT32文件系统。</p>
+<h2 id="编译默认配置的文件系统"><a href="#编译默认配置的文件系统" class="headerlink" title="编译默认配置的文件系统"></a>编译默认配置的文件系统</h2><p>（1）加载defconfig</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ make phytium_xxx_defconfig</span><br></pre></td></tr></table></figure>
+<p>其中phytium_xxx_defconfig为以下文件系统之一：<br>phytium_ubuntu_defconfig<br>phytium_debian_defconfig<br>phytium_defconfig<br>（2）编译<br>$ make<br>（3）镜像的输出位置<br>生成的根文件系统、内核、img 镜像位于output&#x2F;images目录。<br>img 镜像<br>目前buildroot支持编译img 镜像（disk.img），生成的img 镜像位于output&#x2F;images目录。img 镜像包含了根文件系统、内核、设备树和GRUB。 使用img 镜像安装系统，不需要像之前那样将存储设备手动分区再拷贝文件，只需要将disk.img文件写入存储设备即可。</p>
+<h1 id="制作启动U盘"><a href="#制作启动U盘" class="headerlink" title="制作启动U盘"></a>制作启动U盘</h1><p>以下是详细的步骤，教你如何格式化U盘并重新构建两个分区。假设U盘设备名为 &#x2F;dev&#x2F;sdb。</p>
+<h2 id="步骤1：识别U盘"><a href="#步骤1：识别U盘" class="headerlink" title="步骤1：识别U盘"></a>步骤1：识别U盘</h2><p>首先，使用 lsblk 或 fdisk -l 命令识别U盘的设备名：</p>
+<p>lsblk<br>或者<br>sudo fdisk -l</p>
+<p>假设你的U盘设备名是 &#x2F;dev&#x2F;sdb。</p>
+<h2 id="步骤2：使用-fdisk-分区"><a href="#步骤2：使用-fdisk-分区" class="headerlink" title="步骤2：使用 fdisk 分区"></a>步骤2：使用 fdisk 分区</h2><ol>
+<li><p>启动 <strong>fdisk</strong>：<br>sudo fdisk &#x2F;dev&#x2F;sdb</p>
+</li>
+<li><p>删除现有分区：<br>在 fdisk 命令行中，输入以下命令删除所有现有分区：</p>
 </li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo fdisk /dev/sda</span><br></pre></td></tr></table></figure>
-
-<p>在fdisk命令提示符下：<br>o - 创建新的DOS分区表<br>n - 创建新的分区<br>p - 选择主分区<br>1 - 分区号<br>默认起始扇区和结束扇区<br>w - 写入分区表并退出</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfs.vfat /dev/sda1</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><p>挂载U盘：</p>
-<p>创建一个挂载点并挂载U盘：</p>
+<ul>
+<li>输入 d 并回车，选择要删除的分区号，重复此步骤直到所有分区都删除。</li>
+<li>输入 p 查看当前分区表，确保所有分区都删除。</li>
+</ul>
+<ol start="3">
+<li><p>创建新的GPT分区表：<br>g</p>
+</li>
+<li><p>创建第一个分区（EFI系统分区）：</p>
 </li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> /mnt/usb</span><br><span class="line">sudo mount /dev/sda1 /mnt/usb</span><br></pre></td></tr></table></figure>
-
-<h1 id="步骤8：复制内核和设备树文件到U盘"><a href="#步骤8：复制内核和设备树文件到U盘" class="headerlink" title="步骤8：复制内核和设备树文件到U盘"></a>步骤8：复制内核和设备树文件到U盘</h1><p>将编译好的内核镜像和设备树文件复制到U盘：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> <span class="built_in">arch</span>/arm64/boot/Image /mnt/usb</span><br><span class="line">sudo <span class="built_in">cp</span> <span class="built_in">arch</span>/arm64/boot/dts/phytium/e2000q-come-board.dtb /mnt/usb</span><br></pre></td></tr></table></figure>
-
-<h1 id="步骤9：配置U-Boot环境变量"><a href="#步骤9：配置U-Boot环境变量" class="headerlink" title="步骤9：配置U-Boot环境变量"></a>步骤9：配置U-Boot环境变量</h1><p>在开发板上设置U-Boot的环境变量，使其从U盘启动。</p>
-<ol>
-<li><p>连接开发板：</p>
-<p>将开发板通过串口或USB连接到主机，并打开串口终端（如minicom或screen）。</p>
+<ul>
+<li>输入 n 创建新分区，选择分区号 1，设置起始扇区和大小（例如 +512M）。</li>
+<li>输入 t 修改分区类型，选择分区号 1，输入 1 设置为 EFI System。</li>
+</ul>
+<ol start="5">
+<li>创建第二个分区（根文件系统分区）：</li>
+</ol>
+<ul>
+<li>输入 n 创建新分区，选择分区号 2，使用默认起始扇区和默认结束扇区。</li>
+</ul>
+<ol start="6">
+<li><p>查看分区表：<br>p</p>
 </li>
-<li><p>进入U-Boot命令行：</p>
-<p>重启开发板，并在启动过程中按下特定键（如ESC或Space）进入U-Boot命令行。</p>
-</li>
-<li><p>设置环境变量：</p>
-<p>按照你提供的配置设置环境变量：</p>
+<li><p>写入分区表并退出：<br>w</p>
 </li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setenv bootargs <span class="string">&#x27;console=ttyAMA1,115200 audit=0 earlycon=pl011,0x2800d000 root=/dev/sda1 rootdelay=5 rw;&#x27;</span></span><br><span class="line">setenv boot_usb <span class="string">&#x27;usb stop; usb start; fatload usb 0:1 0x90000000 e2000q-come-board.dtb; fatload usb 0:1 0x90100000 Image; booti 0x90100000 - 0x90000000;&#x27;</span></span><br><span class="line">setenv bootcmd <span class="string">&#x27;run boot_usb&#x27;</span></span><br><span class="line">saveenv</span><br></pre></td></tr></table></figure>
-<h1 id="步骤10：启动系统"><a href="#步骤10：启动系统" class="headerlink" title="步骤10：启动系统"></a>步骤10：启动系统</h1><p>确保U盘插入开发板，重启开发板后，系统应从U盘启动，并加载内核和设备树文件。</p>
+<h2 id="步骤3：格式化新分区"><a href="#步骤3：格式化新分区" class="headerlink" title="步骤3：格式化新分区"></a>步骤3：格式化新分区</h2><ol>
+<li>格式化EFI系统分区为 vfat** 文件系统**：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfs.vfat /dev/sdb1</span><br></pre></td></tr></table></figure></li>
+<li>格式化根文件系统分区为 ext4** 文件系统**：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfs.ext4 /dev/sdb2</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="步骤4：拷贝文件到分区"><a href="#步骤4：拷贝文件到分区" class="headerlink" title="步骤4：拷贝文件到分区"></a>步骤4：拷贝文件到分区</h2><ol>
+<li>挂载分区：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mount /dev/sdb1 /mnt</span><br></pre></td></tr></table></figure></li>
+<li>拷贝内核、设备树和GRUB到EFI分区：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> /path/to/Image /mnt</span><br><span class="line">sudo <span class="built_in">cp</span> /path/to/e2000q-come-board.dtb /mnt</span><br><span class="line">sudo <span class="built_in">cp</span> -r /path/to/EFI/ /mnt</span><br><span class="line"><span class="built_in">sync</span></span><br><span class="line">sudo umount /dev/sdb1</span><br></pre></td></tr></table></figure></li>
+<li>挂载根分区：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mount /dev/sdb2 /mnt</span><br></pre></td></tr></table></figure></li>
+<li>拷贝并解压根文件系统到根分区：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> /path/to/rootfs.tar /mnt</span><br><span class="line"><span class="built_in">cd</span> /mnt</span><br><span class="line">sudo tar xvf rootfs.tar</span><br><span class="line"><span class="built_in">sync</span></span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">sudo umount /dev/sdb2</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="步骤5：设置U-Boot环境变量"><a href="#步骤5：设置U-Boot环境变量" class="headerlink" title="步骤5：设置U-Boot环境变量"></a>步骤5：设置U-Boot环境变量</h2><p>确保U-Boot配置正确以引导新的根文件系统：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setenv bootargs <span class="string">&#x27;console=ttyAMA1,115200 audit=0 earlycon=pl011,0x2800d000 root=/dev/sdb2 rootdelay=5 rw;&#x27;</span></span><br><span class="line">setenv boot_usb <span class="string">&#x27;usb stop; usb start; fatload usb 0:1 0x90000000 e2000q-hanwei-board.dtb; fatload usb 0:1 0x90100000 Image; booti 0x90100000 - 0x90000000;&#x27;</span></span><br><span class="line">setenv bootcmd <span class="string">&#x27;run boot_usb&#x27;</span></span><br><span class="line">saveenv</span><br></pre></td></tr></table></figure>
+
 
     </div>
     

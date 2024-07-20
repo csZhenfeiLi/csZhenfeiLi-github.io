@@ -218,9 +218,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2024-06-29 10:17:27 / 修改时间：10:28:02" itemprop="dateCreated datePublished" datetime="2024-06-29T10:17:27+08:00">2024-06-29</time>
+      <time title="创建时间：2024-06-29 10:17:27" itemprop="dateCreated datePublished" datetime="2024-06-29T10:17:27+08:00">2024-06-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-07-20 09:00:58" itemprop="dateModified" datetime="2024-07-20T09:00:58+08:00">2024-07-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -243,16 +249,74 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>背景介绍：我需要在飞腾E2000Q核心的汉为开发板上运行linux操作系统，且操作系统通过U盘启动。本文章解决的问题是如何制作U盘。使用的工具包括：1、一台x86架构的Linux台式机。2、一个128G的U盘。</p>
-<h1 id="步骤1：安装交叉编译工具链"><a href="#步骤1：安装交叉编译工具链" class="headerlink" title="步骤1：安装交叉编译工具链"></a>步骤1：安装交叉编译工具链</h1><p>确保你的系统已安装适用于 ARM64 的交叉编译工具链：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install gcc-aarch64-linux-gnu</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/06/29/%E5%88%B6%E4%BD%9C%E5%90%AF%E5%8A%A8U%E7%9B%98%E5%B9%B6%E5%9C%A8%E9%A3%9E%E8%85%BE%E5%BC%80%E5%8F%91%E6%9D%BF%E4%B8%8A%E8%BF%90%E8%A1%8C/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+<h1 id="构建内核、设备树、根目录"><a href="#构建内核、设备树、根目录" class="headerlink" title="构建内核、设备树、根目录"></a>构建内核、设备树、根目录</h1><p>方法来源：Phytium嵌入式软件&#x2F;Phytium-Linux-buildroot</p>
+<h1 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h1><p>Buildroot被设计为在x86 Linux系统上运行，我们只支持在ubuntu20.04、ubuntu22.04、debian11这三种x86主机上运行phytium-linux-buildroot，不支持其他系统。 Buildroot需要主机系统上安装以下依赖包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$$ sudo apt update</span><br><span class="line">$$ sudo apt install debianutils sed make binutils build-essential gcc </span><br><span class="line">\g++ bash patch gzip bzip2 perl tar cpio unzip rsync file bc wget git </span><br><span class="line">\debootstrap qemu-user-static binfmt-support debian-archive-keyring</span><br></pre></td></tr></table></figure>
+<p>对于debian11系统，需要设置PATH环境变量：PATH&#x3D;$PATH:&#x2F;usr&#x2F;sbin</p>
+<h2 id="下载phytium-linux-buildroot"><a href="#下载phytium-linux-buildroot" class="headerlink" title="下载phytium-linux-buildroot"></a>下载phytium-linux-buildroot</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://gitee.com/phytium_embedded/phytium-linux-buildroot.git</span><br></pre></td></tr></table></figure>
+<h2 id="默认配置文件和扩展配置文件"><a href="#默认配置文件和扩展配置文件" class="headerlink" title="默认配置文件和扩展配置文件"></a>默认配置文件和扩展配置文件</h2><p>为飞腾CPU平台构建的文件系统的配置文件位于configs目录。<br>其中，以defconfig结尾的为默认配置文件，以config结尾的为扩展配置文件。<br>defconfig可以和config文件进行组合，用以扩展特定的功能，但要注意不能随意组合。<br>defconfig<br>在phytium-linux-buildroot根目录下执行$ make list-defconfigs，返回configs目录中的defconfig配置文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$$ <span class="built_in">cd</span> xxx/phytium-linux-buildroot</span><br><span class="line">$$ make list-defconfigs</span><br></pre></td></tr></table></figure>
+<p>其中以phytium开头的为飞腾相关的defconfig配置文件，包含：</p>
+<ul>
+<li>phytium_debian_defconfig      </li>
+<li>Build for debian systemphytium_defconfig             </li>
+<li>Build for busybox minimal systemphytium_initrd_defconfig      </li>
+<li>Build for initrdphytium_ubuntu_defconfig      </li>
+<li>Build for ubuntu system</li>
+</ul>
+<h2 id="编译默认配置的文件系统"><a href="#编译默认配置的文件系统" class="headerlink" title="编译默认配置的文件系统"></a>编译默认配置的文件系统</h2><p>（1）加载defconfig</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ make phytium_xxx_defconfig</span><br></pre></td></tr></table></figure>
+<p>其中phytium_xxx_defconfig为以下文件系统之一：<br>phytium_ubuntu_defconfig<br>phytium_debian_defconfig<br>phytium_defconfig<br>（2）编译<br>$ make<br>（3）镜像的输出位置<br>生成的根文件系统、内核、img 镜像位于output&#x2F;images目录。<br>img 镜像<br>目前buildroot支持编译img 镜像（disk.img），生成的img 镜像位于output&#x2F;images目录。img 镜像包含了根文件系统、内核、设备树和GRUB。 使用img 镜像安装系统，不需要像之前那样将存储设备手动分区再拷贝文件，只需要将disk.img文件写入存储设备即可。</p>
+<h1 id="制作启动U盘"><a href="#制作启动U盘" class="headerlink" title="制作启动U盘"></a>制作启动U盘</h1><p>以下是详细的步骤，教你如何格式化U盘并重新构建两个分区。假设U盘设备名为 &#x2F;dev&#x2F;sdb。</p>
+<h2 id="步骤1：识别U盘"><a href="#步骤1：识别U盘" class="headerlink" title="步骤1：识别U盘"></a>步骤1：识别U盘</h2><p>首先，使用 lsblk 或 fdisk -l 命令识别U盘的设备名：</p>
+<p>lsblk<br>或者<br>sudo fdisk -l</p>
+<p>假设你的U盘设备名是 &#x2F;dev&#x2F;sdb。</p>
+<h2 id="步骤2：使用-fdisk-分区"><a href="#步骤2：使用-fdisk-分区" class="headerlink" title="步骤2：使用 fdisk 分区"></a>步骤2：使用 fdisk 分区</h2><ol>
+<li><p>启动 <strong>fdisk</strong>：<br>sudo fdisk &#x2F;dev&#x2F;sdb</p>
+</li>
+<li><p>删除现有分区：<br>在 fdisk 命令行中，输入以下命令删除所有现有分区：</p>
+</li>
+</ol>
+<ul>
+<li>输入 d 并回车，选择要删除的分区号，重复此步骤直到所有分区都删除。</li>
+<li>输入 p 查看当前分区表，确保所有分区都删除。</li>
+</ul>
+<ol start="3">
+<li><p>创建新的GPT分区表：<br>g</p>
+</li>
+<li><p>创建第一个分区（EFI系统分区）：</p>
+</li>
+</ol>
+<ul>
+<li>输入 n 创建新分区，选择分区号 1，设置起始扇区和大小（例如 +512M）。</li>
+<li>输入 t 修改分区类型，选择分区号 1，输入 1 设置为 EFI System。</li>
+</ul>
+<ol start="5">
+<li>创建第二个分区（根文件系统分区）：</li>
+</ol>
+<ul>
+<li>输入 n 创建新分区，选择分区号 2，使用默认起始扇区和默认结束扇区。</li>
+</ul>
+<ol start="6">
+<li><p>查看分区表：<br>p</p>
+</li>
+<li><p>写入分区表并退出：<br>w</p>
+</li>
+</ol>
+<h2 id="步骤3：格式化新分区"><a href="#步骤3：格式化新分区" class="headerlink" title="步骤3：格式化新分区"></a>步骤3：格式化新分区</h2><ol>
+<li>格式化EFI系统分区为 vfat** 文件系统**：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfs.vfat /dev/sdb1</span><br></pre></td></tr></table></figure></li>
+<li>格式化根文件系统分区为 ext4** 文件系统**：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfs.ext4 /dev/sdb2</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="步骤4：拷贝文件到分区"><a href="#步骤4：拷贝文件到分区" class="headerlink" title="步骤4：拷贝文件到分区"></a>步骤4：拷贝文件到分区</h2><ol>
+<li>挂载分区：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mount /dev/sdb1 /mnt</span><br></pre></td></tr></table></figure></li>
+<li>拷贝内核、设备树和GRUB到EFI分区：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> /path/to/Image /mnt</span><br><span class="line">sudo <span class="built_in">cp</span> /path/to/e2000q-come-board.dtb /mnt</span><br><span class="line">sudo <span class="built_in">cp</span> -r /path/to/EFI/ /mnt</span><br><span class="line"><span class="built_in">sync</span></span><br><span class="line">sudo umount /dev/sdb1</span><br></pre></td></tr></table></figure></li>
+<li>挂载根分区：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mount /dev/sdb2 /mnt</span><br></pre></td></tr></table></figure></li>
+<li>拷贝并解压根文件系统到根分区：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> /path/to/rootfs.tar /mnt</span><br><span class="line"><span class="built_in">cd</span> /mnt</span><br><span class="line">sudo tar xvf rootfs.tar</span><br><span class="line"><span class="built_in">sync</span></span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">sudo umount /dev/sdb2</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="步骤5：设置U-Boot环境变量"><a href="#步骤5：设置U-Boot环境变量" class="headerlink" title="步骤5：设置U-Boot环境变量"></a>步骤5：设置U-Boot环境变量</h2><p>确保U-Boot配置正确以引导新的根文件系统：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setenv bootargs <span class="string">&#x27;console=ttyAMA1,115200 audit=0 earlycon=pl011,0x2800d000 root=/dev/sdb2 rootdelay=5 rw;&#x27;</span></span><br><span class="line">setenv boot_usb <span class="string">&#x27;usb stop; usb start; fatload usb 0:1 0x90000000 e2000q-hanwei-board.dtb; fatload usb 0:1 0x90100000 Image; booti 0x90100000 - 0x90000000;&#x27;</span></span><br><span class="line">setenv bootcmd <span class="string">&#x27;run boot_usb&#x27;</span></span><br><span class="line">saveenv</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
